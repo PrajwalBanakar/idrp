@@ -1,3 +1,110 @@
+<script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+import StartupCard from '@/components/startups/StartupCard.vue'
+import { startupTabs } from '@/data/startups'
+import type { Startup, TabKey } from '@/types/startups'
+
+type SortOption = 'name-asc' | 'name-desc' | 'category'
+
+const props = defineProps<{
+  startups: Startup[]
+}>()
+
+const activeTab = ref<TabKey>('all')
+const expandedStartupId = ref<number | null>(null)
+const searchQuery = ref('')
+const sortBy = ref<SortOption>('name-asc')
+
+const filteredStartups = computed(() => {
+  const base =
+    activeTab.value === 'all'
+      ? props.startups
+      : props.startups.filter((startup) => startup.category === activeTab.value)
+
+  const query = searchQuery.value.toLowerCase()
+
+  if (!query) return base
+
+  return base.filter((startup) => {
+    const founderText = (startup.founders ?? [])
+      .map((founder) =>
+        [founder.name, founder.role ?? '', founder.email ?? '', founder.linkedin ?? ''].join(' '),
+      )
+      .join(' ')
+      .toLowerCase()
+
+    const mentorText = (startup.techFacultyMentors ?? [])
+      .map((mentor) =>
+        [mentor.name, mentor.role ?? '', mentor.email ?? '', mentor.linkedin ?? ''].join(' '),
+      )
+      .join(' ')
+      .toLowerCase()
+
+    const teamText = (startup.teamMembers ?? [])
+      .map((member) =>
+        [member.name, member.role ?? '', member.email ?? '', member.linkedin ?? ''].join(' '),
+      )
+      .join(' ')
+      .toLowerCase()
+
+    return (
+      startup.name.toLowerCase().includes(query) ||
+      (startup.sector ?? '').toLowerCase().includes(query) ||
+      (startup.brief ?? '').toLowerCase().includes(query) ||
+      (startup.contactEmail ?? '').toLowerCase().includes(query) ||
+      founderText.includes(query) ||
+      mentorText.includes(query) ||
+      teamText.includes(query)
+    )
+  })
+})
+
+const visibleStartups = computed(() => {
+  const sorted = [...filteredStartups.value]
+
+  if (sortBy.value === 'name-asc') {
+    return sorted.sort((a, b) => a.name.localeCompare(b.name))
+  }
+
+  if (sortBy.value === 'name-desc') {
+    return sorted.sort((a, b) => b.name.localeCompare(a.name))
+  }
+
+  return sorted.sort((a, b) => {
+    if (a.category === b.category) {
+      return a.name.localeCompare(b.name)
+    }
+
+    return a.category.localeCompare(b.category)
+  })
+})
+
+const hasActiveFilters = computed(
+  () => !!searchQuery.value || activeTab.value !== 'all' || sortBy.value !== 'name-asc',
+)
+
+function toggleStartup(id: number) {
+  expandedStartupId.value = expandedStartupId.value === id ? null : id
+}
+
+function getTabCount(key: TabKey) {
+  if (key === 'all') return props.startups.length
+
+  return props.startups.filter((startup) => startup.category === key).length
+}
+
+function resetFilters() {
+  activeTab.value = 'all'
+  searchQuery.value = ''
+  sortBy.value = 'name-asc'
+  expandedStartupId.value = null
+}
+
+watch([activeTab, searchQuery, sortBy], () => {
+  expandedStartupId.value = null
+})
+</script>
+
 <template>
   <section class="bg-slate-50 px-6 py-16 md:px-12 lg:px-16 lg:py-20">
     <div class="mx-auto max-w-7xl">
@@ -21,10 +128,14 @@
 
         <div class="rounded-3xl border border-slate-200 bg-white px-6 py-5 shadow-sm">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Results</p>
+
           <p class="mt-1 text-3xl font-bold text-slate-900">
             {{ visibleStartups.length }}
           </p>
-          <p class="text-sm text-slate-500">startup{{ visibleStartups.length !== 1 ? 's' : '' }}</p>
+
+          <p class="text-sm text-slate-500">
+            startup{{ visibleStartups.length !== 1 ? 's' : '' }}
+          </p>
         </div>
       </div>
 
@@ -44,6 +155,7 @@
               @click="activeTab = tab.key"
             >
               {{ tab.label }}
+
               <span class="ml-1.5 text-xs font-bold opacity-75">
                 ({{ getTabCount(tab.key) }})
               </span>
@@ -106,7 +218,7 @@
           🚀
         </div>
 
-        <h3 class="mt-5 text-xl font-semibold text-slate-900">No startups match your filters</h3>
+        <h3 class="mt-5 text-xl font-semibold text-slate-900">{{ startups.length === 0 ? 'No startups available yet' : 'No startups match your filters' }}</h3>
 
         <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
           Try adjusting your search, switching categories, or resetting filters to discover more
@@ -124,104 +236,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import StartupCard from '@/components/startups/StartupCard.vue'
-import { startupTabs } from '@/data/startups'
-import type { Startup, TabKey } from '@/types/startups'
-
-type SortOption = 'name-asc' | 'name-desc' | 'category'
-
-const props = defineProps<{
-  startups: Startup[]
-}>()
-
-const activeTab = ref<TabKey>('all')
-const expandedStartupId = ref<string | null>(null)
-const searchQuery = ref('')
-const sortBy = ref<SortOption>('name-asc')
-
-const filteredStartups = computed(() => {
-  const base =
-    activeTab.value === 'all'
-      ? props.startups
-      : props.startups.filter((startup) => startup.category === activeTab.value)
-
-  const query = searchQuery.value.toLowerCase()
-  if (!query) return base
-
-  return base.filter((startup) => {
-    const founderText = startup.founders
-      .map((founder) =>
-        [founder.name, founder.role, founder.email ?? '', founder.linkedin ?? ''].join(' '),
-      )
-      .join(' ')
-      .toLowerCase()
-
-    const mentorText = startup.techFacultyMentors
-      .map((mentor) => [mentor.name, mentor.email ?? '', mentor.linkedin ?? ''].join(' '))
-      .join(' ')
-      .toLowerCase()
-
-    const teamText = startup.teamMembers
-      .map((member) => [member.name, member.email ?? '', member.linkedin ?? ''].join(' '))
-      .join(' ')
-      .toLowerCase()
-
-    return (
-      startup.name.toLowerCase().includes(query) ||
-      startup.sector.toLowerCase().includes(query) ||
-      (startup.brief ?? '').toLowerCase().includes(query) ||
-      (startup.contactEmail ?? '').toLowerCase().includes(query) ||
-      founderText.includes(query) ||
-      mentorText.includes(query) ||
-      teamText.includes(query)
-    )
-  })
-})
-
-const visibleStartups = computed(() => {
-  const sorted = [...filteredStartups.value]
-
-  if (sortBy.value === 'name-asc') {
-    return sorted.sort((a, b) => a.name.localeCompare(b.name))
-  }
-
-  if (sortBy.value === 'name-desc') {
-    return sorted.sort((a, b) => b.name.localeCompare(a.name))
-  }
-
-  return sorted.sort((a, b) => {
-    if (a.category === b.category) {
-      return a.name.localeCompare(b.name)
-    }
-
-    return a.category.localeCompare(b.category)
-  })
-})
-
-const hasActiveFilters = computed(
-  () => !!searchQuery.value || activeTab.value !== 'all' || sortBy.value !== 'name-asc',
-)
-
-function toggleStartup(id: string) {
-  expandedStartupId.value = expandedStartupId.value === id ? null : id
-}
-
-function getTabCount(key: TabKey) {
-  if (key === 'all') return props.startups.length
-  return props.startups.filter((startup) => startup.category === key).length
-}
-
-function resetFilters() {
-  activeTab.value = 'all'
-  searchQuery.value = ''
-  sortBy.value = 'name-asc'
-  expandedStartupId.value = null
-}
-
-watch([activeTab, searchQuery, sortBy], () => {
-  expandedStartupId.value = null
-})
-</script>

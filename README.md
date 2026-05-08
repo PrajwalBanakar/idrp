@@ -24,7 +24,6 @@ idrp-frontend
 │  ├─ board-prasanna.jfif
 │  ├─ brochures
 │  │  ├─ FDP-Brochure.pdf
-│  │  ├─ IET-Brochure.pdf
 │  │  └─ SDW-Brochure.pdf
 │  ├─ business-anand.jfif
 │  ├─ business-mallikarjun.jfif
@@ -57,7 +56,16 @@ idrp-frontend
 │  ├─ cbde-value.jfif
 │  ├─ cif
 │  │  ├─ cif-intro.jpeg
-│  │  └─ cif-value.jpeg
+│  │  ├─ cif-value.jpeg
+│  │  ├─ img1.jpeg
+│  │  ├─ img2.jpeg
+│  │  ├─ img3.jpeg
+│  │  ├─ img4.jpeg
+│  │  ├─ img5.jpeg
+│  │  ├─ img6.jpeg
+│  │  ├─ img7.jpeg
+│  │  ├─ img8.jpeg
+│  │  └─ img9.jpeg
 │  ├─ cif-hero.jfif
 │  ├─ cif-intro.jfif
 │  ├─ cif-value.jfif
@@ -121,7 +129,8 @@ idrp-frontend
 │  │  ├─ business-santosh.jpeg
 │  │  ├─ business-sasikumar.jpeg
 │  │  ├─ business-shashi.jpeg
-│  │  └─ business-subhas.jpeg
+│  │  ├─ business-subhas.jpeg
+│  │  └─ chetan_khosla.jfif
 │  ├─ mentors-hero.jfif
 │  ├─ nain
 │  │  ├─ img1.jpeg
@@ -135,10 +144,12 @@ idrp-frontend
 │  │  ├─ 01-jan-mar-2025-edition.pdf
 │  │  ├─ 02-apr-jun-2025-edition.pdf
 │  │  ├─ 03-jul-sep-2025-edition.pdf
-│  │  └─ 04-oct-dec-2025-edition.pdf
+│  │  ├─ 04-oct-dec-2025-edition.pdf
+│  │  └─ 05-jan-mar-2026-edition.pdf
 │  ├─ partners
 │  │  ├─ 100x.png
 │  │  ├─ bldeacet.png
+│  │  ├─ boltstart.jpeg
 │  │  ├─ campusfund.png
 │  │  ├─ cii.png
 │  │  ├─ cocreate.png
@@ -148,6 +159,7 @@ idrp-frontend
 │  │  ├─ deshpande.png
 │  │  ├─ dimhans.png
 │  │  ├─ dkte.png
+│  │  ├─ docketrun.jpeg
 │  │  ├─ ekstep.png
 │  │  ├─ faso.png
 │  │  ├─ fuel.png
@@ -164,6 +176,7 @@ idrp-frontend
 │  │  ├─ kleit.png
 │  │  ├─ klepharm.png
 │  │  ├─ maven.png
+│  │  ├─ mgrdpru.jpeg
 │  │  ├─ nanopix.png
 │  │  ├─ pda.png
 │  │  ├─ qpiai.png
@@ -174,6 +187,7 @@ idrp-frontend
 │  │  ├─ sankalp.png
 │  │  ├─ sbi.png
 │  │  ├─ seafund.png
+│  │  ├─ ses.jpeg
 │  │  ├─ sgbit.png
 │  │  ├─ shridevi.png
 │  │  ├─ stpi.png
@@ -240,7 +254,7 @@ idrp-frontend
 │  │  ├─ udyami-value.jpeg
 │  │  └─ udyami_brochure.pdf
 │  ├─ vision-community.jfif
-│  ├─ vision-innovation.jfif
+│  ├─ vision-innovation.jpeg
 │  ├─ vision-resources.jfif
 │  └─ yuva-udyami
 │     ├─ yuva-udyami-intro.JPG
@@ -274,6 +288,8 @@ idrp-frontend
 │  │  │  ├─ CourseDetailOverviewSection.vue
 │  │  │  ├─ CourseHighlightsSection.vue
 │  │  │  └─ WorkshopApplyFormSection.vue
+│  │  ├─ admin
+│  │  │  └─ AdminLayout.vue
 │  │  ├─ AppLayout.vue
 │  │  ├─ application
 │  │  │  ├─ ApplicationFormSection.vue
@@ -282,7 +298,8 @@ idrp-frontend
 │  │  ├─ common
 │  │  │  ├─ BaseHeroSection.vue
 │  │  │  ├─ BeneficiariesSection.vue
-│  │  │  └─ FocusSection.vue
+│  │  │  ├─ FocusSection.vue
+│  │  │  └─ ImageGallerySection.vue
 │  │  ├─ contact
 │  │  │  ├─ ContactFormSection.vue
 │  │  │  ├─ ContactHeroSection.vue
@@ -417,7 +434,19 @@ idrp-frontend
 │  ├─ router
 │  │  └─ index.ts
 │  ├─ services
-│  │  └─ formService.ts
+│  │  ├─ authService.ts
+│  │  ├─ boardMemberAdminService.ts
+│  │  ├─ eventAdminService.ts
+│  │  ├─ eventService.ts
+│  │  ├─ fileUploadService.ts
+│  │  ├─ formService.ts
+│  │  ├─ mentorAdminService.ts
+│  │  ├─ partnerAdminService.ts
+│  │  ├─ programAdminService.ts
+│  │  ├─ resourceAdminService.ts
+│  │  ├─ startupAdminService.ts
+│  │  ├─ startupService.ts
+│  │  └─ teamMemberAdminService.ts
 │  ├─ style.css
 │  ├─ types
 │  │  ├─ about.ts
@@ -440,6 +469,16 @@ idrp-frontend
 │  │  └─ team.ts
 │  └─ views
 │     ├─ AboutView.vue
+│     ├─ AdminBoardMembersView.vue
+│     ├─ AdminDashboardView.vue
+│     ├─ AdminEventsView.vue
+│     ├─ AdminLoginView.vue
+│     ├─ AdminMentorsView.vue
+│     ├─ AdminPartnersView.vue
+│     ├─ AdminProgramsView.vue
+│     ├─ AdminResourcesView.vue
+│     ├─ AdminStartupsView.vue
+│     ├─ AdminTeamMembersView.vue
 │     ├─ ApplyView.vue
 │     ├─ CbdeView.vue
 │     ├─ CertificationCoursesView.vue

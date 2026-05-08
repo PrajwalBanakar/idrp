@@ -139,7 +139,7 @@ export async function submitForm(
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payload.data), // Send only the data object to custom endpoints
       })
 
       if (!response.ok) {

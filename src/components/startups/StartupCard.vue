@@ -1,3 +1,80 @@
+<script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+import { ChevronDown } from 'lucide-vue-next'
+import { categoryLabels } from '@/data/startups'
+import type { Startup, StartupCategory, StartupPerson } from '@/types/startups'
+
+const props = defineProps<{
+  startup: Startup
+  expanded: boolean
+}>()
+
+defineEmits<{
+  (e: 'toggle', startupId: number): void
+}>()
+
+const logoBroken = ref(false)
+
+const initial = computed(() => props.startup.name.charAt(0).toUpperCase())
+
+const categoryLabel = computed(() => categoryLabels[props.startup.category])
+
+const websiteLabel = computed(() =>
+  props.startup.website ? props.startup.website.replace(/^https?:\/\//, '') : '',
+)
+
+const foundingTeam = computed<StartupPerson[]>(() => {
+  const people: StartupPerson[] = [
+    ...(props.startup.founders ?? []),
+    ...(props.startup.teamMembers ?? []),
+  ]
+
+  const seen = new Set<string>()
+
+  return people.filter((person) => {
+    const key = `${person.name.trim().toLowerCase()}|${
+      person.email?.trim().toLowerCase() ?? ''
+    }|${person.linkedin?.trim().toLowerCase() ?? ''}`
+
+    if (seen.has(key)) return false
+
+    seen.add(key)
+    return true
+  })
+})
+
+const foundingSectionTitle = computed(() =>
+  foundingTeam.value.length <= 1 ? 'Founder' : 'Co-founders',
+)
+
+const mentorSectionTitle = computed(() =>
+  (props.startup.techFacultyMentors?.length ?? 0) <= 1
+    ? 'Tech Faculty Mentor'
+    : 'Tech Faculty Mentors',
+)
+
+const badgeClass = computed(() => {
+  const badgeMap: Record<StartupCategory, string> = {
+    PRE_INCUBATED: 'bg-cyan-50 text-cyan-700',
+    INCUBATED: 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
+    FUNDED: 'bg-emerald-50 text-emerald-700',
+  }
+
+  return badgeMap[props.startup.category]
+})
+
+function handleLogoError() {
+  logoBroken.value = true
+}
+
+watch(
+  () => props.startup.logo,
+  () => {
+    logoBroken.value = false
+  },
+)
+</script>
+
 <template>
   <article
     class="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -15,6 +92,7 @@
               class="h-full w-full object-contain"
               @error="handleLogoError"
             />
+
             <span
               v-else
               class="text-2xl font-extrabold uppercase tracking-wide text-[var(--color-primary)]"
@@ -117,6 +195,10 @@
                         {{ mentor.name }}
                       </p>
 
+                      <p v-if="mentor.role" class="mt-0.5 text-xs text-slate-500">
+                        {{ mentor.role }}
+                      </p>
+
                       <a
                         v-if="mentor.email"
                         :href="`mailto:${mentor.email}`"
@@ -156,6 +238,7 @@
                       <p class="text-sm font-semibold text-slate-900">
                         {{ member.name }}
                       </p>
+
                       <p v-if="member.role" class="mt-0.5 text-xs text-slate-500">
                         {{ member.role }}
                       </p>
@@ -195,6 +278,7 @@
                   <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                     Email
                   </p>
+
                   <a
                     :href="`mailto:${startup.contactEmail}`"
                     class="mt-1 inline-block break-all text-sm font-medium text-slate-800 transition hover:text-[var(--color-primary)]"
@@ -207,6 +291,7 @@
                   <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                     Website
                   </p>
+
                   <a
                     :href="startup.website"
                     target="_blank"
@@ -221,6 +306,7 @@
                   <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                     Investor Material
                   </p>
+
                   <a
                     :href="startup.onePager"
                     target="_blank"
@@ -230,6 +316,13 @@
                     View / Download One-Pager
                   </a>
                 </div>
+
+                <p
+                  v-if="!startup.contactEmail && !startup.website && !startup.onePager"
+                  class="text-sm text-slate-500"
+                >
+                  Contact details will be updated soon.
+                </p>
               </div>
             </section>
           </div>
@@ -238,85 +331,3 @@
     </transition>
   </article>
 </template>
-
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-import { ChevronDown } from 'lucide-vue-next'
-import { categoryLabels } from '@/data/startups'
-import type { Startup, StartupCategory } from '@/types/startups'
-
-type FoundingTeamPerson = {
-  name: string
-  role?: string
-  linkedin?: string
-  email?: string
-}
-
-const props = defineProps<{
-  startup: Startup
-  expanded: boolean
-}>()
-
-defineEmits<{
-  (e: 'toggle', startupId: string): void
-}>()
-
-const logoBroken = ref(false)
-
-const initial = computed(() => props.startup.name.charAt(0).toUpperCase())
-
-const categoryLabel = computed(() => categoryLabels[props.startup.category])
-
-const websiteLabel = computed(() =>
-  props.startup.website ? props.startup.website.replace(/^https?:\/\//, '') : '',
-)
-
-const foundingTeam = computed<FoundingTeamPerson[]>(() => {
-  const people: FoundingTeamPerson[] = [
-    ...(props.startup.founders ?? []).map((person) => ({
-      name: person.name,
-      role: person.role,
-      linkedin: person.linkedin,
-      email: person.email,
-    })),
-    ...(props.startup.teamMembers ?? []).map((person) => ({
-      name: person.name,
-      role: undefined,
-      linkedin: person.linkedin,
-      email: person.email,
-    })),
-  ]
-
-  const seen = new Set<string>()
-
-  return people.filter((person) => {
-    const key = `${person.name.trim().toLowerCase()}|${person.email?.trim().toLowerCase() ?? ''}|${person.linkedin?.trim().toLowerCase() ?? ''}`
-
-    if (seen.has(key)) return false
-    seen.add(key)
-    return true
-  })
-})
-
-const foundingSectionTitle = computed(() =>
-  foundingTeam.value.length <= 1 ? 'Founder' : 'Co-Founders',
-)
-
-const mentorSectionTitle = computed(() =>
-  props.startup.techFacultyMentors.length <= 1 ? 'Tech Faculty Mentor' : 'Tech Faculty Mentors',
-)
-
-const badgeClass = computed(() => {
-  const badgeMap: Record<StartupCategory, string> = {
-    'pre-incubated': 'bg-cyan-50 text-cyan-700',
-    incubated: 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
-    funded: 'bg-emerald-50 text-emerald-700',
-  }
-
-  return badgeMap[props.startup.category]
-})
-
-function handleLogoError() {
-  logoBroken.value = true
-}
-</script>

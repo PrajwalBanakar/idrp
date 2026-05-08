@@ -1,6 +1,8 @@
 import type { FormConfig } from '@/types/form'
 import type { EventItem } from '@/types/events'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+
 export function createEventRegistrationFormConfig(event: EventItem): FormConfig {
   return {
     id: 'event-registration-form',
@@ -11,7 +13,23 @@ export function createEventRegistrationFormConfig(event: EventItem): FormConfig 
     successMessage:
       'Registration received successfully. Our team will review your submission and share confirmation details with you by email.',
     resetOnSuccess: true,
-    endpoint: 'https://api.web3forms.com/submit',
+    // endpoint: 'https://api.web3forms.com/submit',
+    endpoint: `${API_BASE_URL}/api/event-registrations`,
+
+transformPayload: (values, meta) => ({
+  formId: 'event-registration-form',
+  formType: 'event-registration',
+  meta,
+  data: {
+    participantName: String(values.fullName || ''),
+    email: String(values.email || ''),
+    phone: String(values.phone || ''),
+    organization: String(values.organization || ''),
+    designation: String(values.designation || values.participantType || ''),
+    numberOfAttendees: 1,
+    eventId: event.id,
+  },
+}),
 
     meta: {
       sourcePage: 'event-registration',

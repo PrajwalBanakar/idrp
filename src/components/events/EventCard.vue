@@ -83,11 +83,18 @@
             :href="event.registerUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+            class="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold !text-white transition hover:opacity-90"
           >
             {{ primaryActionLabel }}
           </a>
 
+          <RouterLink
+            v-else-if="variant === 'upcoming'"
+            :to="`/community/events/${event.id}/register`"
+            class="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold !text-white transition hover:opacity-90"
+          >
+            Register Now
+          </RouterLink>
           <button
             v-if="variant === 'past' && hasGallery"
             type="button"
@@ -112,6 +119,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import EventGalleryModal from '@/components/events/EventGalleryModal.vue'
 import type { EventItem } from '@/types/events'
 

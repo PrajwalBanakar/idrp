@@ -1,4 +1,4 @@
-export type StartupCategory = 'pre-incubated' | 'incubated' | 'funded'
+export type StartupCategory = 'PRE_INCUBATED' | 'INCUBATED' | 'FUNDED'
 export type TabKey = 'all' | StartupCategory
 
 export interface Tab {
@@ -11,27 +11,15 @@ export interface StartupStat {
   label: string
 }
 
-export interface Founder {
+export interface StartupPerson {
   name: string
-  role: string
-  linkedin?: string
-  email?: string
-}
-
-export interface TechFacultyMentor {
-  name: string
-  linkedin?: string
-  email?: string
-}
-
-export interface TeamMember {
-  name: string
+  role?: string
   linkedin?: string
   email?: string
 }
 
 export interface Startup {
-  id: string
+  id: number
   name: string
   sector: string
   category: StartupCategory
@@ -40,9 +28,9 @@ export interface Startup {
   onePager?: string
   brief?: string
   contactEmail?: string
-  techFacultyMentors: TechFacultyMentor[]
-  founders: Founder[]
-  teamMembers: TeamMember[]
+  techFacultyMentors: StartupPerson[]
+  founders: StartupPerson[]
+  teamMembers: StartupPerson[]
 }
 
 export interface StartupsHero {

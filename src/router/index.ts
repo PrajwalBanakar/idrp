@@ -10,6 +10,7 @@ import {
   type Router,
   type RouteRecordNameGeneric,
 } from 'vue-router'
+import { isAdminLoggedIn } from '@/services/authService'
 
 export const ROUTE_NAMES = {
   HOME: 'home',
@@ -53,6 +54,16 @@ export const ROUTE_NAMES = {
   CERTIFICATION_COURSES: 'certification-courses',
   WORKSHOPS: 'workshops',
   WORKSHOP_APPLY: 'workshop-apply',
+  ADMIN_LOGIN: 'admin-login',
+  ADMIN_DASHBOARD: 'admin-dashboard',
+  ADMIN_EVENTS: 'admin-events',
+  ADMIN_STARTUPS: 'admin-startups',
+  ADMIN_PROGRAMS: 'admin-programs',
+  ADMIN_RESOURCES: 'admin-resources',
+  ADMIN_PARTNERS: 'admin-partners',
+  ADMIN_MENTORS: 'admin-mentors',
+  ADMIN_TEAM_MEMBERS: 'admin-team-members',
+  ADMIN_BOARD_MEMBERS: 'admin-board-members',
 } as const
 
 type AppRouteName = (typeof ROUTE_NAMES)[keyof typeof ROUTE_NAMES]
@@ -297,6 +308,19 @@ const actionRoutes: RouteRecordRaw[] = [
   }),
 ]
 
+const adminRoutes: RouteRecordRaw[] = [
+  createPageRoute('/admin/login', ROUTE_NAMES.ADMIN_LOGIN, 'AdminLoginView', 'Admin Login'),
+  createPageRoute('/admin/dashboard', ROUTE_NAMES.ADMIN_DASHBOARD, 'AdminDashboardView', 'Admin Dashboard'),
+  createPageRoute('/admin/events', ROUTE_NAMES.ADMIN_EVENTS, 'AdminEventsView', 'Admin Events'),
+  createPageRoute('/admin/startups', ROUTE_NAMES.ADMIN_STARTUPS, 'AdminStartupsView', 'Admin Startups'),
+  createPageRoute('/admin/programs', ROUTE_NAMES.ADMIN_PROGRAMS, 'AdminProgramsView', 'Admin Programs'),
+  createPageRoute('/admin/resources', ROUTE_NAMES.ADMIN_RESOURCES, 'AdminResourcesView', 'Admin Resources'),
+  createPageRoute('/admin/partners', ROUTE_NAMES.ADMIN_PARTNERS, 'AdminPartnersView', 'Admin Partners'),
+  createPageRoute('/admin/mentors', ROUTE_NAMES.ADMIN_MENTORS, 'AdminMentorsView', 'Admin Mentors'),
+  createPageRoute('/admin/team-members', ROUTE_NAMES.ADMIN_TEAM_MEMBERS, 'AdminTeamMembersView', 'Admin Team Members'),
+  createPageRoute('/admin/board-members', ROUTE_NAMES.ADMIN_BOARD_MEMBERS, 'AdminBoardMembersView', 'Admin Board Members'),
+]
+
 const legacyRedirects: RouteRecordRaw[] = [
   createRedirectByName('/about-idrp', ROUTE_NAMES.ABOUT),
   createRedirectByName('/our-board', ROUTE_NAMES.BOARD),
@@ -359,6 +383,7 @@ const routes: RouteRecordRaw[] = [
   ...eventRoutes,
   ...resourceRoutes,
   ...actionRoutes,
+  ...adminRoutes,
   ...legacyRedirects,
 
   {
@@ -420,5 +445,22 @@ function enhanceRouterPush(routerInstance: Router) {
 }
 
 enhanceRouterPush(router)
+
+
+
+router.beforeEach((to) => {
+  const isAdminRoute = to.path.startsWith('/admin')
+  const isLoginRoute = to.name === ROUTE_NAMES.ADMIN_LOGIN
+
+  if (isAdminRoute && !isLoginRoute && !isAdminLoggedIn()) {
+    return { name: ROUTE_NAMES.ADMIN_LOGIN }
+  }
+
+  if (isLoginRoute && isAdminLoggedIn()) {
+    return { name: ROUTE_NAMES.ADMIN_DASHBOARD }
+  }
+
+  return true
+})
 
 export default router
