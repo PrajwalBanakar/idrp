@@ -9,5 +9,4 @@ public class IdrpBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(IdrpBackendApplication.class, args);
 	}
-
 }

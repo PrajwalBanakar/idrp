@@ -1,13 +1,10 @@
 package com.idrp.backend.dto.event;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,32 +13,52 @@ import java.time.LocalDateTime;
 @Builder
 public class EventRequestDto {
 
-    @NotBlank(message = "Event name is required")
-    @Size(max = 150, message = "Event name must not exceed 150 characters")
-    private String eventName;
+    @NotBlank(message = "Slug is required")
+    @Size(max = 180, message = "Slug must not exceed 180 characters")
+    private String slug;
 
-    @NotBlank(message = "Organizer name is required")
-    @Size(max = 120, message = "Organizer name must not exceed 120 characters")
-    private String organizerName;
+    @NotBlank(message = "Title is required")
+    @Size(max = 180, message = "Title must not exceed 180 characters")
+    private String title;
 
-    @NotBlank(message = "Email is required")
-    @Email(message = "Enter a valid email address")
-    @Size(max = 150, message = "Email must not exceed 150 characters")
-    private String email;
-
-    @Size(max = 20, message = "Phone must not exceed 20 characters")
-    private String phone;
-
-    @Size(max = 150, message = "Venue must not exceed 150 characters")
-    private String venue;
-
-    @NotNull(message = "Event date is required")
-    @Future(message = "Event date must be in the future")
-    private LocalDateTime eventDate;
-
+    @NotBlank(message = "Category is required")
     @Size(max = 100, message = "Category must not exceed 100 characters")
     private String category;
 
-    @Size(max = 255, message = "Description must not exceed 255 characters")
+    @NotBlank(message = "Description is required")
     private String description;
+
+    @NotNull(message = "Start date is required")
+    private LocalDate startDate;
+
+    @NotNull(message = "End date is required")
+    private LocalDate endDate;
+
+    @NotBlank(message = "Display date is required")
+    @Size(max = 100, message = "Display date must not exceed 100 characters")
+    private String displayDate;
+
+    @Size(max = 100, message = "Time must not exceed 100 characters")
+    private String time;
+
+    @NotBlank(message = "Location is required")
+    @Size(max = 150, message = "Location must not exceed 150 characters")
+    private String location;
+
+    @Size(max = 50, message = "Mode must not exceed 50 characters")
+    private String mode;
+
+    @NotBlank(message = "Image is required")
+    @Size(max = 500, message = "Image must not exceed 500 characters")
+    private String image;
+
+    @Pattern(regexp = "cover|contain", message = "Image fit must be cover or contain")
+    private String imageFit;
+
+    @Size(max = 500, message = "Register URL must not exceed 500 characters")
+    private String registerUrl;
+
+    private Boolean visible;
+
+    private List<String> gallery;
 }

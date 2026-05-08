@@ -2,7 +2,9 @@ package com.idrp.backend.dto.event;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,14 +14,21 @@ import java.time.LocalDateTime;
 public class EventResponseDto {
 
     private Long id;
-    private String eventName;
-    private String organizerName;
-    private String email;
-    private String phone;
-    private String venue;
-    private LocalDateTime eventDate;
+    private String slug;
+    private String title;
     private String category;
     private String description;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private String displayDate;
+    private String time;
+    private String location;
+    private String mode;
+    private String image;
+    private String imageFit;
+    private String registerUrl;
+    private Boolean visible;
+    private List<String> gallery;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

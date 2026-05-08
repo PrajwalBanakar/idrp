@@ -19,18 +19,29 @@ public class StartupServiceImpl implements StartupService {
 
     @Override
     public StartupResponseDto createStartup(StartupRequestDto requestDto) {
-        if (startupRepository.existsByEmail(requestDto.getEmail())) {
-            throw new DuplicateResourceException("Startup already exists with email: " + requestDto.getEmail());
+        if (
+                requestDto.getContactEmail() != null &&
+                !requestDto.getContactEmail().isBlank() &&
+                startupRepository.existsByContactEmail(requestDto.getContactEmail())
+        ) {
+            throw new DuplicateResourceException(
+                    "Startup already exists with contact email: " + requestDto.getContactEmail()
+            );
         }
 
         Startup startup = mapToEntity(requestDto);
         Startup savedStartup = startupRepository.save(startup);
+
         return mapToResponseDto(savedStartup);
     }
 
     @Override
     public Page<StartupResponseDto> getAllStartups(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by(Sort.Direction.DESC, "createdAt")
+        );
 
         return startupRepository.findAll(pageable)
                 .map(this::mapToResponseDto);
@@ -49,18 +60,30 @@ public class StartupServiceImpl implements StartupService {
         Startup existingStartup = startupRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Startup not found with id: " + id));
 
-        if (startupRepository.existsByEmailAndIdNot(requestDto.getEmail(), id)) {
-            throw new DuplicateResourceException("Another startup already exists with email: " + requestDto.getEmail());
+        if (
+                requestDto.getContactEmail() != null &&
+                !requestDto.getContactEmail().isBlank() &&
+                startupRepository.existsByContactEmailAndIdNot(requestDto.getContactEmail(), id)
+        ) {
+            throw new DuplicateResourceException(
+                    "Another startup already exists with contact email: " + requestDto.getContactEmail()
+            );
         }
 
-        existingStartup.setStartupName(requestDto.getStartupName());
-        existingStartup.setFounderName(requestDto.getFounderName());
-        existingStartup.setEmail(requestDto.getEmail());
-        existingStartup.setPhone(requestDto.getPhone());
+        existingStartup.setName(requestDto.getName());
         existingStartup.setSector(requestDto.getSector());
-        existingStartup.setDescription(requestDto.getDescription());
+        existingStartup.setCategory(requestDto.getCategory());
+        existingStartup.setLogo(requestDto.getLogo());
+        existingStartup.setWebsite(requestDto.getWebsite());
+        existingStartup.setOnePager(requestDto.getOnePager());
+        existingStartup.setBrief(requestDto.getBrief());
+        existingStartup.setContactEmail(requestDto.getContactEmail());
+        existingStartup.setTechFacultyMentors(requestDto.getTechFacultyMentors());
+        existingStartup.setFounders(requestDto.getFounders());
+        existingStartup.setTeamMembers(requestDto.getTeamMembers());
 
         Startup updatedStartup = startupRepository.save(existingStartup);
+
         return mapToResponseDto(updatedStartup);
     }
 
@@ -74,24 +97,34 @@ public class StartupServiceImpl implements StartupService {
 
     private Startup mapToEntity(StartupRequestDto dto) {
         return Startup.builder()
-                .startupName(dto.getStartupName())
-                .founderName(dto.getFounderName())
-                .email(dto.getEmail())
-                .phone(dto.getPhone())
+                .name(dto.getName())
                 .sector(dto.getSector())
-                .description(dto.getDescription())
+                .category(dto.getCategory())
+                .logo(dto.getLogo())
+                .website(dto.getWebsite())
+                .onePager(dto.getOnePager())
+                .brief(dto.getBrief())
+                .contactEmail(dto.getContactEmail())
+                .techFacultyMentors(dto.getTechFacultyMentors())
+                .founders(dto.getFounders())
+                .teamMembers(dto.getTeamMembers())
                 .build();
     }
 
     private StartupResponseDto mapToResponseDto(Startup startup) {
         return StartupResponseDto.builder()
                 .id(startup.getId())
-                .startupName(startup.getStartupName())
-                .founderName(startup.getFounderName())
-                .email(startup.getEmail())
-                .phone(startup.getPhone())
+                .name(startup.getName())
                 .sector(startup.getSector())
-                .description(startup.getDescription())
+                .category(startup.getCategory())
+                .logo(startup.getLogo())
+                .website(startup.getWebsite())
+                .onePager(startup.getOnePager())
+                .brief(startup.getBrief())
+                .contactEmail(startup.getContactEmail())
+                .techFacultyMentors(startup.getTechFacultyMentors())
+                .founders(startup.getFounders())
+                .teamMembers(startup.getTeamMembers())
                 .createdAt(startup.getCreatedAt())
                 .updatedAt(startup.getUpdatedAt())
                 .build();

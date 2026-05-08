@@ -113,7 +113,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
                 .designation(eventRegistration.getDesignation())
                 .numberOfAttendees(eventRegistration.getNumberOfAttendees())
                 .eventId(eventRegistration.getEvent().getId())
-                .eventName(eventRegistration.getEvent().getEventName())
+                .eventName(eventRegistration.getEvent().getTitle())
                 .createdAt(eventRegistration.getCreatedAt())
                 .updatedAt(eventRegistration.getUpdatedAt())
                 .build();

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/event-registrations")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class EventRegistrationController {
 
     private final EventRegistrationService eventRegistrationService;

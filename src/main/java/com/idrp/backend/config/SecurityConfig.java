@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/program-applications").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/startup-applications").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/course-registrations").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/uploads/**").permitAll()
 
                         // Public GET content APIs
                         .requestMatchers(HttpMethod.GET, "/api/resources/**").permitAll()

@@ -53,7 +53,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthResponseDto login(AdminLoginRequestDto requestDto) {
-
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         requestDto.getEmail(),
@@ -78,7 +77,7 @@ public class AuthServiceImpl implements AuthService {
         Admin admin = refreshToken.getAdmin();
         String newAccessToken = jwtService.generateToken(admin);
 
-        return buildAuthResponse(admin, newAccessToken, refreshToken.getToken());
+        return buildAuthResponse(admin, newAccessToken, refreshToken.getToken()); 
     }
 
     @Override
