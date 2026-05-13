@@ -247,7 +247,7 @@ onMounted(loadMembers)
                       class="h-11 w-11 rounded-2xl border border-slate-200 object-cover"
                     />
 
-                    <div
+                    <div 
                       v-else
                       class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-primary-soft)] text-sm font-bold text-[var(--color-primary)]"
                     >
