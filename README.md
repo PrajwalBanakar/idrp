@@ -148,6 +148,8 @@ idrp-frontend
 │  │  └─ 05-jan-mar-2026-edition.pdf
 │  ├─ partners
 │  │  ├─ 100x.png
+│  │  ├─ bec.png
+│  │  ├─ biet.png
 │  │  ├─ bldeacet.png
 │  │  ├─ boltstart.jpeg
 │  │  ├─ campusfund.png
@@ -171,12 +173,14 @@ idrp-frontend
 │  │  ├─ imerit.png
 │  │  ├─ infosys.png
 │  │  ├─ jcer.png
+│  │  ├─ jit.png
 │  │  ├─ jsw.png
 │  │  ├─ keonics.png
 │  │  ├─ kleit.png
 │  │  ├─ klepharm.png
 │  │  ├─ maven.png
 │  │  ├─ mgrdpru.jpeg
+│  │  ├─ mitk.png
 │  │  ├─ nanopix.png
 │  │  ├─ pda.png
 │  │  ├─ qpiai.png
@@ -190,11 +194,14 @@ idrp-frontend
 │  │  ├─ ses.jpeg
 │  │  ├─ sgbit.png
 │  │  ├─ shridevi.png
+│  │  ├─ sksvmacet.png
+│  │  ├─ smvitm.png
 │  │  ├─ stpi.png
 │  │  ├─ talkinglands.png
 │  │  ├─ teamlease-edtech.png
 │  │  ├─ tessolve.png
 │  │  ├─ tie.png
+│  │  ├─ ubdtce.png
 │  │  ├─ vakil.png
 │  │  ├─ vidya.png
 │  │  ├─ vsm.png

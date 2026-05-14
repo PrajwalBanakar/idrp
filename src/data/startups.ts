@@ -61,6 +61,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Prakash Pawar',
+        image: '/faculty-prakash.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-prakash-pawar-78224356',
         email: 'prakashpawar@iiitdwd.ac.in',
       },
@@ -68,6 +69,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Sachin Kumar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sachin-kumar-a96735380',
         email: '24bcs125@iiitdwd.ac.in',
@@ -76,16 +78,19 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Sachin Kumar',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/sachin-kumar-a96735380',
         email: '24bcs125@iiitdwd.ac.in',
       },
       {
         name: 'Udit Dadhich',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/udit-dadhich-324b353a2',
         email: '24bcs158@iiitdwd.ac.in',
       },
       {
         name: 'Sudhanshu Baberwal',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/sudhanshu-baberwal',
         email: '24bcs147@iiitdwd.ac.in',
       },
@@ -105,17 +110,20 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Siddharth R',
+        image: '/faculty-siddharth.jfif',
         email: 'siddharth_r@iiitdwd.ac.in',
       },
     ],
     founders: [
       {
         name: 'G Rohith Yadav',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/grohithyadav',
         email: '22bcs041@iiitdwd.ac.in',
@@ -124,11 +132,13 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'G Rohith Yadav',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/grohithyadav',
         email: '22bcs041@iiitdwd.ac.in',
       },
       {
         name: 'V Shanmukha Sai',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/v-shanmukha-sai-0a3080270',
         email: '22BCS135@iiitdwd.ac.in',
       },
@@ -148,6 +158,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sunil Saumya',
+        image: '/faculty-sunil.jfif',
         linkedin: 'https://www.linkedin.com/in/sunil-saumya-158856b1',
         email: 'sunil.saumya@iiitdwd.ac.in',
       },
@@ -155,6 +166,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Md. Adnan Khan',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/adnan-khan-b94289334',
         email: '23bec028@iiitdwd.ac.in',
@@ -163,21 +175,25 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Md. Adnan Khan',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/adnan-khan-b94289334',
         email: '23bec028@iiitdwd.ac.in',
       },
       {
         name: 'Pratyush Anand',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/pratyush-anand-',
         email: '23bec039@iiitdwd.ac.in',
       },
       {
         name: 'Prathamesh Patil',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/prathamesh-patil-iiitdwd',
         email: '23bds043@iiitdwd.ac.in',
       },
       {
         name: 'Nikhil Kumar',
+        image: '',
         email: '23bds038@iiitdwd.ac.in',
       },
     ],
@@ -196,6 +212,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Prabhu Prasad B. M.',
+        image: '/faculty-prabhu.jfif',
         linkedin: 'https://www.linkedin.com/in/prabhu-prasad-b-m-428b3837',
         email: 'prabhuprasad@iiitdwd.ac.in',
       },
@@ -203,6 +220,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Sugyan Singh',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sugyan-singh',
         email: '24bcs148@iiitdwd.ac.in',
@@ -211,21 +229,25 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Arhan Ghosarwade',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/arhan-ghosarwade-78bb16324',
         email: '24bcs020@iiitdwd.ac.in',
       },
       {
         name: 'Sugyan Singh',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/sugyan-singh',
         email: '24bcs148@iiitdwd.ac.in',
       },
       {
         name: 'Sachin Kumar',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/sachin-kumar-software',
         email: '24bcs124@iiitdwd.ac.in',
       },
       {
         name: 'Siddhant Kumar',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/siddhant-kumar-dev',
         email: '24bcs144@iiitdwd.ac.in',
       },
@@ -245,11 +267,13 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
       {
         name: 'Mr. Mallikarjun Kande',
+        image: '/business-mallikarjun.jfif',
         linkedin: 'https://www.linkedin.com/in/mallikarjun-kande-18709342',
         email: 'mallikarjun.kande@space-e.org',
       },
@@ -257,6 +281,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Sushant Sharma',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sushant-sharma-3157a0314',
         email: '24bec062@iiitdwd.ac.in',
@@ -265,11 +290,13 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Sushant Sharma',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/sushant-sharma-3157a0314',
         email: '24bec062@iiitdwd.ac.in',
       },
       {
         name: 'Hemant Kumar',
+        image: '',
         email: '24bds025@iiitdwd.ac.in',
       },
     ],
@@ -289,6 +316,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
@@ -297,26 +325,31 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Dusary Charan',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/charan-dusary-6023172a1',
         email: '23bcs047@iiitdwd.ac.in',
       },
       {
         name: 'Bharath Reddy Medasani',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/bharath-reddy-medasani-839b8b327',
         email: '22bcs068@iiitdwd.ac.in',
       },
       {
         name: 'Kalyan Jakkoju',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/kalyan-jakkoju-5b6694312',
         email: '23bec022@iiitdwd.ac.in',
       },
       {
         name: 'Lakshmi Prasad Doddi',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/lakshmi-prasad-doddi-26a30029a',
         email: '23bec018@iiitdwd.ac.in',
       },
       {
         name: 'Harshith Daraboina',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/harshith-daraboina-14105a2b2',
         email: '23bcs037@iiitdwd.ac.in',
       },
@@ -336,6 +369,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Siddharth R',
+        image: '/faculty-siddharth.jfif',
         linkedin: 'https://www.linkedin.com/in/siddharth-r-85168678',
         email: 'siddharth_r@iiitdwd.ac.in',
       },
@@ -343,6 +377,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Madhan S',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/madhan-s17',
         email: '22bds036@iiitdwd.ac.in',
@@ -351,11 +386,13 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Madhan S',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/madhan-s17',
         email: '22bds036@iiitdwd.ac.in',
       },
       {
         name: 'H Shri Harsha',
+        image: '',
         email: '22bcs044@iiitdwd.ac.in',
       },
     ],
@@ -374,6 +411,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Chinmayananda A.',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
         email: 'chinmay@iiitdwd.ac.in',
       },
@@ -381,6 +419,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Dr. Chinmayananda A.',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
         email: 'chinmay@iiitdwd.ac.in',
@@ -389,34 +428,41 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Raksha Karthik',
+        image: '',
         email: 'raksha.jayaram@gmail.com',
       },
       {
         name: 'Devaraju B V',
+        image: '',
         email: 'dev.nkm@gmail.com',
       },
       {
         name: 'Tanmay Gupta',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/tanmay-gupta-29b7b8256',
         email: '23bds061@iiitdwd.ac.in',
       },
       {
         name: 'Dhrupad Das',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/dhrupad-das-7b71b5290',
         email: '23bds018@iiitdwd.ac.in',
       },
       {
         name: 'Yashpreet Singh Reejak',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/yashpreet-singh-345456280',
         email: '23bds072@iiitdwd.ac.in',
       },
       {
         name: 'Thirumala Teena Chowdary',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/teena-chowdary-12a389286',
         email: '22bds059@iiitdwd.ac.in',
       },
       {
         name: 'Aditya Guntur',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/aditya-guntur-38448b28a',
         email: '23bds003@iiitdwd.ac.in',
       },
@@ -436,11 +482,13 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Sunilkumar P. V.',
+        image: '/faculty-sunilkumar.jfif',
         linkedin: 'https://www.linkedin.com/in/pvskumar',
         email: 'sunilkumar.pv@iiitdwd.ac.in',
       },
@@ -448,6 +496,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Suhaas S',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/suhaas-s-ai',
         email: '22bds056@iiitdwd.ac.in',
@@ -456,16 +505,19 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Suhaas S',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/suhaas-s-ai',
         email: '22bds056@iiitdwd.ac.in',
       },
       {
         name: 'Vansh Lal Tolani',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/vansh-lal-tolani-557368269',
         email: '22bds061@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
@@ -485,6 +537,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Prof. S. R. Mahadeva Prasanna',
+        image: '/board-prasanna.jfif',
         linkedin: 'https://www.linkedin.com/in/prof-mahadeva-prasanna-1b238b1a4',
         email: 'prasanna@iiitdwd.ac.in',
       },
@@ -492,6 +545,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Jyoti Gadad',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/jyoti-gadad-613940101',
         email: 'jyoti.24phdcs08@iiitdwd.ac.in',
@@ -500,11 +554,13 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Jyoti Gadad',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/jyoti-gadad-613940101',
         email: 'jyoti.24phdcs08@iiitdwd.ac.in',
       },
       {
         name: 'Shruti B. S.',
+        image: '',
         email: 'shruthi.24mtrec01@iiitdwd.ac.in',
       },
     ],
@@ -523,16 +579,19 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Chinmayananda A.',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
         email: 'chinmay@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Nataraj K. S.',
+        image: '/faculty-nataraj.jfif',
         linkedin: 'https://www.linkedin.com/in/nataraj-k-s-2a501323',
         email: 'nataraj@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Manjunath Vanahalli',
+        image: '/faculty-manjunath.jfif',
         linkedin: 'https://www.linkedin.com/in/manjunath-vanahalli-4b24ab69',
         email: 'manjunathkv@iiitdwd.ac.in',
       },
@@ -540,6 +599,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Shraddha G. Revankar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/shraddha-revankar-a83398a7',
         email: 'shraddha.22phdec02@iiitdwd.ac.in',
@@ -548,21 +608,25 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Shraddha G. Revankar',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/shraddha-revankar-a83398a7',
         email: 'shraddha.22phdec02@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Chinmayananda A.',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
         email: 'chinmay@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Nataraj K. S.',
+        image: '/faculty-nataraj.jfif',
         linkedin: 'https://www.linkedin.com/in/nataraj-k-s-2a501323',
         email: 'nataraj@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Manjunath Vanahalli',
+        image: '/faculty-manjunath.jfif',
         linkedin: 'https://www.linkedin.com/in/manjunath-vanahalli-4b24ab69',
         email: 'manjunathkv@iiitdwd.ac.in',
       },
@@ -582,6 +646,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Prakash Pawar',
+        image: '/faculty-prakash.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-prakash-pawar-78224356',
         email: 'Prakashpawar@iiitdwd.ac.in',
       },
@@ -589,6 +654,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Prashant Bannulmath',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/prashant-q-2b8283137',
         email: 'prashantb@iiitdwd.ac.in',
@@ -597,16 +663,19 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Prashant Bannulmath',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/prashant-q-2b8283137',
         email: 'prashantb@iiitdwd.ac.in',
       },
       {
         name: 'Swapnil Sontakke',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/sontakke-swapnil26',
         email: 'swapnil.sontakke@iiitdwd.ac.in',
       },
       {
         name: 'Shaik Zuhair Hasan',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/zuhashaik',
         email: '21bds060@iiitdwd.ac.in',
       },
@@ -626,6 +695,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Suvadip Hazra',
+        image: '/faculty-suvadip.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-suvadip-hazra-60491b67',
         email: 'suvadip@iiitdwd.ac.in',
       },
@@ -633,6 +703,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Nikhil Kumar Sinha',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/nikhil-sinha-920600320',
         email: '24bcs086@iiitdwd.ac.in',
@@ -641,15 +712,18 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Nikhil Kumar Sinha',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/nikhil-sinha-920600320',
         email: '24bcs086@iiitdwd.ac.in',
       },
       {
         name: 'Nirbhay Kumar',
+        image: '',
         email: '24bcs089@iiitdwd.ac.in',
       },
       {
         name: 'Nitish Kumar',
+        image: '',
         email: '24bcs093@iiitdwd.ac.in',
       },
     ],
@@ -668,6 +742,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sunil Saumya',
+        image: '/faculty-sunil.jfif',
         linkedin: 'https://www.linkedin.com/in/sunil-saumya-158856b1',
         email: 'sunil.saumya@iiitdwd.ac.in',
       },
@@ -675,6 +750,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Dr. Sunil Saumya',
+        image: '/faculty-sunil.jfif',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sunil-saumya-158856b1',
         email: 'sunil.saumya@iiitdwd.ac.in',
@@ -683,11 +759,13 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Dr. Sunil Saumya',
+        image: '/faculty-sunil.jfif',
         linkedin: 'https://www.linkedin.com/in/sunil-saumya-158856b1',
         email: 'sunil.saumya@iiitdwd.ac.in',
       },
       {
         name: 'Shlok Jha',
+        image: '',
         email: 'shlokjha.3@gmail.com',
       },
     ],
@@ -706,6 +784,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Girish G. N.',
+        image: '/faculty-girish.jfif',
         linkedin: 'https://www.linkedin.com/in/girishgn28',
         email: 'girish@iiitdwd.ac.in',
       },
@@ -713,6 +792,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Mithil Poddaturi',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/mithil-poddaturi-1491a232a',
         email: '24bcs104@iiitdwd.ac.in',
@@ -721,16 +801,19 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Mithil Poddaturi',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/mithil-poddaturi-1491a232a',
         email: '24bcs104@iiitdwd.ac.in',
       },
       {
         name: 'Kothapalli Tharun',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/kothapalli-tharun-490967366',
         email: '24bds032@iiitdwd.ac.in',
       },
       {
         name: 'Neeruganti Jeevan Sai',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/neeruganti-jeevan-sai-85907a336',
         email: '24bds046@iiitdwd.ac.in',
       },
@@ -750,22 +833,26 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Girish Revadigar',
+        image: '/faculty-girish.jfif',
         linkedin: 'https://www.linkedin.com/in/girish-revadigar-phd-55a33b28',
       },
     ],
     founders: [
       {
         name: 'Kunaal Shindagi',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/kunaal-shindagi-759bb625b',
       },
       {
         name: 'Pooja Ekbote',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/poojaekbote11',
       },
       {
         name: 'Nagaraj Bhandare',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/nagaraj-bhandare-b4145b25a',
       },
@@ -786,18 +873,21 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sunil Saumya',
+        image: '/faculty-sunil.jfif',
         linkedin: 'https://www.linkedin.com/in/sunil-saumya-158856b1',
       },
     ],
     founders: [
       {
         name: 'Vinay Kumar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/vinay-kumar-a-25534839',
         email: 'vinay.oswald@gmail.com',
       },
       {
         name: 'Shyam Sundar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/shyam-sundar-9881671b',
         email: 'yadavshyam686@gmail.com',
@@ -819,24 +909,28 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Manjunath Vanahalli',
+        image: '/faculty-manjunath.jfif',
         linkedin: 'https://www.linkedin.com/in/manjunath-vanahalli-4b24ab69',
       },
     ],
     founders: [
       {
         name: 'Sachin Marihal',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sachin-marihal-bab63917',
         email: 'sachin.marihal@saspinjara.com',
       },
       {
         name: 'Aravind Puttakkalavar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/aravind-puttakkalavar-60899514',
         email: 'aravind.p@saspinjara.com',
       },
       {
         name: 'Anil Kumar Ranadev',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/anilkumar-ranadev-156b2115',
         email: 'anil_ranadev@saspinjara.com',
@@ -858,6 +952,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Nataraj K. S.',
+        image: '/faculty-nataraj.jfif',
         linkedin: 'https://www.linkedin.com/in/nataraj-k-s-2a501323',
         email: 'nataraj@iiitdwd.ac.in',
       },
@@ -865,6 +960,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Om Mishra',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/om-mishra-1b1704294',
         email: '23bec035@iiitdwd.ac.in',
@@ -873,11 +969,13 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Om Mishra',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/om-mishra-1b1704294',
         email: '23bec035@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Nataraj K. S.',
+        image: '/faculty-nataraj.jfif',
         linkedin: 'https://www.linkedin.com/in/nataraj-k-s-2a501323',
         email: 'nataraj@iiitdwd.ac.in',
       },
@@ -897,6 +995,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Shirshendu Layek',
+        image: '/faculty-shirshendu.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-shirshendu-layek-68151076',
         email: 'shirshendu@iiitdwd.ac.in',
       },
@@ -904,6 +1003,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Swetha S.',
+        image: '',
         role: 'Founder',
         email: '24bcs150@iiitdwd.ac.in',
       },
@@ -911,10 +1011,12 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Swetha S.',
+        image: '',
         email: '24bcs150@iiitdwd.ac.in',
       },
       {
         name: 'M. Praneeth',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/m-praneeth-9201002b0',
         email: '24bcs064@iiitdwd.ac.in',
       },
@@ -934,17 +1036,20 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Deepak K. T.',
+        image: '/board-deepak.jfif',
         linkedin: 'https://www.linkedin.com/in/deepak-k-t-92270a9',
         email: 'deepak@iiitdwd.ac.in',
       },
       {
         name: 'Preetham Umarani',
+        image: '/technology-preetham.jfif',
         email: '',
       },
     ],
     founders: [
       {
         name: 'Ayush Kumar Pal',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/ayush-kumar-pal-067172326',
         email: '24bcs025@iiitdwd.ac.in',
@@ -953,20 +1058,24 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Ayush Kumar Pal',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/ayush-kumar-pal-067172326',
         email: '24bcs025@iiitdwd.ac.in',
       },
       {
         name: 'Abhijeet Nagar',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/abhijeet-nagar-a44007308',
         email: '24bcs002@iiitdwd.ac.in',
       },
       {
         name: 'Avi Arora',
+        image: '',
         email: '24bcs023@iiitdwd.ac.in',
       },
       {
         name: 'Saswath Chowta',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/saswath-chowta-19bb55320',
         email: '24bcs031@iiitdwd.ac.in',
       },
@@ -987,6 +1096,7 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Dr. Rajesh Kumar',
+        image: '/faculty-rajesh.jfif',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/dr-rajesh-kumar-2417ab11b',
         email: 'rajeshk@iiitdwd.ac.in',
@@ -1007,12 +1117,14 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Deepak K. T.',
+        image: '/board-deepak.jfif',
         email: 'deepak@iiitdwd.ac.in',
       },
     ],
     founders: [
       {
         name: 'Prashant G. B.',
+        image: '',
         role: 'Founder',
         email: 'prashantb@iiitdwd.ac.in',
       },
@@ -1020,10 +1132,12 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Prashant Bannulmath',
+        image: '',
         email: 'prashantb@iiitdwd.ac.in',
       },
       {
         name: 'Swapnil Sontakke',
+        image: '',
         email: 'swapnil.sontakke@iiitdwd.ac.in',
       },
     ],
@@ -1042,6 +1156,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Prof. S. R. Mahadeva Prasanna',
+        image: '/board-prasanna.jfif',
         linkedin: 'https://www.linkedin.com/in/prof-mahadeva-prasanna-1b238b1a4',
         email: 'prasanna@iiitdwd.ac.in',
       },
@@ -1049,18 +1164,21 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Suchit Artal',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/suchit-artal',
         email: '22bcs126@iiitdwd.ac.in',
       },
       {
         name: 'Samuel Naik',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/samuel-naik-0b099924a',
         email: '22bcs108@iiitdwd.ac.in',
       },
       {
         name: 'Bhakti S. N.',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/bhaktisn11',
         email: '22bcs104@iiitdwd.ac.in',
@@ -1069,18 +1187,22 @@ export const startups: Startup[] = [
     teamMembers: [
       {
         name: 'Suchit Artal',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/suchit-artal',
       },
       {
         name: 'Samuel Naik',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/samuel-naik-0b099924a',
       },
       {
         name: 'Bhakti S. N.',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/bhaktisn11',
       },
       {
         name: 'Rahul Trimukhe',
+        image: '',
       },
     ],
   },
@@ -1098,6 +1220,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Prakash Pawar',
+        image: '/faculty-prakash.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-prakash-pawar-78224356',
         email: 'prakashpawar@iiitdwd.ac.in',
       },
@@ -1105,12 +1228,14 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Moksh A. Gundecha',
+        image: 'startups/people/freshdot/moksh.pdf',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/moksh-jain-54b036311',
         email: '25bcs095@iiitdwd.ac.in',
       },
       {
         name: 'Sandesh Sanjeev Phalke',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
@@ -1132,6 +1257,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Muthusankar Eswaran',
+        image: '',
         linkedin: 'https://www.linkedin.com/in/muthusankar-eswaran-bb794b23',
         email: 'muthusankar.eswaran@iiitdwd.ac.in',
       },
@@ -1139,12 +1265,14 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Khushal Joshi',
+        image: 'startups/people/chetechs/khushal.pdf',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/khushal-joshi-81488538a',
         email: '25bec032@iiitdwd.ac.in',
       },
       {
         name: 'Pulkit Pokhriyal',
+        image: 'startups/people/chetechs/pulkit.pdf',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/pulkit-pokhriyal-b62868401',
         email: '25bec053@iiitdwd.ac.in',
@@ -1166,24 +1294,28 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Jagadeesh Kanade',
+        image: '/faculty-jagadish.jfif',
         email: 'jbkanade@gmail.com',
       },
     ],
     founders: [
       {
         name: 'Tusharika Jagwani',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/tusharika-jagwani-3a74603a9',
         email: '25bcs214@iiitdwd.ac.in',
       },
       {
         name: 'Yash Mathur',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/yash-mathur-6ba200373',
         email: '25bcs201@iiitdwd.ac.in',
       },
       {
         name: 'Pantham Anish Satya Srikar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/anish-pantham-aa5644375',
         email: '25bcs114@iiitdwd.ac.in',
@@ -1205,6 +1337,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Deepak K. T.',
+        image: '/board-deepak.jfif',
         linkedin: 'https://www.linkedin.com/in/deepak-k-t-92270a9',
         email: 'deepak@iiitdwd.ac.in',
       },
@@ -1212,12 +1345,14 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Satvik M. Patil',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/satvik-patil-830a0a372',
         email: '25bcs158@iiitdwd.ac.in',
       },
       {
         name: 'Shaurya Mittal',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/shaurya-mittal-b61283312',
         email: '25bcs161@iiitdwd.ac.in',
@@ -1239,6 +1374,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Prakash Pawar',
+        image: '/faculty-prakash.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-prakash-pawar-78224356',
         email: 'prakashpawar@iiitdwd.ac.in',
       },
@@ -1246,18 +1382,21 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Sukruth H. S.',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/sukruth-h-s-175370380',
         email: '25bda118@iiitdwd.ac.in',
       },
       {
         name: 'V. V. Rupesh Sai Sundhar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/rupesh-sai-sundhar-v-v-924b57363',
         email: '25bda124@iiitdwd.ac.in',
       },
       {
         name: 'Bandi Thanish Kumar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/thanish-kumar-ba7464380',
         email: '25bec012@iiitdwd.ac.in',
@@ -1279,11 +1418,13 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Suvadip Hazra',
+        image: '/faculty-suvadip.jfif',
         linkedin: 'https://www.linkedin.com/in/dr-suvadip-hazra-60491b67',
         email: 'suvadip@iiitdwd.ac.in',
       },
@@ -1291,18 +1432,21 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Vikas Lal Singh',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/vikas-singh-0b9b34381',
         email: '25bda126@iiitdwd.ac.in',
       },
       {
         name: 'Kush Kumar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/kush-kumar-1095ab379',
         email: '25bda059@iiitdwd.ac.in',
       },
       {
         name: 'Dhanashri Udhavrao Bende',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/dhanashri-bende-6a30b8382',
         email: '25bda036@iiitdwd.ac.in',
@@ -1324,6 +1468,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
@@ -1331,24 +1476,28 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Saisha Suresh Bore',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/saisha-suresh-bore-47544328a',
         email: '23bcs116@iiitdwd.ac.in',
       },
       {
         name: 'Palak Gupta',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/palak-gupta-68043b284',
         email: '23bds042@iiitdwd.ac.in',
       },
       {
         name: 'Hammad Malik',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/hammad-malik',
         email: '23bcs052@iiitdwd.ac.in',
       },
       {
         name: 'Simone Rodrigues',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/simonerodriguess',
         email: '23bcs111@iiitdwd.ac.in',
@@ -1370,11 +1519,13 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Sandesh Phalke',
+        image: '/faculty-sandesh.jfif',
         linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
         email: 's.phalke@iiitdwd.ac.in',
       },
       {
         name: 'Dr. Siddharth R',
+        image: '/faculty-siddharth.jfif',
         linkedin: 'https://www.linkedin.com/in/siddharth-r-85168678',
         email: 'siddharth_r@iiitdwd.ac.in',
       },
@@ -1382,12 +1533,14 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Pratham Mohadikar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/pratham-mohadikar-75061a276',
         email: '25bda086@iiitdwd.ac.in',
       },
       {
         name: 'Apoorva Jadhav',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/apoorva-jadhav-57ba12370',
         email: '25bcs018@iiitdwd.ac.in',
@@ -1409,30 +1562,35 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Pramod Hanmantrao Yelmewad',
+        image: '',
         email: 'pramodyelmewad@iiitdwd.ac.in',
       },
     ],
     founders: [
       {
         name: 'Ayush Singh',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/ayush-singh-3b50b1382',
         email: '25bda021@iiitdwd.ac.in',
       },
       {
         name: 'Ganesh Shamrao Gore',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/ganesh-gore-226564379',
         email: '25bcs047@iiitdwd.ac.in',
       },
       {
         name: 'Aditya Rathaur',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/aditya-rathaur-91a12537b',
         email: '25bda006@iiitdwd.ac.in',
       },
       {
         name: 'Nilesh Dharmendra Mahajan',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/nilesh-mahajan-62b7ab369',
         email: '25bcs105@iiitdwd.ac.in',
@@ -1454,6 +1612,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Manjunath Vanahalli',
+        image: '/faculty-manjunath.jfif',
         linkedin: 'https://www.linkedin.com/in/manjunath-vanahalli-4b24ab69',
         email: 'manjunathkv@iiitdwd.ac.in',
       },
@@ -1461,12 +1620,14 @@ export const startups: Startup[] = [
     founders: [
       {
         name: 'Shubham Mavi',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/shubham-mavi-051901381',
         email: '25bda112@iiitdwd.ac.in',
       },
       {
         name: 'Anil Gurjar',
+        image: '',
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/anil-gurjar-4b0857326',
         email: '24bds004@iiitdwd.ac.in',

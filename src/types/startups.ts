@@ -16,6 +16,7 @@ export interface StartupPerson {
   role?: string
   linkedin?: string
   email?: string
+  image?: string
 }
 
 export interface Startup {
