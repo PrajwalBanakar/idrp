@@ -252,6 +252,14 @@ export const partnerCategories: PartnerCategory[] = [
         logo: '/partners/infosys.png',
       },
       {
+  name: 'Mercedes-Benz Research & Development India (MBRDI)',
+  abbr: 'MBRDI',
+  color: 'linear-gradient(135deg,#0f172a,#475569)',
+  category: 'technology',
+  websiteUrl: 'https://www.mbrdi.co.in/',
+  logo: '/partners/mbrdi.png',
+},
+      {
         name: 'DocketRun',
         abbr: 'DR',
         color: 'linear-gradient(135deg,#0ea5e9,#2563eb)',
