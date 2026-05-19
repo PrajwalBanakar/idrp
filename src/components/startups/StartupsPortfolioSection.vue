@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import StartupCard from '@/components/startups/StartupCard.vue'
 import { startupTabs } from '@/data/startups'
-import type { Startup, TabKey } from '@/types/startups'
+import type { Startup, StartupCategory, TabKey } from '@/types/startups'
 
 type SortOption = 'name-asc' | 'name-desc' | 'category'
 
@@ -15,17 +15,25 @@ const expandedStartupId = ref<number | null>(null)
 const searchQuery = ref('')
 const sortBy = ref<SortOption>('name-asc')
 
+function startupHasCategory(startup: Startup, category: StartupCategory) {
+  return startup.categories?.includes(category)
+}
+
 const filteredStartups = computed(() => {
   const base =
     activeTab.value === 'all'
       ? props.startups
-      : props.startups.filter((startup) => startup.category === activeTab.value)
+      : props.startups.filter((startup) =>
+          startupHasCategory(startup, activeTab.value as StartupCategory),
+        )
 
   const query = searchQuery.value.toLowerCase()
 
   if (!query) return base
 
   return base.filter((startup) => {
+    const categoryText = (startup.categories ?? []).join(' ').toLowerCase()
+
     const founderText = (startup.founders ?? [])
       .map((founder) =>
         [founder.name, founder.role ?? '', founder.email ?? '', founder.linkedin ?? ''].join(' '),
@@ -52,6 +60,7 @@ const filteredStartups = computed(() => {
       (startup.sector ?? '').toLowerCase().includes(query) ||
       (startup.brief ?? '').toLowerCase().includes(query) ||
       (startup.contactEmail ?? '').toLowerCase().includes(query) ||
+      categoryText.includes(query) ||
       founderText.includes(query) ||
       mentorText.includes(query) ||
       teamText.includes(query)
@@ -71,11 +80,14 @@ const visibleStartups = computed(() => {
   }
 
   return sorted.sort((a, b) => {
-    if (a.category === b.category) {
+    const aCategory = a.categories?.[0] ?? ''
+    const bCategory = b.categories?.[0] ?? ''
+
+    if (aCategory === bCategory) {
       return a.name.localeCompare(b.name)
     }
 
-    return a.category.localeCompare(b.category)
+    return aCategory.localeCompare(bCategory)
   })
 })
 
@@ -88,9 +100,13 @@ function toggleStartup(id: number) {
 }
 
 function getTabCount(key: TabKey) {
-  if (key === 'all') return props.startups.length
+  if (key === 'all') {
+    return props.startups.length
+  }
 
-  return props.startups.filter((startup) => startup.category === key).length
+  return props.startups.filter((startup) =>
+    startupHasCategory(startup, key as StartupCategory),
+  ).length
 }
 
 function resetFilters() {
@@ -218,7 +234,9 @@ watch([activeTab, searchQuery, sortBy], () => {
           🚀
         </div>
 
-        <h3 class="mt-5 text-xl font-semibold text-slate-900">{{ startups.length === 0 ? 'No startups available yet' : 'No startups match your filters' }}</h3>
+        <h3 class="mt-5 text-xl font-semibold text-slate-900">
+          {{ startups.length === 0 ? 'No startups available yet' : 'No startups match your filters' }}
+        </h3>
 
         <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
           Try adjusting your search, switching categories, or resetting filters to discover more

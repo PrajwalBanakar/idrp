@@ -23,7 +23,7 @@ export interface Startup {
   id: number
   name: string
   sector: string
-  category: StartupCategory
+  categories: StartupCategory[]
   logo?: string
   website?: string
   onePager?: string

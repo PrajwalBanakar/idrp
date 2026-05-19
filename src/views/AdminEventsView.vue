@@ -321,7 +321,7 @@ onMounted(loadEvents)
             <label class="mb-2 block text-sm font-semibold text-slate-700"> Gallery Images </label>
 
             <input
-              type="file"
+              type="file" 
               accept="image/*"
               multiple
               class="w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700"
