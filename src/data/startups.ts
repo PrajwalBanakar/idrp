@@ -1635,4 +1635,294 @@ export const startups: Startup[] = [
     ],
     teamMembers: [],
   },
+    {
+    id: 11,
+    name: 'AUKAAT',
+    sector: 'FinTech',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/aukaat.png',
+    brief:
+      'AUKAAT is a Gen-Z focused fintech app that goes beyond tracking expenses by actively changing spending behavior.',
+    contactEmail: '25bcs044@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Sunil Kumar P V',
+        email: 'sunilkumar.pv@iiitdwd.ac.in',
+        linkedin: 'https://linkedin.com/in/pvskumar',
+      },
+    ],
+    founders: [
+      {
+        name: 'Divyansh Mehndiratta',
+        email: '25bcs044@iiitdwd.ac.in',
+        linkedin:
+          'https://www.linkedin.com/in/divyansh-mehndiratta-802b68391',
+      },
+      {
+        name: 'Sadegaonkar Pranjal Girish',
+        email: '25bda085@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/pranu-s-996b06406',
+      },
+      {
+        name: 'Anubhav Tiwari',
+        email: '25bda013@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/anubhav-tiwari-9b7366380',
+      },
+    ],
+    teamMembers: [],
+  },
+
+  {
+    id: 12,
+    name: 'Paralax',
+    sector: 'AI / Aerial Security',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/paralax.png',
+    brief:
+      'PARALAX develops software-centric AI architectures for real-time aerial monitoring and threat detection.',
+    contactEmail: '25bcs195@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Dr. Sunil Saumya',
+        email: 'sunil.saumya@iiitdwd.ac.in',
+        linkedin: 'https://linkedin.com/in/sunil-saumya-158856b1',
+      },
+    ],
+    founders: [
+      {
+        name: 'Venkatesh K',
+        email: '25bcs195@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/ven007',
+      },
+      {
+        name: 'Subhash K V',
+        email: '25bcs176@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/subhash-k-v-6a6034304',
+      },
+    ],
+    teamMembers: [],
+  },
+
+  {
+    id: 13,
+    name: 'ManoSetu AI',
+    sector: 'AI / Mental Health',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/manosetu-ai.png',
+    brief:
+      'Bridging modern AI with ancient wisdom for mental health well-being.',
+    contactEmail: 'sunil.saumya@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Dr. Sunil Saumya',
+        email: 'sunil.saumya@iiitdwd.ac.in',
+        linkedin: 'https://linkedin.com/in/sunil-saumya-158856b1',
+      },
+    ],
+    founders: [],
+    teamMembers: [],
+  },
+
+  {
+    id: 14,
+    name: 'Aitric',
+    sector: 'IoT / Smart Energy',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/aitric.png',
+    brief:
+      'AITRIC is an AI-powered smart socket with real-time energy monitoring and protection features.',
+    contactEmail: '25bcs069@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Chinmayananda A',
+        email: 'chinmay@iiitdwd.ac.in',
+        linkedin: 'https://linkedin.com/in/chinmayananda-a-941b06307',
+      },
+    ],
+    founders: [
+      {
+        name: 'Vedant Pramod Karule',
+        email: '25bcs069@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/vedantkarule',
+      },
+      {
+        name: 'Nilabh Ravi Jalan',
+        email: '25bcs104@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/nilabh-jalan-44a478383',
+      },
+      {
+        name: 'Kaliki Bhuvanesh',
+        email: '25bcs062@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/kaliki-bhuvanesh-132314384',
+      },
+      {
+        name: 'Shreya S Sheri',
+        email: '25bcs165@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/shreya-s-sheri-044ba8379',
+      },
+      {
+        name: 'Harshita Prasad',
+        email: '25bcs050@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/harshita-prasad-178016261',
+      },
+      {
+        name: 'Ria Ravindra Pednekar',
+        email: '25bcs137@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/ria-pednekar-67ab28381',
+      },
+    ],
+    teamMembers: [],
+  },
+
+  {
+    id: 15,
+    name: 'HostelSync',
+    sector: 'Hostel Management',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/hostelsync.png',
+    brief:
+      'HostelSync is a smart hostel management system that digitizes complaints and cleaning verification.',
+    contactEmail: '25bcs151@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Rajesh NS',
+        email: 'rajesh.ns29@iiitdwd.ac.in',
+      },
+    ],
+    founders: [
+      {
+        name: 'Sameer Bajaj',
+        email: '25bcs151@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/sameer-bajaj-935663274',
+      },
+      {
+        name: 'Swaroop Suhas Khandait',
+        email: '25bcs074@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/swaroop-khandait-0ba74b391',
+      },
+    ],
+    teamMembers: [],
+  },
+
+  {
+    id: 16,
+    name: 'Benzene',
+    sector: 'Decentralized Computing',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/benzene.png',
+    brief:
+      'Benzene enables decentralized GPU compute sharing for AI workloads and rendering.',
+    contactEmail: '25bcs199@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Swagatika Sahoo',
+        email: 'swagatika@iiitdwd.ac.in',
+      },
+    ],
+    founders: [
+      {
+        name: 'Vivek Sundaray',
+        email: '25bcs199@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/vivek-sundaray-0b68b0273',
+      },
+      {
+        name: 'Rohit Milind Undale',
+        email: '25bcs143@iiitdwd.ac.in',
+        linkedin:
+          'https://www.linkedin.com/in/rohit-m-undale-803572330',
+      },
+      {
+        name: 'Rishi Singh',
+        email: '25bcs140@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/rishi-singh-901037407',
+      },
+      {
+        name: 'Soham Chatterjee',
+        email: '25bcs171@iiitdwd.ac.in',
+      },
+    ],
+    teamMembers: [],
+  },
+
+  {
+    id: 17,
+    name: 'Mentiq',
+    sector: 'AI / Career Advisory',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/mentiq.png',
+    brief:
+      'Mentiq is an AI-powered advisory platform for career and financial decision-making.',
+    contactEmail: '23bds056@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Chinmayananda Sharma K',
+        email: 'chinmay@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
+      },
+    ],
+    founders: [
+      {
+        name: 'S. Manoj Kumar',
+        email: '23bds056@iiitdwd.ac.in',
+        linkedin:
+          'https://www.linkedin.com/in/manoj-kumar-siripalli-678170341',
+      },
+      {
+        name: 'B. Kula Deepthi',
+        email: '23bds013@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/kula-deepthi-b332782b3',
+      },
+      {
+        name: 'Gurudatta Yash Birje',
+        email: '23bds070@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/yash-birje-4149352b7',
+      },
+    ],
+    teamMembers: [],
+  },
+
+  {
+    id: 18,
+    name: 'QS-TRNG',
+    sector: 'Quantum Security',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/qs-trng.png',
+    brief:
+      'QS-TRNG focuses on quantum-secure true random number generation technologies.',
+    contactEmail: '',
+    techFacultyMentors: [],
+    founders: [],
+    teamMembers: [],
+  },
+
+  {
+    id: 19,
+    name: 'MotionIQ',
+    sector: 'Sports Tech',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/motioniq.png',
+    brief:
+      'MotionIQ uses wearable sensors and AI-driven motion analysis for athlete performance tracking.',
+    contactEmail: '25bcs139@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Suvadip Hazra',
+        email: 'suvadip@iiitdwd.ac.in',
+        linkedin: 'https://linkedin.com/in/dr-suvadip-hazra-60491b67',
+      },
+    ],
+    founders: [
+      {
+        name: 'Rishabh Shukla',
+        email: '25bcs139@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/rishabh-shukla-992945387',
+      },
+      {
+        name: 'Aryan Khodke',
+        email: '25bcs022@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/aryan-khodke-a109a0282',
+      },
+    ],
+    teamMembers: [],
+  },
 ]
