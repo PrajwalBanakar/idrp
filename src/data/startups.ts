@@ -1925,4 +1925,17 @@ export const startups: Startup[] = [
     ],
     teamMembers: [],
   },
+  {
+  id: 20,
+  name: 'Trividhi Labs',
+  sector: 'Deep Tech / R&D',
+  categories: ['PRE_INCUBATED'],
+  logo: '/startups/logo/trividhi.png',
+  brief:
+    'Trividhi Labs focuses on research-driven innovation in emerging technologies, developing intelligent solutions across AI, robotics, embedded systems, and advanced engineering domains.',
+  contactEmail: '',
+  techFacultyMentors: [],
+  founders: [],
+  teamMembers: [],
+},
 ]
