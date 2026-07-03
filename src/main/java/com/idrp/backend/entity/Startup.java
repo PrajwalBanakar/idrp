@@ -47,14 +47,17 @@ public class Startup {
 
     @ElementCollection
     @CollectionTable(name = "startup_tech_faculty_mentors", joinColumns = @JoinColumn(name = "startup_id"))
+    @Builder.Default
     private List<StartupPerson> techFacultyMentors = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "startup_founders", joinColumns = @JoinColumn(name = "startup_id"))
+    @Builder.Default
     private List<StartupPerson> founders = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "startup_team_members", joinColumns = @JoinColumn(name = "startup_id"))
+    @Builder.Default
     private List<StartupPerson> teamMembers = new ArrayList<>();
 
     @Column(name = "created_at", nullable = false, updatable = false)
