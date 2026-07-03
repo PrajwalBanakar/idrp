@@ -28,7 +28,7 @@ export const startupsIntro: StartupsIntro = {
 }
 
 export const startupStats: StartupStat[] = [
-  { value: '34', label: 'Startups in portfolio' },
+  { value: '44', label: 'Startups in portfolio' },
   { value: '3', label: 'Startup categories' },
   { value: '10+', label: 'Sectors represented' },
 ]
@@ -1636,7 +1636,7 @@ export const startups: Startup[] = [
     teamMembers: [],
   },
     {
-    id: 11,
+    id: 35,
     name: 'AUKAAT',
     sector: 'FinTech',
     categories: ['PRE_INCUBATED'],
@@ -1673,7 +1673,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 12,
+    id: 36,
     name: 'Paralax',
     sector: 'AI / Aerial Security',
     categories: ['PRE_INCUBATED'],
@@ -1704,7 +1704,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 13,
+    id: 37,
     name: 'ManoSetu AI',
     sector: 'AI / Mental Health',
     categories: ['PRE_INCUBATED'],
@@ -1724,7 +1724,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 14,
+    id: 38,
     name: 'Aitric',
     sector: 'IoT / Smart Energy',
     categories: ['PRE_INCUBATED'],
@@ -1775,7 +1775,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 15,
+    id: 39,
     name: 'HostelSync',
     sector: 'Hostel Management',
     categories: ['PRE_INCUBATED'],
@@ -1805,7 +1805,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 16,
+    id: 40,
     name: 'Benzene',
     sector: 'Decentralized Computing',
     categories: ['PRE_INCUBATED'],
@@ -1845,7 +1845,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 17,
+    id: 41,
     name: 'Mentiq',
     sector: 'AI / Career Advisory',
     categories: ['PRE_INCUBATED'],
@@ -1882,7 +1882,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 18,
+    id: 42,
     name: 'QS-TRNG',
     sector: 'Quantum Security',
     categories: ['PRE_INCUBATED'],
@@ -1896,7 +1896,7 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 19,
+    id: 43,
     name: 'MotionIQ',
     sector: 'Sports Tech',
     categories: ['PRE_INCUBATED'],
@@ -1926,7 +1926,7 @@ export const startups: Startup[] = [
     teamMembers: [],
   },
   {
-  id: 20,
+  id: 44,
   name: 'Trividhi Labs',
   sector: 'Deep Tech / R&D',
   categories: ['PRE_INCUBATED'],
