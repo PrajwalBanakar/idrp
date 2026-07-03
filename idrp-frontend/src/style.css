@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Brand palette */
+  --color-primary: #073863;
+  --color-primary-dark: #052a4a;
+  --color-primary-light: #0a4c85;
+  --color-primary-soft: #eaf2f8;
+
+  /* Accent / support */
+  --color-accent: #1d4f91;
+
+  /* Neutral system */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #dbe4ee;
+  --color-bg-page: #ffffff;
+  --color-bg-soft: #f8fbfd;
+  --color-bg-muted: #f1f5f9;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+/* Reusable brand utility classes */
+.text-brand {
+  color: var(--color-primary);
+}
+
+.text-brand-dark {
+  color: var(--color-primary-dark);
+}
+
+.bg-brand {
+  background-color: var(--color-primary);
+}
+
+.bg-brand-dark {
+  background-color: var(--color-primary-dark);
+}
+
+.bg-brand-soft {
+  background-color: var(--color-primary-soft);
+}
+
+.border-brand {
+  border-color: var(--color-primary);
+}
+
+.ring-brand {
+  --tw-ring-color: var(--color-primary);
+}
+
+.btn-brand {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-brand:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-brand:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.btn-brand-soft {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-brand-soft:hover {
+  background-color: #dce9f5;
+  color: var(--color-primary-dark);
+}
+
+/* Strong primary button text protection */
+.btn-brand,
+.btn-brand:visited,
+.btn-brand:hover,
+.btn-brand:active,
+.btn-brand:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
