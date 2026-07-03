@@ -85,7 +85,7 @@ withDefaults(
       'At IDRP, we support startups through incubation, mentoring, funding access, and ecosystem connections. This portfolio gives a quick but useful view of each venture.',
       'Open any card to see the startup brief, founders, LinkedIn profiles, website, investor one-pager, and contact details.',
     ],
-    imageSrc: '/vision-innovation.jfif',
+    imageSrc: '/vision-innovation.jpeg',
     imageAlt: 'IDRP Startups',
   },
 )

@@ -10,10 +10,11 @@
         <div class="block p-4 sm:p-5 md:hidden">
           <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
             <img
-              v-if="newsletter.previewImage"
+              v-if="newsletter.previewImage && showPreviewImage"
               :src="newsletter.previewImage"
               :alt="newsletter.title"
               class="h-auto w-full object-cover"
+              @error="showPreviewImage = false"
             />
 
             <div class="p-4">
@@ -74,12 +75,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { Newsletter } from '@/types/newsletter'
 
 const props = defineProps<{
   newsletter: Newsletter
 }>()
+
+const showPreviewImage = ref(true)
 
 const viewerSrc = computed(() => {
   if (!props.newsletter.pdfUrl) return ''

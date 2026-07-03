@@ -4,7 +4,7 @@
       <div class="h-64" :class="{ 'bg-gradient-to-br from-teal-100 to-cyan-50': !showCampusImage }">
         <img
           v-if="showCampusImage"
-          src="/public/campus/idrp_building.jpg"
+          src="/campus/idrp_building.jpg"
           alt="IDRP Campus"
           class="h-full w-full object-cover"
           @error="showCampusImage = false"

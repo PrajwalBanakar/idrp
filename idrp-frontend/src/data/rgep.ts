@@ -5,7 +5,7 @@ export const rgepPage: InitiativePageData = {
     eyebrow: 'Government Initiatives',
     title: 'Rajiv Gandhi Entrepreneurship Program (RGEP)',
     subtitle: '',
-    image: '/rgep/rgep-intro.jfif',
+    image: '/rgep/rgep-intro.jpeg',
     imageAlt: 'Rajiv Gandhi Entrepreneurship Program',
   },
 

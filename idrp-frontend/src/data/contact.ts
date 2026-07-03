@@ -13,7 +13,7 @@ export const contactIntro = {
 export const contactHero = {
   eyebrow: 'Get in Touch',
   title: 'Contact Us',
-  image: '/campus/idrp_building.jpeg',
+  image: '/campus/idrp_building.jpg',
   imageAlt: 'Contact IDRP',
 }
 
