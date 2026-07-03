@@ -54,6 +54,8 @@ export const ROUTE_NAMES = {
   CERTIFICATION_COURSES: 'certification-courses',
   WORKSHOPS: 'workshops',
   WORKSHOP_APPLY: 'workshop-apply',
+  CAREERS: 'careers',
+  CAREER_DETAIL: 'career-detail',
   ADMIN_LOGIN: 'admin-login',
   ADMIN_DASHBOARD: 'admin-dashboard',
   ADMIN_EVENTS: 'admin-events',
@@ -293,6 +295,11 @@ const resourceRoutes: RouteRecordRaw[] = [
   ),
 ]
 
+const careerRoutes: RouteRecordRaw[] = [
+  createPageRoute('/careers', ROUTE_NAMES.CAREERS, 'CareersView', 'Careers'),
+  createPageRoute('/careers/:slug', ROUTE_NAMES.CAREER_DETAIL, 'CareerDetailView', 'Career Detail'),
+]
+
 const actionRoutes: RouteRecordRaw[] = [
   createPageRoute('/contact', ROUTE_NAMES.CONTACT, 'ContactView', 'Contact'),
   createPageRoute(
@@ -350,8 +357,6 @@ const legacyRedirects: RouteRecordRaw[] = [
   createRedirectByName('/matchmaking/startup', ROUTE_NAMES.STARTUP_MATCHMAKING),
   createRedirectByName('/matchmaking/investor', ROUTE_NAMES.INVESTOR_MATCHMAKING),
 
-  createRedirectByName('/careers', ROUTE_NAMES.HOME),
-
   createRedirectByName('/courses/online-mtech', ROUTE_NAMES.CERTIFICATION_COURSES),
   createRedirectByName('/courses/fdp', ROUTE_NAMES.WORKSHOPS),
   createRedirectByName('/courses/3dw', ROUTE_NAMES.WORKSHOPS),
@@ -382,6 +387,7 @@ const routes: RouteRecordRaw[] = [
   ...communityRoutes,
   ...eventRoutes,
   ...resourceRoutes,
+  ...careerRoutes,
   ...actionRoutes,
   ...adminRoutes,
   ...legacyRedirects,

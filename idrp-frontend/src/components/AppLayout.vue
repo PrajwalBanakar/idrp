@@ -371,6 +371,7 @@ const navSections: NavSection[] = [
       { label: 'Events', to: '/community/events' },
       { label: 'Resources', to: '/resources' },
       { label: 'Partners', to: '/about/partners' },
+      { label: 'Careers', to: '/careers' },
     ],
   },
 ]
