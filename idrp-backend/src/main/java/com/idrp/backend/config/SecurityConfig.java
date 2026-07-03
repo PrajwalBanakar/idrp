@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/program-applications").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/startup-applications").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/course-registrations").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/job-applications").permitAll()
                         .requestMatchers(HttpMethod.GET, "/uploads/**").permitAll()
 
                         // Public GET content APIs
@@ -52,6 +53,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/partners/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/team-members/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/board-members/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/jobs/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/nain-projects/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/gallery-images/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/coe-updates/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/impact-numbers/**").permitAll()
 
                         // Everything else protected
                         .anyRequest().authenticated()
