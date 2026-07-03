@@ -401,6 +401,13 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+import {
+  investorTypeOptions,
+  stageOptions,
+  sectorOptions,
+  engagementTypeOptions,
+  introductionPreferenceOptions,
+} from '@/data/forms/investorMatchmakingForm'
 
 type InvestorForm = {
   investorName: string
@@ -425,58 +432,6 @@ type InvestorForm = {
 
 const showHeroImage = ref(true)
 const submitted = ref(false)
-
-const investorTypeOptions: string[] = [
-  'Angel Investor',
-  'Angel Network',
-  'Seed Fund',
-  'Venture Capital Fund',
-  'Corporate Investor',
-  'Strategic Investor',
-  'Impact Investor',
-  'Family Office',
-  'Other',
-]
-
-const stageOptions: string[] = [
-  'Idea Stage',
-  'Prototype / MVP',
-  'Early Traction',
-  'Revenue Stage',
-  'Growth Stage',
-  'Open to Multiple Stages',
-]
-
-const sectorOptions: string[] = [
-  'AI / ML',
-  'HealthTech',
-  'FinTech',
-  'EdTech',
-  'AgriTech',
-  'ClimateTech',
-  'DeepTech',
-  'SaaS',
-  'Manufacturing',
-  'Mobility',
-  'IoT / Embedded Systems',
-  'Cybersecurity',
-  'Other',
-]
-
-const engagementTypeOptions: string[] = [
-  '1:1 Introduction',
-  'Demo Day / Showcase',
-  'Thematic Startup Pipeline',
-  'Mentor + Investor Interaction',
-  'Open to Multiple Formats',
-]
-
-const introductionPreferenceOptions: string[] = [
-  'Warm Introductions Only',
-  'Screened Startup Recommendations',
-  'Direct Startup Outreach is Fine',
-  'Open to All Relevant Introductions',
-]
 
 const form = reactive<InvestorForm>({
   investorName: '',

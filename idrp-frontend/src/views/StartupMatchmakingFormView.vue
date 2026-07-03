@@ -415,6 +415,12 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+import {
+  sectorOptions,
+  stageOptions,
+  businessModelOptions,
+  investorTypeOptions,
+} from '@/data/forms/startupMatchmakingForm'
 
 type StartupForm = {
   startupName: string
@@ -441,51 +447,6 @@ type StartupForm = {
 
 const showHeroImage = ref(true)
 const submitted = ref(false)
-
-const sectorOptions: string[] = [
-  'AI / ML',
-  'HealthTech',
-  'FinTech',
-  'EdTech',
-  'AgriTech',
-  'ClimateTech',
-  'DeepTech',
-  'SaaS',
-  'Manufacturing',
-  'Mobility',
-  'IoT / Embedded Systems',
-  'Cybersecurity',
-  'Other',
-]
-
-const stageOptions: string[] = [
-  'Idea Stage',
-  'Prototype / MVP',
-  'Early Traction',
-  'Revenue Stage',
-  'Growth Stage',
-]
-
-const businessModelOptions: string[] = [
-  'B2B',
-  'B2C',
-  'B2B2C',
-  'D2C',
-  'Marketplace',
-  'SaaS',
-  'Enterprise',
-  'Other',
-]
-
-const investorTypeOptions: string[] = [
-  'Angel Investor',
-  'Seed Fund',
-  'Venture Capital',
-  'Corporate Investor',
-  'Strategic Investor',
-  'Impact Investor',
-  'Open to Any Relevant Investor',
-]
 
 const form = reactive<StartupForm>({
   startupName: '',
