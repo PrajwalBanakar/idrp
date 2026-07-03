@@ -1,8 +1,6 @@
 # IDRP
 
-This repository groups the IDRP frontend and backend as two independent projects under a
-single parent folder. They are **not** merged — each keeps its own git history, remote,
-dependencies, and README.
+Monorepo for the IDRP frontend and backend.
 
 ```
 idrp/
@@ -23,6 +21,36 @@ up to the backend APIs.
 
 ## Running the backend
 
+### Prerequisites
+
+- Java 17+ and Maven
+- A running PostgreSQL instance
+
+### Database setup
+
+Use a dedicated, scoped role for the app rather than the postgres superuser:
+
+```sql
+CREATE ROLE idrp_app WITH LOGIN PASSWORD '<choose-a-strong-password>';
+CREATE DATABASE idrp_db OWNER idrp_app;
+-- if the database already existed under a different owner:
+GRANT ALL ON SCHEMA public TO idrp_app;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO idrp_app;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO idrp_app;
+```
+
+### Configure
+
+```
+cd idrp-backend
+cp src/main/resources/application.properties.example src/main/resources/application.properties
+```
+
+Fill in `application.properties` with your local DB credentials and a generated JWT secret.
+This file is gitignored and must never be committed.
+
+### Run
+
 ```
 cd idrp-backend
 mvn spring-boot:run
@@ -30,8 +58,7 @@ mvn spring-boot:run
 
 ## Notes
 
-- Each project is its own git repository with its own remote (`idrp-frontend` and
-  `idrp-backend` on GitHub). This parent folder is a local organizational grouping only —
-  there is no shared/root git repo, no shared packages, and no cross-project code.
-- Environment variables, business logic, routes, components, and backend configuration are
-  unchanged from before the move.
+- This is a single git repository combining the previously separate idrp-frontend and
+  idrp-backend projects and their commit histories.
+- Secrets (DB passwords, JWT secret) are never committed — `application.properties` is
+  gitignored; use `application.properties.example` as a template.
