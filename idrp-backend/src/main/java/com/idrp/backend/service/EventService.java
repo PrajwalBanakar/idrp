@@ -8,7 +8,7 @@ public interface EventService {
 
     EventResponseDto createEvent(EventRequestDto requestDto);
 
-    Page<EventResponseDto> getAllEvents(int page, int size);
+    Page<EventResponseDto> getAllEvents(int page, int size, Boolean upcoming);
 
     EventResponseDto getEventById(Long id);
 

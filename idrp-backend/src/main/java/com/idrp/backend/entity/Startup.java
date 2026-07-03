@@ -60,6 +60,12 @@ public class Startup {
     @Builder.Default
     private List<StartupPerson> teamMembers = new ArrayList<>();
 
+    @ElementCollection
+    @CollectionTable(name = "startup_gallery", joinColumns = @JoinColumn(name = "startup_id"))
+    @Column(name = "image_url", length = 500)
+    @Builder.Default
+    private List<String> gallery = new ArrayList<>();
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

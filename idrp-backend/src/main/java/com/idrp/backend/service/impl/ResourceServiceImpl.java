@@ -3,6 +3,7 @@ package com.idrp.backend.service.impl;
 import com.idrp.backend.dto.resource.ResourceRequestDto;
 import com.idrp.backend.dto.resource.ResourceResponseDto;
 import com.idrp.backend.entity.Resource;
+import com.idrp.backend.entity.ResourceType;
 import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.ResourceRepository;
@@ -41,7 +42,7 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public Page<ResourceResponseDto> getAllResources(int page, int size) {
+    public Page<ResourceResponseDto> getAllResources(int page, int size, ResourceType type) {
         Pageable pageable = PageRequest.of(
                 page,
                 size,
@@ -50,8 +51,11 @@ public class ResourceServiceImpl implements ResourceService {
                         Sort.Order.desc("publishDate"),
                         Sort.Order.desc("createdAt")));
 
-        return resourceRepository.findAll(pageable)
-                .map(this::mapToResponseDto);
+        Page<Resource> resources = type != null
+                ? resourceRepository.findByType(type, pageable)
+                : resourceRepository.findAll(pageable);
+
+        return resources.map(this::mapToResponseDto);
     }
 
     @Override

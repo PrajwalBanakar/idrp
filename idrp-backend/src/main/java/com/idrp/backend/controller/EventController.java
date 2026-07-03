@@ -39,9 +39,10 @@ public class EventController {
     @GetMapping
     public ResponseEntity<ApiResponse<Page<EventResponseDto>>> getAllEvents(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) Boolean upcoming
     ) {
-        Page<EventResponseDto> events = eventService.getAllEvents(page, size);
+        Page<EventResponseDto> events = eventService.getAllEvents(page, size, upcoming);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<EventResponseDto>>builder()

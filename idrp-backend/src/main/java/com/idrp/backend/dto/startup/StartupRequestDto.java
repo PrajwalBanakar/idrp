@@ -47,4 +47,6 @@ public class StartupRequestDto {
     private List<StartupPerson> founders;
 
     private List<StartupPerson> teamMembers;
+
+    private List<String> gallery;
 }

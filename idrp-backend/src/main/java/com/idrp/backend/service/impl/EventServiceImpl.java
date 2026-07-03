@@ -12,6 +12,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Service
@@ -34,11 +35,19 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Page<EventResponseDto> getAllEvents(int page, int size) {
+    public Page<EventResponseDto> getAllEvents(int page, int size, Boolean upcoming) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "startDate"));
 
-        return eventRepository.findAll(pageable)
-                .map(this::mapToResponseDto);
+        Page<Event> events;
+        if (Boolean.TRUE.equals(upcoming)) {
+            events = eventRepository.findByEndDateGreaterThanEqual(LocalDate.now(), pageable);
+        } else if (Boolean.FALSE.equals(upcoming)) {
+            events = eventRepository.findByEndDateBefore(LocalDate.now(), pageable);
+        } else {
+            events = eventRepository.findAll(pageable);
+        }
+
+        return events.map(this::mapToResponseDto);
     }
 
     @Override

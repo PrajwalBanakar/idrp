@@ -3,6 +3,7 @@ package com.idrp.backend.controller;
 import com.idrp.backend.dto.common.ApiResponse;
 import com.idrp.backend.dto.resource.ResourceRequestDto;
 import com.idrp.backend.dto.resource.ResourceResponseDto;
+import com.idrp.backend.entity.ResourceType;
 import com.idrp.backend.service.ResourceService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +41,10 @@ public class ResourceController {
     @GetMapping
     public ResponseEntity<ApiResponse<Page<ResourceResponseDto>>> getAllResources(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) ResourceType type
     ) {
-        Page<ResourceResponseDto> resources = resourceService.getAllResources(page, size);
+        Page<ResourceResponseDto> resources = resourceService.getAllResources(page, size, type);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<ResourceResponseDto>>builder()

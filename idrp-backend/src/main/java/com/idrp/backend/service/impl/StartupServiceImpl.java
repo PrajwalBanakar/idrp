@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 @RequiredArgsConstructor
 public class StartupServiceImpl implements StartupService {
@@ -81,6 +83,9 @@ public class StartupServiceImpl implements StartupService {
         existingStartup.setTechFacultyMentors(requestDto.getTechFacultyMentors());
         existingStartup.setFounders(requestDto.getFounders());
         existingStartup.setTeamMembers(requestDto.getTeamMembers());
+        existingStartup.setGallery(
+                requestDto.getGallery() != null ? requestDto.getGallery() : new ArrayList<>()
+        );
 
         Startup updatedStartup = startupRepository.save(existingStartup);
 
@@ -108,6 +113,7 @@ public class StartupServiceImpl implements StartupService {
                 .techFacultyMentors(dto.getTechFacultyMentors())
                 .founders(dto.getFounders())
                 .teamMembers(dto.getTeamMembers())
+                .gallery(dto.getGallery() != null ? dto.getGallery() : new ArrayList<>())
                 .build();
     }
 
@@ -125,6 +131,7 @@ public class StartupServiceImpl implements StartupService {
                 .techFacultyMentors(startup.getTechFacultyMentors())
                 .founders(startup.getFounders())
                 .teamMembers(startup.getTeamMembers())
+                .gallery(startup.getGallery())
                 .createdAt(startup.getCreatedAt())
                 .updatedAt(startup.getUpdatedAt())
                 .build();

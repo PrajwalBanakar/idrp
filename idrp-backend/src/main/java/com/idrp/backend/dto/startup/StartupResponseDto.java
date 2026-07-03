@@ -26,6 +26,7 @@ public class StartupResponseDto {
     private List<StartupPerson> techFacultyMentors;
     private List<StartupPerson> founders;
     private List<StartupPerson> teamMembers;
+    private List<String> gallery;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
