@@ -12,6 +12,16 @@ server.port=8080
 app.jwt.secret=change-me-generate-a-random-base64-secret
 app.jwt.expiration=86400000
 
+# Auto-creates one SUPER_ADMIN on first startup if the admins table is empty.
+# Leave blank after the first admin exists - has no effect once any admin row exists.
+app.admin.bootstrap-email=
+app.admin.bootstrap-password=
+
+# Set to true to import the static frontend content (seed/*.json) into the database
+# on startup. Safe to re-run - matches existing records by natural key and updates
+# them in place instead of duplicating.
+app.seed-static-data=false
+
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 

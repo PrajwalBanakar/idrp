@@ -12,6 +12,7 @@ import com.idrp.backend.service.EventRegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +39,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<EventRegistrationResponseDto> getAllEventRegistrations(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
@@ -46,6 +48,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public EventRegistrationResponseDto getEventRegistrationById(Long id) {
         EventRegistration eventRegistration = eventRegistrationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event registration not found with id: " + id));

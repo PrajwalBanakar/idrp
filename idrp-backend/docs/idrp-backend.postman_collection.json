@@ -1,0 +1,270 @@
+{
+  "info": {
+    "name": "IDRP Backend API",
+    "description": "Auth, admin CRUD, public content, public submissions, and file upload for the IDRP backend. See docs/README.md for the public/admin split per module.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "accessToken", "value": "" },
+    { "key": "refreshToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register (always creates ADMIN)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New Admin\",\n  \"email\": \"new-admin@example.com\",\n  \"password\": \"ChangeMe123!\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.data) {",
+                  "  pm.collectionVariables.set('accessToken', body.data.accessToken);",
+                  "  pm.collectionVariables.set('refreshToken', body.data.refreshToken);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@idrp.in\",\n  \"password\": \"<your-password>\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Refresh",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.data) { pm.collectionVariables.set('accessToken', body.data.accessToken); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/refresh",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/logout",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admins (SUPER_ADMIN only)",
+      "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}" }] },
+      "item": [
+        {
+          "name": "Create Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/admins",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Team Admin\",\n  \"email\": \"team-admin@example.com\",\n  \"password\": \"ChangeMe123!\",\n  \"role\": \"ADMIN\",\n  \"active\": true\n}"
+            }
+          }
+        },
+        { "name": "List Admins", "request": { "method": "GET", "url": "{{baseUrl}}/api/admins?page=0&size=10" } },
+        { "name": "Get Admin By Id", "request": { "method": "GET", "url": "{{baseUrl}}/api/admins/1" } },
+        {
+          "name": "Update Admin",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/admins/1",
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Team Admin\",\n  \"email\": \"team-admin@example.com\",\n  \"active\": true\n}" }
+          }
+        },
+        { "name": "Delete Admin", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/admins/1" } }
+      ]
+    },
+    {
+      "name": "Public Content (no auth)",
+      "item": [
+        { "name": "Startups List", "request": { "method": "GET", "url": "{{baseUrl}}/api/startups?page=0&size=10&category=&search=" } },
+        { "name": "Startup By Id", "request": { "method": "GET", "url": "{{baseUrl}}/api/startups/1" } },
+        { "name": "Events List", "request": { "method": "GET", "url": "{{baseUrl}}/api/events?page=0&size=10&upcoming=true" } },
+        { "name": "Programs List", "request": { "method": "GET", "url": "{{baseUrl}}/api/programs?page=0&size=10" } },
+        { "name": "Mentors List", "request": { "method": "GET", "url": "{{baseUrl}}/api/mentors?page=0&size=10&search=" } },
+        { "name": "Partners List", "request": { "method": "GET", "url": "{{baseUrl}}/api/partners?page=0&size=10" } },
+        { "name": "Team Members List", "request": { "method": "GET", "url": "{{baseUrl}}/api/team-members?page=0&size=10" } },
+        { "name": "Board Members List", "request": { "method": "GET", "url": "{{baseUrl}}/api/board-members?page=0&size=10" } },
+        { "name": "Resources List", "request": { "method": "GET", "url": "{{baseUrl}}/api/resources?page=0&size=10&type=BLOG" } },
+        { "name": "Jobs List", "request": { "method": "GET", "url": "{{baseUrl}}/api/jobs?page=0&size=10&status=OPEN" } },
+        { "name": "Job By Slug", "request": { "method": "GET", "url": "{{baseUrl}}/api/jobs/slug/example-slug" } },
+        { "name": "Gallery Images List", "request": { "method": "GET", "url": "{{baseUrl}}/api/gallery-images?page=0&size=10&section=" } },
+        { "name": "Impact Numbers List", "request": { "method": "GET", "url": "{{baseUrl}}/api/impact-numbers?page=0&size=10" } },
+        { "name": "NAIN Projects List", "request": { "method": "GET", "url": "{{baseUrl}}/api/nain-projects?page=0&size=10" } },
+        { "name": "CoE Updates List", "request": { "method": "GET", "url": "{{baseUrl}}/api/coe-updates?page=0&size=10&coeName=" } }
+      ]
+    },
+    {
+      "name": "Admin Write (ADMIN/SUPER_ADMIN)",
+      "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}" }] },
+      "item": [
+        {
+          "name": "Create Mentor",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/mentors",
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Jane Mentor\",\n  \"email\": \"jane.mentor@example.com\",\n  \"active\": true\n}" }
+          }
+        },
+        { "name": "Update Mentor", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/mentors/1", "body": { "mode": "raw", "raw": "{\n  \"name\": \"Jane Mentor\",\n  \"email\": \"jane.mentor@example.com\",\n  \"active\": false\n}" } } },
+        { "name": "Delete Mentor (SUPER_ADMIN)", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/mentors/1" } },
+        {
+          "name": "Create Job",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/jobs",
+            "body": { "mode": "raw", "raw": "{\n  \"slug\": \"software-engineer\",\n  \"title\": \"Software Engineer\",\n  \"department\": \"Technology\",\n  \"location\": \"Dharwad\",\n  \"employmentType\": \"Full-time\",\n  \"description\": \"...\",\n  \"deadline\": \"2026-12-31\"\n}" }
+          }
+        },
+        { "name": "Close Job", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/jobs/1/close" } },
+        { "name": "Reopen Job", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/jobs/1/reopen" } },
+        {
+          "name": "Create Resource",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/resources",
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Q1 Newsletter\",\n  \"slug\": \"q1-newsletter\",\n  \"type\": \"NEWSLETTER\",\n  \"active\": true,\n  \"displayOrder\": 1\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public Submissions (no auth)",
+      "item": [
+        {
+          "name": "Submit Contact",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/contacts",
+            "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"subject\": \"Hello\",\n  \"message\": \"Hi there\"\n}" }
+          }
+        },
+        {
+          "name": "Submit Event Registration",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/event-registrations",
+            "body": { "mode": "raw", "raw": "{\n  \"participantName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"numberOfAttendees\": 1,\n  \"eventId\": 1\n}" }
+          }
+        },
+        {
+          "name": "Submit Program Application",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/program-applications",
+            "body": { "mode": "raw", "raw": "{\n  \"applicantName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"programId\": 1\n}" }
+          }
+        },
+        {
+          "name": "Submit Startup Application",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/startup-applications",
+            "body": { "mode": "raw", "raw": "{\n  \"startupName\": \"Acme\",\n  \"founderName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\"\n}" }
+          }
+        },
+        {
+          "name": "Submit Course Registration",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/course-registrations",
+            "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"courseType\": \"WORKSHOP\"\n}" }
+          }
+        },
+        {
+          "name": "Submit Job Application",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/job-applications",
+            "body": { "mode": "raw", "raw": "{\n  \"applicantName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"resumeUrl\": \"https://example.com/resume.pdf\",\n  \"jobId\": 1\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Review of Submissions (ADMIN/SUPER_ADMIN)",
+      "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}" }] },
+      "item": [
+        { "name": "List Contacts", "request": { "method": "GET", "url": "{{baseUrl}}/api/contacts?page=0&size=10" } },
+        { "name": "List Event Registrations", "request": { "method": "GET", "url": "{{baseUrl}}/api/event-registrations?page=0&size=10" } },
+        { "name": "List Program Applications", "request": { "method": "GET", "url": "{{baseUrl}}/api/program-applications?page=0&size=10" } },
+        { "name": "List Startup Applications", "request": { "method": "GET", "url": "{{baseUrl}}/api/startup-applications?page=0&size=10" } },
+        { "name": "List Course Registrations", "request": { "method": "GET", "url": "{{baseUrl}}/api/course-registrations?page=0&size=10" } },
+        { "name": "List Job Applications", "request": { "method": "GET", "url": "{{baseUrl}}/api/job-applications?page=0&size=10" } }
+      ]
+    },
+    {
+      "name": "File Upload (ADMIN/SUPER_ADMIN)",
+      "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}" }] },
+      "item": [
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/files/upload",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": "" },
+                { "key": "folder", "type": "text", "value": "general" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

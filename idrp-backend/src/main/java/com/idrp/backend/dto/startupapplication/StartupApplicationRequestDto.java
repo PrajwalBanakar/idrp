@@ -3,6 +3,7 @@ package com.idrp.backend.dto.startupapplication;
 import com.idrp.backend.entity.StartupApplicationStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -40,9 +41,11 @@ public class StartupApplicationRequestDto {
     private String solution;
 
     @Size(max = 255)
+    @Pattern(regexp = "^(https?://.+)?$", message = "Website URL must start with http:// or https://")
     private String websiteUrl;
 
     @Size(max = 255)
+    @Pattern(regexp = "^(https?://.+)?$", message = "Pitch deck URL must start with http:// or https://")
     private String pitchDeckUrl;
 
     private StartupApplicationStatus status;

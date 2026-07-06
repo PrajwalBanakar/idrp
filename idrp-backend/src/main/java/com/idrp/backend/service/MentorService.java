@@ -8,7 +8,7 @@ public interface MentorService {
 
     MentorResponseDto createMentor(MentorRequestDto requestDto);
 
-    Page<MentorResponseDto> getAllMentors(int page, int size);
+    Page<MentorResponseDto> getAllMentors(int page, int size, String search);
 
     MentorResponseDto getMentorById(Long id);
 

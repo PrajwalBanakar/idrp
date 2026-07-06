@@ -9,11 +9,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.Locale;
+import java.util.Set;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
 public class FileStorageServiceImpl implements FileStorageService {
+
+    private static final Pattern SAFE_FOLDER_PATTERN = Pattern.compile("^[a-zA-Z0-9_-]+$");
+
+    private static final Set<String> ALLOWED_EXTENSIONS = Set.of(
+            "jpg", "jpeg", "png", "webp", "gif", "pdf"
+    );
 
     @Value("${app.upload.dir}")
     private String uploadDir;
@@ -23,20 +32,31 @@ public class FileStorageServiceImpl implements FileStorageService {
 
     @Override
     public FileUploadResponseDto uploadFile(MultipartFile file, String folder) {
+        if (file.isEmpty()) {
+            throw new IllegalArgumentException("File is empty");
+        }
+
+        if (folder == null || !SAFE_FOLDER_PATTERN.matcher(folder).matches()) {
+            throw new IllegalArgumentException(
+                    "Invalid folder name - only letters, digits, '-' and '_' are allowed");
+        }
+
+        String originalFileName = file.getOriginalFilename();
+        String extension = "";
+
+        if (originalFileName != null && originalFileName.contains(".")) {
+            extension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1)
+                    .toLowerCase(Locale.ROOT);
+        }
+
+        if (!ALLOWED_EXTENSIONS.contains(extension)) {
+            throw new IllegalArgumentException(
+                    "Unsupported file type '" + extension + "' - allowed types: " + ALLOWED_EXTENSIONS);
+        }
+
+        String storedFileName = UUID.randomUUID() + "." + extension;
+
         try {
-            if (file.isEmpty()) {
-                throw new RuntimeException("File is empty");
-            }
-
-            String originalFileName = file.getOriginalFilename();
-            String extension = "";
-
-            if (originalFileName != null && originalFileName.contains(".")) {
-                extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-            }
-
-            String storedFileName = UUID.randomUUID() + extension;
-
             Path folderPath = Paths.get(uploadDir, folder);
             Files.createDirectories(folderPath);
 

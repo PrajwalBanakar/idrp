@@ -2,6 +2,7 @@ package com.idrp.backend.dto.partner;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class PartnerRequestDto {
     private String category;
 
     @Size(max = 255, message = "Website URL must not exceed 255 characters")
+    @Pattern(regexp = "^(https?://.+)?$", message = "Website URL must start with http:// or https://")
     private String websiteUrl;
 
     @Size(max = 255, message = "Logo URL must not exceed 255 characters")

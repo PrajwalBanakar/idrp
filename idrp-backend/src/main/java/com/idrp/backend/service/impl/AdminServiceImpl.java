@@ -7,21 +7,28 @@ import com.idrp.backend.entity.AdminRole;
 import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.AdminRepository;
+import com.idrp.backend.repository.RefreshTokenRepository;
 import com.idrp.backend.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
     private final AdminRepository adminRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
     public AdminResponseDto createAdmin(AdminRequestDto requestDto) {
+        if (requestDto.getPassword() == null || requestDto.getPassword().isBlank()) {
+            throw new IllegalArgumentException("Password is required to create an admin");
+        }
+
         if (adminRepository.existsByEmail(requestDto.getEmail())) {
             throw new DuplicateResourceException("Admin already exists with email: " + requestDto.getEmail());
         }
@@ -81,10 +88,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    @Transactional
     public void deleteAdmin(Long id) {
         Admin admin = adminRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Admin not found with id: " + id));
 
+        refreshTokenRepository.deleteByAdmin(admin);
         adminRepository.delete(admin);
     }
 

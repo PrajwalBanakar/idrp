@@ -9,7 +9,7 @@ public interface JobService {
 
     JobResponseDto createJob(JobRequestDto requestDto);
 
-    Page<JobResponseDto> getAllJobs(int page, int size, JobStatus status);
+    Page<JobResponseDto> getAllJobs(int page, int size, JobStatus status, String search);
 
     JobResponseDto getJobById(Long id);
 

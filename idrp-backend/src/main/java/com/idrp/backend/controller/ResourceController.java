@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/resources")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class ResourceController {
 
     private final ResourceService resourceService;
@@ -42,9 +41,10 @@ public class ResourceController {
     public ResponseEntity<ApiResponse<Page<ResourceResponseDto>>> getAllResources(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) ResourceType type
+            @RequestParam(required = false) ResourceType type,
+            @RequestParam(required = false) String search
     ) {
-        Page<ResourceResponseDto> resources = resourceService.getAllResources(page, size, type);
+        Page<ResourceResponseDto> resources = resourceService.getAllResources(page, size, type, search);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<ResourceResponseDto>>builder()

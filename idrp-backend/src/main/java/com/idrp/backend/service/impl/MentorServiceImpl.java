@@ -7,6 +7,7 @@ import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.MentorRepository;
 import com.idrp.backend.service.MentorService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,13 @@ public class MentorServiceImpl implements MentorService {
     }
 
     @Override
-    public Page<MentorResponseDto> getAllMentors(int page, int size) {
+    public Page<MentorResponseDto> getAllMentors(int page, int size, String search) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
-        return mentorRepository.findAll(pageable)
+        boolean activeOnly = !SecurityUtils.isAuthenticatedAdmin();
+        String normalizedSearch = search != null && !search.isBlank() ? search : null;
+
+        return mentorRepository.search(activeOnly, normalizedSearch, pageable)
                 .map(this::mapToResponseDto);
     }
 
@@ -42,6 +46,10 @@ public class MentorServiceImpl implements MentorService {
     public MentorResponseDto getMentorById(Long id) {
         Mentor mentor = mentorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Mentor not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(mentor.getActive())) {
+            throw new ResourceNotFoundException("Mentor not found with id: " + id);
+        }
 
         return mapToResponseDto(mentor);
     }
@@ -64,6 +72,7 @@ public class MentorServiceImpl implements MentorService {
         existingMentor.setExpertise(requestDto.getExpertise());
         existingMentor.setBio(requestDto.getBio());
         existingMentor.setLinkedinUrl(requestDto.getLinkedinUrl());
+        existingMentor.setProfileImageUrl(requestDto.getProfileImageUrl());
         existingMentor.setActive(
                 requestDto.getActive() != null ? requestDto.getActive() : existingMentor.getActive()
         );
@@ -91,6 +100,7 @@ public class MentorServiceImpl implements MentorService {
                 .expertise(dto.getExpertise())
                 .bio(dto.getBio())
                 .linkedinUrl(dto.getLinkedinUrl())
+                .profileImageUrl(dto.getProfileImageUrl())
                 .active(dto.getActive() != null ? dto.getActive() : true)
                 .build();
     }
@@ -106,6 +116,7 @@ public class MentorServiceImpl implements MentorService {
                 .expertise(mentor.getExpertise())
                 .bio(mentor.getBio())
                 .linkedinUrl(mentor.getLinkedinUrl())
+                .profileImageUrl(mentor.getProfileImageUrl())
                 .active(mentor.getActive())
                 .createdAt(mentor.getCreatedAt())
                 .updatedAt(mentor.getUpdatedAt())

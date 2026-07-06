@@ -9,12 +9,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/program-applications")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class ProgramApplicationController {
 
     private final ProgramApplicationService programApplicationService;
@@ -36,6 +36,7 @@ public class ProgramApplicationController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     @GetMapping
     public ResponseEntity<ApiResponse<Page<ProgramApplicationResponseDto>>> getAllProgramApplications(
             @RequestParam(defaultValue = "0") int page,
@@ -53,6 +54,7 @@ public class ProgramApplicationController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<ProgramApplicationResponseDto>> getProgramApplicationById(
             @PathVariable Long id
@@ -69,6 +71,7 @@ public class ProgramApplicationController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<ProgramApplicationResponseDto>> updateProgramApplication(
             @PathVariable Long id,
@@ -86,6 +89,7 @@ public class ProgramApplicationController {
         );
     }
 
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteProgramApplication(@PathVariable Long id) {
         programApplicationService.deleteProgramApplication(id);

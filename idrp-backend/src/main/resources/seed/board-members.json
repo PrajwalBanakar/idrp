@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Dr. Deepak K T",
+    "email": "deepak.board@idrp.in",
+    "designation": "CEO, IDRP",
+    "boardType": "Investment Committee",
+    "organization": "IDRP",
+    "profileImageUrl": "/board-deepak.jfif",
+    "linkedinUrl": "https://www.linkedin.com/in/deepak-k-t-92270a9/",
+    "displayOrder": 1,
+    "active": true
+  },
+  {
+    "name": "Prof. S R Mahadeva Prasanna",
+    "email": "prasanna.board@idrp.in",
+    "designation": "Director, IIIT Dharwad",
+    "boardType": "Investment Committee",
+    "organization": "IIIT Dharwad",
+    "profileImageUrl": "/board-prasanna.jfif",
+    "linkedinUrl": "https://www.linkedin.com/in/prof-mahadeva-prasanna-1b238b1a4/",
+    "displayOrder": 2,
+    "active": true
+  }
+]

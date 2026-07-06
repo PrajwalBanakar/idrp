@@ -41,9 +41,10 @@ public class JobController {
     public ResponseEntity<ApiResponse<Page<JobResponseDto>>> getAllJobs(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) JobStatus status
+            @RequestParam(required = false) JobStatus status,
+            @RequestParam(required = false) String search
     ) {
-        Page<JobResponseDto> jobs = jobService.getAllJobs(page, size, status);
+        Page<JobResponseDto> jobs = jobService.getAllJobs(page, size, status, search);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<JobResponseDto>>builder()

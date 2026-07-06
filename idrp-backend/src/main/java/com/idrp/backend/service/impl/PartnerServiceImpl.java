@@ -7,6 +7,7 @@ import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.PartnerRepository;
 import com.idrp.backend.service.PartnerService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -34,14 +35,21 @@ public class PartnerServiceImpl implements PartnerService {
     public Page<PartnerResponseDto> getAllPartners(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
-        return partnerRepository.findAll(pageable)
-                .map(this::mapToResponseDto);
+        Page<Partner> partners = SecurityUtils.isAuthenticatedAdmin()
+                ? partnerRepository.findAll(pageable)
+                : partnerRepository.findAllByActiveTrue(pageable);
+
+        return partners.map(this::mapToResponseDto);
     }
 
     @Override
     public PartnerResponseDto getPartnerById(Long id) {
         Partner partner = partnerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Partner not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(partner.getActive())) {
+            throw new ResourceNotFoundException("Partner not found with id: " + id);
+        }
 
         return mapToResponseDto(partner);
     }

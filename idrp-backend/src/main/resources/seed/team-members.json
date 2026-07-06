@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Dr. Deepak K T",
+    "email": "deepak.team@idrp.in",
+    "designation": "CEO, IDRP",
+    "department": "Leadership",
+    "profileImageUrl": "/board-deepak.jfif",
+    "linkedinUrl": "https://www.linkedin.com/in/deepak-k-t-92270a9/",
+    "displayOrder": 1,
+    "active": true
+  },
+  {
+    "name": "Ms. Darshana Kasar",
+    "email": "darshana@idrp.in",
+    "designation": "Program Associate",
+    "department": "Programs",
+    "profileImageUrl": "/team-darshana.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/in/ms-darshana-kasar-1a774b3ab/",
+    "displayOrder": 2,
+    "active": true
+  },
+  {
+    "name": "Mr. Lokesh B N",
+    "email": "lokesh@idrp.in",
+    "designation": "Program Associate",
+    "department": "Programs",
+    "profileImageUrl": "/team-lokesh.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/in/lokesh-b-n-4920b93ab/",
+    "displayOrder": 3,
+    "active": true
+  },
+  {
+    "name": "Ms. Neha Revankar",
+    "email": "neha@idrp.in",
+    "designation": "Program Associate",
+    "department": "Programs",
+    "profileImageUrl": "/team-neha.jpeg",
+    "linkedinUrl": "http://linkedin.com/in/neha-revankar-6540062a1/",
+    "displayOrder": 4,
+    "active": true
+  },
+  {
+    "name": "Mr. Prajwal Banakar",
+    "email": "prajwal@idrp.in",
+    "designation": "Software Engineer",
+    "department": "Technology",
+    "profileImageUrl": "/team-prajwal.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/in/prajwal-banakar-167130193/",
+    "displayOrder": 5,
+    "active": true
+  },
+  {
+    "name": "Ms. Rakshata Athani",
+    "email": "rakshata@idrp.in",
+    "designation": "Incubation Manager",
+    "department": "Incubation",
+    "profileImageUrl": "/team-rakshata.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/in/rakshata-athani-3595a1203/",
+    "displayOrder": 6,
+    "active": true
+  },
+  {
+    "name": "Mr. Ravi Dalavayi",
+    "email": "ravi@idrp.in",
+    "designation": "Technician",
+    "department": "Operations",
+    "profileImageUrl": "/team-ravi.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/",
+    "displayOrder": 7,
+    "active": true
+  },
+  {
+    "name": "Ms. Reshma P",
+    "email": "reshma@idrp.in",
+    "designation": "Program Associate",
+    "department": "Programs",
+    "profileImageUrl": "/team-reshma.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/",
+    "displayOrder": 8,
+    "active": true
+  },
+  {
+    "name": "Ms. Sunita Hebli",
+    "email": "sunita@idrp.in",
+    "designation": "Program Associate",
+    "department": "Programs",
+    "profileImageUrl": "/team-sunita.jpeg",
+    "linkedinUrl": "https://www.linkedin.com/",
+    "displayOrder": 9,
+    "active": true
+  }
+]

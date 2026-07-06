@@ -94,6 +94,10 @@ public class StartupApplicationServiceImpl implements StartupApplicationService 
     }
 
     private StartupApplication mapToEntity(StartupApplicationRequestDto dto) {
+        // Status is never taken from the client on creation - this DTO backs the public,
+        // unauthenticated submission endpoint, so every new application starts PENDING
+        // regardless of what the request body contains. Only updateStartupApplication
+        // (admin-only) can change the status afterwards.
         return StartupApplication.builder()
                 .startupName(dto.getStartupName())
                 .founderName(dto.getFounderName())
@@ -105,7 +109,7 @@ public class StartupApplicationServiceImpl implements StartupApplicationService 
                 .solution(dto.getSolution())
                 .websiteUrl(dto.getWebsiteUrl())
                 .pitchDeckUrl(dto.getPitchDeckUrl())
-                .status(dto.getStatus() != null ? dto.getStatus() : StartupApplicationStatus.PENDING)
+                .status(StartupApplicationStatus.PENDING)
                 .build();
     }
 

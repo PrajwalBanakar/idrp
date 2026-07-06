@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,4 +31,13 @@ public class ProgramRequestDto {
 
     @Size(max = 1000, message = "Description must not exceed 1000 characters")
     private String description;
+
+    @Size(max = 500, message = "Brochure URL must not exceed 500 characters")
+    private String brochureUrl;
+
+    @Size(max = 500, message = "Apply URL must not exceed 500 characters")
+    private String applyUrl;
+
+    @Size(max = 20, message = "Features list cannot exceed 20 entries")
+    private List<String> features;
 }

@@ -6,6 +6,7 @@ import com.idrp.backend.entity.CoeUpdate;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.CoeUpdateRepository;
 import com.idrp.backend.service.CoeUpdateService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,19 @@ public class CoeUpdateServiceImpl implements CoeUpdateService {
     public Page<CoeUpdateResponseDto> getAllCoeUpdates(int page, int size, String coeName) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "updateDate"));
 
-        Page<CoeUpdate> coeUpdates = coeName != null && !coeName.isBlank()
-                ? coeUpdateRepository.findByCoeName(coeName, pageable)
-                : coeUpdateRepository.findAll(pageable);
+        boolean isAdmin = SecurityUtils.isAuthenticatedAdmin();
+        boolean hasCoeName = coeName != null && !coeName.isBlank();
+
+        Page<CoeUpdate> coeUpdates;
+        if (hasCoeName) {
+            coeUpdates = isAdmin
+                    ? coeUpdateRepository.findByCoeName(coeName, pageable)
+                    : coeUpdateRepository.findByCoeNameAndVisibleTrue(coeName, pageable);
+        } else {
+            coeUpdates = isAdmin
+                    ? coeUpdateRepository.findAll(pageable)
+                    : coeUpdateRepository.findAllByVisibleTrue(pageable);
+        }
 
         return coeUpdates.map(this::mapToResponseDto);
     }
@@ -41,6 +52,10 @@ public class CoeUpdateServiceImpl implements CoeUpdateService {
     public CoeUpdateResponseDto getCoeUpdateById(Long id) {
         CoeUpdate coeUpdate = coeUpdateRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("CoE update not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(coeUpdate.getVisible())) {
+            throw new ResourceNotFoundException("CoE update not found with id: " + id);
+        }
 
         return mapToResponseDto(coeUpdate);
     }

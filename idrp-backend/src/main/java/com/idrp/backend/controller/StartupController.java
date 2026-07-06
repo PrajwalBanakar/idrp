@@ -3,6 +3,7 @@ package com.idrp.backend.controller;
 import com.idrp.backend.dto.common.ApiResponse;
 import com.idrp.backend.dto.startup.StartupRequestDto;
 import com.idrp.backend.dto.startup.StartupResponseDto;
+import com.idrp.backend.entity.StartupCategory;
 import com.idrp.backend.service.StartupService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/startups")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class StartupController {
 
     private final StartupService startupService;
@@ -40,9 +40,11 @@ public class StartupController {
     @GetMapping
     public ResponseEntity<ApiResponse<Page<StartupResponseDto>>> getAllStartups(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) StartupCategory category,
+            @RequestParam(required = false) String search
     ) {
-        Page<StartupResponseDto> startups = startupService.getAllStartups(page, size);
+        Page<StartupResponseDto> startups = startupService.getAllStartups(page, size, category, search);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<StartupResponseDto>>builder()

@@ -10,4 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface CoeUpdateRepository extends JpaRepository<CoeUpdate, Long> {
 
     Page<CoeUpdate> findByCoeName(String coeName, Pageable pageable);
+
+    Page<CoeUpdate> findAllByVisibleTrue(Pageable pageable);
+
+    Page<CoeUpdate> findByCoeNameAndVisibleTrue(String coeName, Pageable pageable);
 }

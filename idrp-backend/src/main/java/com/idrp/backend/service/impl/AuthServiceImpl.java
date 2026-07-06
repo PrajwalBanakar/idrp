@@ -35,11 +35,14 @@ public class AuthServiceImpl implements AuthService {
             throw new DuplicateResourceException("Admin already exists with email: " + requestDto.getEmail());
         }
 
+        // Public self-registration can only ever create a plain ADMIN account.
+        // SUPER_ADMIN accounts are provisioned via the bootstrap seed (AdminBootstrapRunner)
+        // or by an existing SUPER_ADMIN through the protected POST /api/admins endpoint.
         Admin admin = Admin.builder()
                 .name(requestDto.getName())
                 .email(requestDto.getEmail())
                 .password(passwordEncoder.encode(requestDto.getPassword()))
-                .role(requestDto.getRole() != null ? requestDto.getRole() : AdminRole.ADMIN)
+                .role(AdminRole.ADMIN)
                 .active(true)
                 .build();
 

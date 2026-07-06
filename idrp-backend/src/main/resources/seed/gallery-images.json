@@ -1,0 +1,163 @@
+[
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_aerial.jpg",
+    "caption": "IDRP Campus",
+    "displayOrder": 1,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_common.jpeg",
+    "caption": "Common Spaces",
+    "displayOrder": 2,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_workspace.jpeg",
+    "caption": "Workspaces",
+    "displayOrder": 3,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_workspace_2.jpeg",
+    "caption": "Collaboration Zones",
+    "displayOrder": 4,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_meeting.jpeg",
+    "caption": "Meeting Rooms",
+    "displayOrder": 5,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_presentation.jpeg",
+    "caption": "Presentation Spaces",
+    "displayOrder": 6,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_5g_lab.jpeg",
+    "caption": "5G Lab",
+    "displayOrder": 7,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_drone_lab.jpeg",
+    "caption": "Drone Lab",
+    "displayOrder": 8,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_nlp.jpeg",
+    "caption": "NLP Lab",
+    "displayOrder": 9,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_speech_lab.jpeg",
+    "caption": "Speech Lab",
+    "displayOrder": 10,
+    "visible": true
+  },
+  {
+    "section": "campus",
+    "imageUrl": "/campus/idrp_vlsi_lab.jpg",
+    "caption": "VLSI Lab",
+    "displayOrder": 11,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img1.jpeg",
+    "caption": "CIF Tool 1",
+    "displayOrder": 1,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img2.jpeg",
+    "caption": "CIF Tool 2",
+    "displayOrder": 2,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img3.jpeg",
+    "caption": "CIF Tool 3",
+    "displayOrder": 3,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img4.jpeg",
+    "caption": "CIF Tool 4",
+    "displayOrder": 4,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img5.jpeg",
+    "caption": "CIF Tool 5",
+    "displayOrder": 5,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img6.jpeg",
+    "caption": "CIF Tool 6",
+    "displayOrder": 6,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img7.jpeg",
+    "caption": "CIF Tool 7",
+    "displayOrder": 7,
+    "visible": true
+  },
+  {
+    "section": "cif",
+    "imageUrl": "/cif/img8.jpeg",
+    "caption": "CIF Tool 8",
+    "displayOrder": 8,
+    "visible": true
+  },
+  {
+    "section": "nain",
+    "imageUrl": "/nain/img1.jpeg",
+    "caption": "Startup demo",
+    "displayOrder": 1,
+    "visible": true
+  },
+  {
+    "section": "nain",
+    "imageUrl": "/nain/img2.jpeg",
+    "caption": "Student innovation",
+    "displayOrder": 2,
+    "visible": true
+  },
+  {
+    "section": "nain",
+    "imageUrl": "/nain/img3.jpeg",
+    "caption": "Mentorship session",
+    "displayOrder": 3,
+    "visible": true
+  },
+  {
+    "section": "nain",
+    "imageUrl": "/nain/img4.jpeg",
+    "caption": "Project showcase",
+    "displayOrder": 4,
+    "visible": true
+  }
+]

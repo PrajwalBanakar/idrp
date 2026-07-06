@@ -40,6 +40,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<JobApplicationResponseDto> getAllJobApplications(int page, int size, Long jobId) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "submittedAt"));
 
@@ -51,6 +52,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public JobApplicationResponseDto getJobApplicationById(Long id) {
         JobApplication jobApplication = jobApplicationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Job application not found with id: " + id));

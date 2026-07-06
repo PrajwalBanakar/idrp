@@ -6,6 +6,7 @@ import com.idrp.backend.entity.ImpactNumber;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.ImpactNumberRepository;
 import com.idrp.backend.service.ImpactNumberService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -30,14 +31,21 @@ public class ImpactNumberServiceImpl implements ImpactNumberService {
     public Page<ImpactNumberResponseDto> getAllImpactNumbers(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "displayOrder"));
 
-        return impactNumberRepository.findAll(pageable)
-                .map(this::mapToResponseDto);
+        Page<ImpactNumber> impactNumbers = SecurityUtils.isAuthenticatedAdmin()
+                ? impactNumberRepository.findAll(pageable)
+                : impactNumberRepository.findAllByVisibleTrue(pageable);
+
+        return impactNumbers.map(this::mapToResponseDto);
     }
 
     @Override
     public ImpactNumberResponseDto getImpactNumberById(Long id) {
         ImpactNumber impactNumber = impactNumberRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Impact number not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(impactNumber.getVisible())) {
+            throw new ResourceNotFoundException("Impact number not found with id: " + id);
+        }
 
         return mapToResponseDto(impactNumber);
     }

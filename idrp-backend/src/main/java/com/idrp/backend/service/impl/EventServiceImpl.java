@@ -7,6 +7,7 @@ import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.EventRepository;
 import com.idrp.backend.service.EventService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -35,25 +36,39 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<EventResponseDto> getAllEvents(int page, int size, Boolean upcoming) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "startDate"));
 
+        boolean isAdmin = SecurityUtils.isAuthenticatedAdmin();
+
         Page<Event> events;
         if (Boolean.TRUE.equals(upcoming)) {
-            events = eventRepository.findByEndDateGreaterThanEqual(LocalDate.now(), pageable);
+            events = isAdmin
+                    ? eventRepository.findByEndDateGreaterThanEqual(LocalDate.now(), pageable)
+                    : eventRepository.findByEndDateGreaterThanEqualAndVisibleTrue(LocalDate.now(), pageable);
         } else if (Boolean.FALSE.equals(upcoming)) {
-            events = eventRepository.findByEndDateBefore(LocalDate.now(), pageable);
+            events = isAdmin
+                    ? eventRepository.findByEndDateBefore(LocalDate.now(), pageable)
+                    : eventRepository.findByEndDateBeforeAndVisibleTrue(LocalDate.now(), pageable);
         } else {
-            events = eventRepository.findAll(pageable);
+            events = isAdmin
+                    ? eventRepository.findAll(pageable)
+                    : eventRepository.findAllByVisibleTrue(pageable);
         }
 
         return events.map(this::mapToResponseDto);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public EventResponseDto getEventById(Long id) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(event.getVisible())) {
+            throw new ResourceNotFoundException("Event not found with id: " + id);
+        }
 
         return mapToResponseDto(event);
     }

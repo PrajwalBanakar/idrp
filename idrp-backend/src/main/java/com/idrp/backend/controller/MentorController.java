@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/mentors")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class MentorController {
 
     private final MentorService mentorService;
@@ -40,9 +39,10 @@ public class MentorController {
     @GetMapping
     public ResponseEntity<ApiResponse<Page<MentorResponseDto>>> getAllMentors(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String search
     ) {
-        Page<MentorResponseDto> mentors = mentorService.getAllMentors(page, size);
+        Page<MentorResponseDto> mentors = mentorService.getAllMentors(page, size, search);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<MentorResponseDto>>builder()

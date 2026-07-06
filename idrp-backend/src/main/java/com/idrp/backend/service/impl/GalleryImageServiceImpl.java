@@ -6,6 +6,7 @@ import com.idrp.backend.entity.GalleryImage;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.GalleryImageRepository;
 import com.idrp.backend.service.GalleryImageService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,19 @@ public class GalleryImageServiceImpl implements GalleryImageService {
     public Page<GalleryImageResponseDto> getAllGalleryImages(int page, int size, String section) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "displayOrder"));
 
-        Page<GalleryImage> galleryImages = section != null && !section.isBlank()
-                ? galleryImageRepository.findBySection(section, pageable)
-                : galleryImageRepository.findAll(pageable);
+        boolean isAdmin = SecurityUtils.isAuthenticatedAdmin();
+        boolean hasSection = section != null && !section.isBlank();
+
+        Page<GalleryImage> galleryImages;
+        if (hasSection) {
+            galleryImages = isAdmin
+                    ? galleryImageRepository.findBySection(section, pageable)
+                    : galleryImageRepository.findBySectionAndVisibleTrue(section, pageable);
+        } else {
+            galleryImages = isAdmin
+                    ? galleryImageRepository.findAll(pageable)
+                    : galleryImageRepository.findAllByVisibleTrue(pageable);
+        }
 
         return galleryImages.map(this::mapToResponseDto);
     }
@@ -41,6 +52,10 @@ public class GalleryImageServiceImpl implements GalleryImageService {
     public GalleryImageResponseDto getGalleryImageById(Long id) {
         GalleryImage galleryImage = galleryImageRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Gallery image not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(galleryImage.getVisible())) {
+            throw new ResourceNotFoundException("Gallery image not found with id: " + id);
+        }
 
         return mapToResponseDto(galleryImage);
     }

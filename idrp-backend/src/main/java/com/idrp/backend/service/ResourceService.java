@@ -9,7 +9,7 @@ public interface ResourceService {
 
     ResourceResponseDto createResource(ResourceRequestDto requestDto);
 
-    Page<ResourceResponseDto> getAllResources(int page, int size, ResourceType type);
+    Page<ResourceResponseDto> getAllResources(int page, int size, ResourceType type, String search);
 
     ResourceResponseDto getResourceById(Long id);
 

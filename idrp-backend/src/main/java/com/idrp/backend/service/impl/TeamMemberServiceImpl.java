@@ -7,6 +7,7 @@ import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.TeamMemberRepository;
 import com.idrp.backend.service.TeamMemberService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -38,14 +39,21 @@ public class TeamMemberServiceImpl implements TeamMemberService {
                 Sort.by(Sort.Order.asc("displayOrder"), Sort.Order.desc("createdAt"))
         );
 
-        return teamMemberRepository.findAll(pageable)
-                .map(this::mapToResponseDto);
+        Page<TeamMember> teamMembers = SecurityUtils.isAuthenticatedAdmin()
+                ? teamMemberRepository.findAll(pageable)
+                : teamMemberRepository.findAllByActiveTrue(pageable);
+
+        return teamMembers.map(this::mapToResponseDto);
     }
 
     @Override
     public TeamMemberResponseDto getTeamMemberById(Long id) {
         TeamMember teamMember = teamMemberRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Team member not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(teamMember.getActive())) {
+            throw new ResourceNotFoundException("Team member not found with id: " + id);
+        }
 
         return mapToResponseDto(teamMember);
     }

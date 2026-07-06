@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/programs")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class ProgramController {
 
     private final ProgramService programService;
@@ -40,9 +39,11 @@ public class ProgramController {
     @GetMapping
     public ResponseEntity<ApiResponse<Page<ProgramResponseDto>>> getAllPrograms(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String search
     ) {
-        Page<ProgramResponseDto> programs = programService.getAllPrograms(page, size);
+        Page<ProgramResponseDto> programs = programService.getAllPrograms(page, size, category, search);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<ProgramResponseDto>>builder()

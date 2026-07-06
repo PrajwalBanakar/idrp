@@ -12,6 +12,7 @@ import com.idrp.backend.service.ProgramApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +39,7 @@ public class ProgramApplicationServiceImpl implements ProgramApplicationService 
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<ProgramApplicationResponseDto> getAllProgramApplications(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
@@ -46,6 +48,7 @@ public class ProgramApplicationServiceImpl implements ProgramApplicationService 
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProgramApplicationResponseDto getProgramApplicationById(Long id) {
         ProgramApplication programApplication = programApplicationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Program application not found with id: " + id));

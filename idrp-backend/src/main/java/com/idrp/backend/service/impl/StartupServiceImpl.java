@@ -3,6 +3,7 @@ package com.idrp.backend.service.impl;
 import com.idrp.backend.dto.startup.StartupRequestDto;
 import com.idrp.backend.dto.startup.StartupResponseDto;
 import com.idrp.backend.entity.Startup;
+import com.idrp.backend.entity.StartupCategory;
 import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.StartupRepository;
@@ -10,6 +11,7 @@ import com.idrp.backend.service.StartupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -38,18 +40,20 @@ public class StartupServiceImpl implements StartupService {
     }
 
     @Override
-    public Page<StartupResponseDto> getAllStartups(int page, int size) {
+    @Transactional(readOnly = true)
+    public Page<StartupResponseDto> getAllStartups(int page, int size, StartupCategory category, String search) {
         Pageable pageable = PageRequest.of(
                 page,
                 size,
                 Sort.by(Sort.Direction.DESC, "createdAt")
         );
 
-        return startupRepository.findAll(pageable)
+        return startupRepository.search(category, search != null && !search.isBlank() ? search : null, pageable)
                 .map(this::mapToResponseDto);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public StartupResponseDto getStartupById(Long id) {
         Startup startup = startupRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Startup not found with id: " + id));
@@ -74,7 +78,7 @@ public class StartupServiceImpl implements StartupService {
 
         existingStartup.setName(requestDto.getName());
         existingStartup.setSector(requestDto.getSector());
-        existingStartup.setCategory(requestDto.getCategory());
+        existingStartup.setCategories(requestDto.getCategories());
         existingStartup.setLogo(requestDto.getLogo());
         existingStartup.setWebsite(requestDto.getWebsite());
         existingStartup.setOnePager(requestDto.getOnePager());
@@ -104,7 +108,7 @@ public class StartupServiceImpl implements StartupService {
         return Startup.builder()
                 .name(dto.getName())
                 .sector(dto.getSector())
-                .category(dto.getCategory())
+                .categories(dto.getCategories())
                 .logo(dto.getLogo())
                 .website(dto.getWebsite())
                 .onePager(dto.getOnePager())
@@ -122,7 +126,7 @@ public class StartupServiceImpl implements StartupService {
                 .id(startup.getId())
                 .name(startup.getName())
                 .sector(startup.getSector())
-                .category(startup.getCategory())
+                .categories(startup.getCategories())
                 .logo(startup.getLogo())
                 .website(startup.getWebsite())
                 .onePager(startup.getOnePager())

@@ -3,6 +3,7 @@ package com.idrp.backend.dto.program;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +19,9 @@ public class ProgramResponseDto {
     private String mode;
     private String eligibility;
     private String description;
+    private String brochureUrl;
+    private String applyUrl;
+    private List<String> features;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

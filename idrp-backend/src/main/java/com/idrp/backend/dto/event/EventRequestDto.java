@@ -56,6 +56,7 @@ public class EventRequestDto {
     private String imageFit;
 
     @Size(max = 500, message = "Register URL must not exceed 500 characters")
+    @Pattern(regexp = "^(https?://.+)?$", message = "Register URL must start with http:// or https://")
     private String registerUrl;
 
     private Boolean visible;

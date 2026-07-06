@@ -7,6 +7,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,26 @@ public class JwtServiceImpl implements JwtService {
 
     @Value("${app.jwt.expiration}")
     private long jwtExpiration;
+
+    private Key signInKey;
+
+    @PostConstruct
+    void validateSecret() {
+        byte[] keyBytes;
+        try {
+            keyBytes = Decoders.BASE64.decode(jwtSecret);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalStateException(
+                    "app.jwt.secret is not valid standard Base64 (found: '" + e.getMessage() + "'). " +
+                    "Generate one with `openssl rand -base64 64` - avoid Base64-URL variants that contain '-' or '_'.", e);
+        }
+        if (keyBytes.length < 32) {
+            throw new IllegalStateException(
+                    "app.jwt.secret decodes to only " + keyBytes.length +
+                    " bytes; HS256 requires at least 32 bytes. Generate a longer secret with `openssl rand -base64 64`.");
+        }
+        this.signInKey = Keys.hmacShaKeyFor(keyBytes);
+    }
 
     @Override
     public String generateToken(Admin admin) {
@@ -74,7 +95,6 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
-        return Keys.hmacShaKeyFor(keyBytes);
+        return signInKey;
     }
 }

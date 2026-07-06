@@ -1,0 +1,38 @@
+[
+  {
+    "programName": "Yuva Udyami Pre Incubation Program",
+    "category": null,
+    "duration": "18 months",
+    "mode": null,
+    "eligibility": null,
+    "description": "A structured early-stage program for founders at idea, problem-validation, or prototype stage. Designed to help aspiring startups validate the problem, refine the solution, build an MVP, evaluate product-market-fit, pilot with initial customers and prepare for incubation readiness.",
+    "brochureUrl": "/yuva-udyami/yuva_udyami_brochure.pdf",
+    "applyUrl": "/apply/pre-incubation",
+    "features": [
+      "Idea validation and customer discovery",
+      "State of the art labs",
+      "MVP build guidance",
+      "Industry Expert Mentors",
+      "Business strategies and GTM",
+      "Market and funding access"
+    ]
+  },
+  {
+    "programName": "Udyami Incubation Program",
+    "category": null,
+    "duration": "18 months",
+    "mode": null,
+    "eligibility": null,
+    "description": "Comprehensive support for startups at idea, PoC, or MVP stage. Get access to dedicated workspace, labs, mentorship, and seed funding opportunities.",
+    "brochureUrl": "/udyami/udyami_brochure.pdf",
+    "applyUrl": "/apply/incubation",
+    "features": [
+      "Highly skilled talent and technology patent pool",
+      "Access to research labs and high end equipment",
+      "Technical mentorship from faculty",
+      "Business development support",
+      "Seed funding opportunities",
+      "Industry networking events"
+    ]
+  }
+]

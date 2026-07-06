@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/board-members")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class BoardMemberController {
 
     private final BoardMemberService boardMemberService;

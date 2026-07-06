@@ -33,7 +33,11 @@ public class MentorRequestDto {
     private String bio;
 
     @Size(max = 255, message = "LinkedIn URL must not exceed 255 characters")
+    @Pattern(regexp = "^(https?://.+)?$", message = "LinkedIn URL must start with http:// or https://")
     private String linkedinUrl;
+
+    @Size(max = 255, message = "Profile image URL must not exceed 255 characters")
+    private String profileImageUrl;
 
     private Boolean active;
 }

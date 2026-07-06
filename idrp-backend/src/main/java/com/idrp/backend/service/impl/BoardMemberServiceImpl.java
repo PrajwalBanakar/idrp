@@ -7,6 +7,7 @@ import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.BoardMemberRepository;
 import com.idrp.backend.service.BoardMemberService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -38,14 +39,21 @@ public class BoardMemberServiceImpl implements BoardMemberService {
                 Sort.by(Sort.Order.asc("displayOrder"), Sort.Order.desc("createdAt"))
         );
 
-        return boardMemberRepository.findAll(pageable)
-                .map(this::mapToResponseDto);
+        Page<BoardMember> boardMembers = SecurityUtils.isAuthenticatedAdmin()
+                ? boardMemberRepository.findAll(pageable)
+                : boardMemberRepository.findAllByActiveTrue(pageable);
+
+        return boardMembers.map(this::mapToResponseDto);
     }
 
     @Override
     public BoardMemberResponseDto getBoardMemberById(Long id) {
         BoardMember boardMember = boardMemberRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Board member not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(boardMember.getActive())) {
+            throw new ResourceNotFoundException("Board member not found with id: " + id);
+        }
 
         return mapToResponseDto(boardMember);
     }

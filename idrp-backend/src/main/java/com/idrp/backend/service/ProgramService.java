@@ -8,7 +8,7 @@ public interface ProgramService {
 
     ProgramResponseDto createProgram(ProgramRequestDto requestDto);
 
-    Page<ProgramResponseDto> getAllPrograms(int page, int size);
+    Page<ProgramResponseDto> getAllPrograms(int page, int size, String category, String search);
 
     ProgramResponseDto getProgramById(Long id);
 

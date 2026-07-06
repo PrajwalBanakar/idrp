@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -35,6 +36,7 @@ public class EventRegistrationController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     @GetMapping
     public ResponseEntity<ApiResponse<Page<EventRegistrationResponseDto>>> getAllEventRegistrations(
             @RequestParam(defaultValue = "0") int page,
@@ -52,6 +54,7 @@ public class EventRegistrationController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<EventRegistrationResponseDto>> getEventRegistrationById(
             @PathVariable Long id
@@ -68,6 +71,7 @@ public class EventRegistrationController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<EventRegistrationResponseDto>> updateEventRegistration(
             @PathVariable Long id,
@@ -85,6 +89,7 @@ public class EventRegistrationController {
         );
     }
 
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteEventRegistration(@PathVariable Long id) {
         eventRegistrationService.deleteEventRegistration(id);

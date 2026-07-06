@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/startup-applications")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class StartupApplicationController {
 
     private final StartupApplicationService startupApplicationService;

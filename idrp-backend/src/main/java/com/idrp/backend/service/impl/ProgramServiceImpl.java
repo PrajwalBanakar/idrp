@@ -29,10 +29,13 @@ public class ProgramServiceImpl implements ProgramService {
     }
 
     @Override
-    public Page<ProgramResponseDto> getAllPrograms(int page, int size) {
+    public Page<ProgramResponseDto> getAllPrograms(int page, int size, String category, String search) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
-        return programRepository.findAll(pageable)
+        return programRepository.search(
+                        category != null && !category.isBlank() ? category : null,
+                        search != null && !search.isBlank() ? search : null,
+                        pageable)
                 .map(this::mapToResponseDto);
     }
 
@@ -59,6 +62,11 @@ public class ProgramServiceImpl implements ProgramService {
         existingProgram.setMode(requestDto.getMode());
         existingProgram.setEligibility(requestDto.getEligibility());
         existingProgram.setDescription(requestDto.getDescription());
+        existingProgram.setBrochureUrl(requestDto.getBrochureUrl());
+        existingProgram.setApplyUrl(requestDto.getApplyUrl());
+        existingProgram.setFeatures(
+                requestDto.getFeatures() != null ? requestDto.getFeatures() : new java.util.ArrayList<>()
+        );
 
         Program updatedProgram = programRepository.save(existingProgram);
         return mapToResponseDto(updatedProgram);
@@ -80,6 +88,9 @@ public class ProgramServiceImpl implements ProgramService {
                 .mode(dto.getMode())
                 .eligibility(dto.getEligibility())
                 .description(dto.getDescription())
+                .brochureUrl(dto.getBrochureUrl())
+                .applyUrl(dto.getApplyUrl())
+                .features(dto.getFeatures() != null ? dto.getFeatures() : new java.util.ArrayList<>())
                 .build();
     }
 
@@ -92,6 +103,9 @@ public class ProgramServiceImpl implements ProgramService {
                 .mode(program.getMode())
                 .eligibility(program.getEligibility())
                 .description(program.getDescription())
+                .brochureUrl(program.getBrochureUrl())
+                .applyUrl(program.getApplyUrl())
+                .features(program.getFeatures())
                 .createdAt(program.getCreatedAt())
                 .updatedAt(program.getUpdatedAt())
                 .build();

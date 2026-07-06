@@ -42,6 +42,9 @@ public class Mentor {
     @Column(name = "linkedin_url", length = 255)
     private String linkedinUrl;
 
+    @Column(name = "profile_image_url", length = 255)
+    private String profileImageUrl;
+
     @Column(nullable = false)
     @Builder.Default
     private Boolean active = true;

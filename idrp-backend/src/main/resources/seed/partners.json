@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Boltstart Academy",
+    "category": "academic",
+    "websiteUrl": "https://www.linkedin.com/in/boltstart-academy-842a913b8/",
+    "logoUrl": "/partners/boltstart.jpeg"
+  },
+  {
+    "name": "KLE Institute of Technology, Hubli",
+    "category": "academic",
+    "websiteUrl": "https://kleit.ac.in/",
+    "logoUrl": "/partners/kleit.png"
+  },
+  {
+    "name": "Dharwad Institute of Mental Health & Neurosciences (DIMHANS)",
+    "category": "academic",
+    "websiteUrl": "https://dimhans.karnataka.gov.in/en",
+    "logoUrl": "/partners/dimhans.png"
+  },
+  {
+    "name": "Mahatma Gandhi Rural Development & Panchayat Raj University, Gadag",
+    "category": "academic",
+    "websiteUrl": "https://ksrdpru.ac.in/en/",
+    "logoUrl": "/partners/mgrdpru.jpeg"
+  },
+  {
+    "name": "KLE College of Pharmacy, Belagavi",
+    "category": "academic",
+    "websiteUrl": "https://klepharm.edu/",
+    "logoUrl": "/partners/klepharm.png"
+  },
+  {
+    "name": "S. G. Balekundri Institute of Technology, Belagavi",
+    "category": "academic",
+    "websiteUrl": "https://sgbit.edu.in/",
+    "logoUrl": "/partners/sgbit.png"
+  },
+  {
+    "name": "BLDEA's V.P. Dr. P. G. Halakatti College of Engineering and Technology, Vijayapura",
+    "category": "academic",
+    "websiteUrl": "https://www.bldeacet.ac.in/",
+    "logoUrl": "/partners/bldeacet.png"
+  },
+  {
+    "name": "Jain College of Engineering and Research",
+    "category": "academic",
+    "websiteUrl": "https://jcer.in/",
+    "logoUrl": "/partners/jcer.png"
+  },
+  {
+    "name": "Poojya Doddappa Appa College of Engineering, Gulbarga",
+    "category": "academic",
+    "websiteUrl": "https://www.pdacek.ac.in/",
+    "logoUrl": "/partners/pda.png"
+  },
+  {
+    "name": "D.K.T.E. Society's Textile & Engineering Institute, Ichalkaranji",
+    "category": "academic",
+    "websiteUrl": "https://www.dkte.ac.in/index.php",
+    "logoUrl": "/partners/dkte.png"
+  },
+  {
+    "name": "FUEL",
+    "category": "academic",
+    "websiteUrl": "https://fuelfornation.com/",
+    "logoUrl": "/partners/fuel.png"
+  },
+  {
+    "name": "GM University, Davangere",
+    "category": "academic",
+    "websiteUrl": "https://gmu.ac.in/",
+    "logoUrl": "/partners/gmu.png"
+  },
+  {
+    "name": "Head Held High Foundation",
+    "category": "academic",
+    "websiteUrl": "https://in.linkedin.com/company/head-held-high-foundation",
+    "logoUrl": "/partners/hhh.png"
+  },
+  {
+    "name": "Rani Channamma University, Belagavi",
+    "category": "academic",
+    "websiteUrl": "https://rcub.ac.in/en/index.php",
+    "logoUrl": "/partners/rcu.png"
+  },
+  {
+    "name": "Shridevi Institute of Engineering & Technology, Tumakuru",
+    "category": "academic",
+    "websiteUrl": "https://shrideviengineering.org/",
+    "logoUrl": "/partners/shridevi.png"
+  },
+  {
+    "name": "VSM's Somashekhar R. Kothiwale Institute of Technology",
+    "category": "academic",
+    "websiteUrl": "https://www.vsmsrkit.edu.in/",
+    "logoUrl": "/partners/vsm.png"
+  },
+  {
+    "name": "RNS Institute of Technology, Bengaluru",
+    "category": "academic",
+    "websiteUrl": "https://www.rnsit.ac.in/",
+    "logoUrl": "/partners/rnsit.png"
+  },
+  {
+    "name": "VTU, Belagavi",
+    "category": "academic",
+    "websiteUrl": "https://vtu.ac.in/en/",
+    "logoUrl": "/partners/vtu.png"
+  },
+  {
+    "name": "Vidya Shakti",
+    "category": "academic",
+    "websiteUrl": "https://www.vishwa-vidya-shakti.org/",
+    "logoUrl": "/partners/vidya.png"
+  },
+  {
+    "name": "Bapuji Institute of Engineering and Technology, Davangere",
+    "category": "academic",
+    "websiteUrl": "https://bietdvg.edu/",
+    "logoUrl": "/partners/biet.png"
+  },
+  {
+    "name": "Basaveshwar Engineering College, Bagalkote",
+    "category": "academic",
+    "websiteUrl": "https://www.becbgk.edu/",
+    "logoUrl": "/partners/bec.png"
+  },
+  {
+    "name": "Jain Institute of Technology, Davangere",
+    "category": "academic",
+    "websiteUrl": "https://jitdvg.edu.in/",
+    "logoUrl": "/partners/jit.png"
+  },
+  {
+    "name": "Moodlakatte Institute of Technology, Kundapura",
+    "category": "academic",
+    "websiteUrl": "https://mitkundapura.com/",
+    "logoUrl": "/partners/mitk.png"
+  },
+  {
+    "name": "Shri Madhwa Vadiraja Institute of Technology and Management",
+    "category": "academic",
+    "websiteUrl": "https://smvitm.org/",
+    "logoUrl": "/partners/smvitm.png"
+  },
+  {
+    "name": "Smt. Kamala & Sri Venkappa M. Agadi College of Engineering and Technology",
+    "category": "academic",
+    "websiteUrl": "https://sksvmacet.ac.in/",
+    "logoUrl": "/partners/sksvmacet.png"
+  },
+  {
+    "name": "University BDT College of Engineering, Davangere",
+    "category": "academic",
+    "websiteUrl": "https://www.ubdtce.org/",
+    "logoUrl": "/partners/ubdtce.png"
+  },
+  {
+    "name": "Infosys",
+    "category": "technology",
+    "websiteUrl": "https://www.infosys.com/",
+    "logoUrl": "/partners/infosys.png"
+  },
+  {
+    "name": "Mercedes-Benz Research & Development India (MBRDI)",
+    "category": "technology",
+    "websiteUrl": "https://www.mbrdi.co.in/",
+    "logoUrl": "/partners/mbrdi.png"
+  },
+  {
+    "name": "DocketRun",
+    "category": "technology",
+    "websiteUrl": "https://docketrun.com/",
+    "logoUrl": "/partners/docketrun.jpeg"
+  },
+  {
+    "name": "Nanopix",
+    "category": "technology",
+    "websiteUrl": "https://www.nanopix-iss.com/",
+    "logoUrl": "/partners/nanopix.png"
+  },
+  {
+    "name": "HAL",
+    "category": "technology",
+    "websiteUrl": "https://hal-india.co.in/",
+    "logoUrl": "/partners/hal.jpeg"
+  },
+  {
+    "name": "JSW",
+    "category": "technology",
+    "websiteUrl": "https://www.jswsteel.in/vijayanagar-works",
+    "logoUrl": "/partners/jsw.png"
+  },
+  {
+    "name": "QpiAi Technologies",
+    "category": "technology",
+    "websiteUrl": "https://qpiai.tech/",
+    "logoUrl": "/partners/qpiai.png"
+  },
+  {
+    "name": "TalkingLands Technologies Pvt. Ltd.",
+    "category": "technology",
+    "websiteUrl": "https://www.talkinglands.com/",
+    "logoUrl": "/partners/talkinglands.png"
+  },
+  {
+    "name": "Teamlease EdTech",
+    "category": "technology",
+    "websiteUrl": "https://www.teamleaseedtech.com/",
+    "logoUrl": "/partners/teamlease-edtech.png"
+  },
+  {
+    "name": "Centre of Excellence for Cybersecurity (CysecK)",
+    "category": "technology",
+    "websiteUrl": "https://cyseck.in/",
+    "logoUrl": "/partners/cyseck.png"
+  },
+  {
+    "name": "KEONICS",
+    "category": "technology",
+    "websiteUrl": "https://www.keonics.in/english/",
+    "logoUrl": "/partners/keonics.png"
+  },
+  {
+    "name": "STPI",
+    "category": "technology",
+    "websiteUrl": "https://stpi.in/en/about-stpi",
+    "logoUrl": "/partners/stpi.png"
+  },
+  {
+    "name": "Space Energy Systems",
+    "category": "technology",
+    "websiteUrl": "https://spaceenergysystems.com/",
+    "logoUrl": "/partners/ses.jpeg"
+  },
+  {
+    "name": "TiE",
+    "category": "ecosystem",
+    "websiteUrl": "https://tie.org/",
+    "logoUrl": "/partners/tie.png"
+  },
+  {
+    "name": "CII",
+    "category": "ecosystem",
+    "websiteUrl": "https://www.cii.in/",
+    "logoUrl": "/partners/cii.png"
+  },
+  {
+    "name": "Deshpande Foundation",
+    "category": "ecosystem",
+    "websiteUrl": "https://deshpandefoundationindia.org/",
+    "logoUrl": "/partners/deshpande.png"
+  },
+  {
+    "name": "EkStep Foundation",
+    "category": "ecosystem",
+    "websiteUrl": "https://ekstep.org/",
+    "logoUrl": "/partners/ekstep.png"
+  },
+  {
+    "name": "Culkey Foundation",
+    "category": "ecosystem",
+    "websiteUrl": "https://culkey.org/",
+    "logoUrl": "/partners/culkey.png"
+  },
+  {
+    "name": "CoCreate Ventures",
+    "category": "ecosystem",
+    "websiteUrl": "https://cocreate.ventures/",
+    "logoUrl": "/partners/cocreate.png"
+  },
+  {
+    "name": "CX First",
+    "category": "ecosystem",
+    "websiteUrl": "https://cxfirst.com/en/",
+    "logoUrl": "/partners/cxfirst.png"
+  },
+  {
+    "name": "iDeCK",
+    "category": "ecosystem",
+    "websiteUrl": "https://ideck.in/",
+    "logoUrl": "/partners/ideck.png"
+  },
+  {
+    "name": "Zoho",
+    "category": "ecosystem",
+    "websiteUrl": "https://www.zoho.com/",
+    "logoUrl": "/partners/zoho.png"
+  },
+  {
+    "name": "State Bank of India",
+    "category": "ecosystem",
+    "websiteUrl": "https://bank.sbi/",
+    "logoUrl": "/partners/sbi.png"
+  },
+  {
+    "name": "Vakil Search",
+    "category": "ecosystem",
+    "websiteUrl": "https://vakilsearch.com/",
+    "logoUrl": "/partners/vakil.png"
+  },
+  {
+    "name": "100X.VC",
+    "category": "investor",
+    "websiteUrl": "https://www.100x.vc/",
+    "logoUrl": "/partners/100x.png"
+  },
+  {
+    "name": "Campus Fund",
+    "category": "investor",
+    "websiteUrl": "https://yourcampusfund.com/",
+    "logoUrl": "/partners/campusfund.png"
+  }
+]

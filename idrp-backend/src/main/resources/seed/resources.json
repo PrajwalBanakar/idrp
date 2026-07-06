@@ -1,0 +1,67 @@
+[
+  {
+    "title": "IIIT Dharwad Research Park Newsletter",
+    "slug": "jan-mar-2025-edition",
+    "type": "NEWSLETTER",
+    "summary": "Quarterly highlights covering startup programs, workshops, innovation initiatives, and ecosystem activity at IIIT Dharwad Research Park.",
+    "content": "Issue 01 | Jan–Mar 2025\n\nThis issue includes event highlights, Yuva Udhyami startup challenge activity, NAIN 2.0 kickoff, faculty development program, startup spotlight, industry insights, SageMaker workshop, and academic engagement.\n\nHighlights:\n- Yuva Udhyami startup challenge and cohort announcement\n- NAIN 2.0 kickoff highlights\n- Faculty development program on design and entrepreneurship\n- Startup spotlight, workshops, and ecosystem activity",
+    "fileUrl": "/newsletters/01-jan-mar-2025-edition.pdf",
+    "coverImageUrl": "/newsletters/jan-mar-2025-cover.jpg",
+    "publishDate": "2025-03-31",
+    "author": "IDRP",
+    "displayOrder": 1,
+    "active": true
+  },
+  {
+    "title": "IIIT Dharwad Research Park Newsletter",
+    "slug": "apr-jun-2025-edition",
+    "type": "NEWSLETTER",
+    "summary": "Quarterly highlights from programs, activities, collaborations, and startup ecosystem engagement.",
+    "content": "Issue 02 | Apr–Jun 2025\n\nBrowse the Apr–Jun 2025 edition of the IIIT Dharwad Research Park newsletter.\n\nHighlights:\n- Quarterly updates from the ecosystem\n- Program and event highlights\n- Founder and community activities\n- Institutional and innovation milestones",
+    "fileUrl": "/newsletters/02-apr-jun-2025-edition.pdf",
+    "coverImageUrl": "/newsletters/apr-jun-2025-cover.jpg",
+    "publishDate": "2025-06-30",
+    "author": "IDRP",
+    "displayOrder": 2,
+    "active": true
+  },
+  {
+    "title": "IIIT Dharwad Research Park Newsletter",
+    "slug": "jul-sep-2025-edition",
+    "type": "NEWSLETTER",
+    "summary": "Quarterly highlights from programs, partnerships, startup support, and innovation-led initiatives.",
+    "content": "Issue 03 | Jul–Sep 2025\n\nBrowse the Jul–Sep 2025 edition of the IIIT Dharwad Research Park newsletter.\n\nHighlights:\n- Quarterly updates from the ecosystem\n- Program and event highlights\n- Founder and community activities\n- Institutional and innovation milestones",
+    "fileUrl": "/newsletters/03-jul-sep-2025-edition.pdf",
+    "coverImageUrl": "/newsletters/jul-sep-2025-cover.jpg",
+    "publishDate": "2025-09-30",
+    "author": "IDRP",
+    "displayOrder": 3,
+    "active": true
+  },
+  {
+    "title": "IIIT Dharwad Research Park Newsletter",
+    "slug": "oct-dec-2025-edition",
+    "type": "NEWSLETTER",
+    "summary": "Quarterly highlights from programs, ecosystem developments, events, and startup engagement.",
+    "content": "Issue 04 | Oct–Dec 2025\n\nBrowse the Oct–Dec 2025 edition of the IIIT Dharwad Research Park newsletter.\n\nHighlights:\n- Quarterly updates from the ecosystem\n- Program and event highlights\n- Founder and community activities\n- Institutional and innovation milestones",
+    "fileUrl": "/newsletters/04-oct-dec-2025-edition.pdf",
+    "coverImageUrl": "/newsletters/oct-dec-2025-cover.jpg",
+    "publishDate": "2025-12-31",
+    "author": "IDRP",
+    "displayOrder": 4,
+    "active": true
+  },
+  {
+    "title": "IIIT Dharwad Research Park Newsletter",
+    "slug": "jan-mar-2026-edition",
+    "type": "NEWSLETTER",
+    "summary": "Quarterly highlights from programs, ecosystem developments, events, and startup engagement.",
+    "content": "Issue 05 | Jan–Mar 2026\n\nBrowse the Jan–Mar 2026 edition of the IIIT Dharwad Research Park newsletter.\n\nHighlights:\n- Quarterly updates from the ecosystem\n- Program and event highlights\n- Founder and community activities\n- Institutional and innovation milestones",
+    "fileUrl": "/newsletters/05-jan-mar-2026-edition.pdf",
+    "coverImageUrl": "/newsletters/jan-mar-2026-cover.jpg",
+    "publishDate": "2026-03-31",
+    "author": "IDRP",
+    "displayOrder": 5,
+    "active": true
+  }
+]

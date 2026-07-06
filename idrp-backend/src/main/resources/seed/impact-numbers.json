@@ -1,0 +1,140 @@
+[
+  {
+    "value": "150+",
+    "label": "Innovations nurtured",
+    "displayOrder": 1,
+    "visible": true
+  },
+  {
+    "value": "10+",
+    "label": "Deep-tech domains",
+    "displayOrder": 2,
+    "visible": true
+  },
+  {
+    "value": "1",
+    "label": "Unified innovation ecosystem",
+    "displayOrder": 3,
+    "visible": true
+  },
+  {
+    "value": "60+",
+    "label": "Number of Startups",
+    "displayOrder": 4,
+    "visible": true
+  },
+  {
+    "value": "120+",
+    "label": "Founders supported",
+    "displayOrder": 5,
+    "visible": true
+  },
+  {
+    "value": "1.3 Cr+",
+    "label": "Funding enabled",
+    "displayOrder": 6,
+    "visible": true
+  },
+  {
+    "value": "30+",
+    "label": "Startup networking events per year",
+    "displayOrder": 7,
+    "visible": true
+  },
+  {
+    "value": "30+",
+    "label": "Patents filed by TTO",
+    "displayOrder": 8,
+    "visible": true
+  },
+  {
+    "value": "50+",
+    "label": "Investors and strategic industry partners",
+    "displayOrder": 9,
+    "visible": true
+  },
+  {
+    "value": "100+",
+    "label": "Mentoring sessions",
+    "displayOrder": 10,
+    "visible": true
+  },
+  {
+    "value": "60+",
+    "label": "Knowledge sessions",
+    "displayOrder": 11,
+    "visible": true
+  },
+  {
+    "value": "6+",
+    "label": "Programs Offered",
+    "displayOrder": 12,
+    "visible": true
+  },
+  {
+    "value": "1000+",
+    "label": "Learners Engaged",
+    "displayOrder": 13,
+    "visible": true
+  },
+  {
+    "value": "50+",
+    "label": "Hands-on Sessions",
+    "displayOrder": 14,
+    "visible": true
+  },
+  {
+    "value": "2",
+    "label": "Learning Tracks",
+    "displayOrder": 15,
+    "visible": true
+  },
+  {
+    "value": "40+",
+    "label": "Industry Research & Consulting Engagements",
+    "displayOrder": 16,
+    "visible": true
+  },
+  {
+    "value": "25+",
+    "label": "Collaboration & Consulting Themes",
+    "displayOrder": 17,
+    "visible": true
+  },
+  {
+    "value": "15+",
+    "label": "Emerging Technology Focus Areas",
+    "displayOrder": 18,
+    "visible": true
+  },
+  {
+    "value": "100+",
+    "label": "Experts, Mentors & Innovation Enablers",
+    "displayOrder": 19,
+    "visible": true
+  },
+  {
+    "value": "30 annually",
+    "label": "Innovators supported",
+    "displayOrder": 20,
+    "visible": true
+  },
+  {
+    "value": "₹25,000",
+    "label": "Monthly stipend",
+    "displayOrder": 21,
+    "visible": true
+  },
+  {
+    "value": "12 months",
+    "label": "Support duration",
+    "displayOrder": 22,
+    "visible": true
+  },
+  {
+    "value": "Prototype / MVP / PoC",
+    "label": "Expected outcome",
+    "displayOrder": 23,
+    "visible": true
+  }
+]

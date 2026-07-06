@@ -8,6 +8,7 @@ import com.idrp.backend.exception.DuplicateResourceException;
 import com.idrp.backend.exception.ResourceNotFoundException;
 import com.idrp.backend.repository.ResourceRepository;
 import com.idrp.backend.service.ResourceService;
+import com.idrp.backend.util.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,7 +43,7 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public Page<ResourceResponseDto> getAllResources(int page, int size, ResourceType type) {
+    public Page<ResourceResponseDto> getAllResources(int page, int size, ResourceType type, String search) {
         Pageable pageable = PageRequest.of(
                 page,
                 size,
@@ -51,17 +52,21 @@ public class ResourceServiceImpl implements ResourceService {
                         Sort.Order.desc("publishDate"),
                         Sort.Order.desc("createdAt")));
 
-        Page<Resource> resources = type != null
-                ? resourceRepository.findByType(type, pageable)
-                : resourceRepository.findAll(pageable);
+        boolean activeOnly = !SecurityUtils.isAuthenticatedAdmin();
+        String normalizedSearch = search != null && !search.isBlank() ? search : null;
 
-        return resources.map(this::mapToResponseDto);
+        return resourceRepository.search(activeOnly, type, normalizedSearch, pageable)
+                .map(this::mapToResponseDto);
     }
 
     @Override
     public ResourceResponseDto getResourceById(Long id) {
         Resource resource = resourceRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Resource not found with id: " + id));
+
+        if (!SecurityUtils.isAuthenticatedAdmin() && !Boolean.TRUE.equals(resource.getActive())) {
+            throw new ResourceNotFoundException("Resource not found with id: " + id);
+        }
 
         return mapToResponseDto(resource);
     }
@@ -126,6 +131,8 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     private ResourceResponseDto mapToResponseDto(Resource resource) {
+        boolean isAdmin = SecurityUtils.isAuthenticatedAdmin();
+
         return ResourceResponseDto.builder()
                 .id(resource.getId())
                 .title(resource.getTitle())
@@ -141,8 +148,11 @@ public class ResourceServiceImpl implements ResourceService {
                 .active(resource.getActive())
                 .createdAt(resource.getCreatedAt())
                 .updatedAt(resource.getUpdatedAt())
-                .createdBy(resource.getCreatedBy())
-                .updatedBy(resource.getUpdatedBy())
+                // Only expose the authoring admin's identity to authenticated admin callers -
+                // this endpoint is also public (GET /api/resources), so unauthenticated
+                // visitors must not see internal admin email addresses.
+                .createdBy(isAdmin ? resource.getCreatedBy() : null)
+                .updatedBy(isAdmin ? resource.getUpdatedBy() : null)
                 .build();
     }
 }

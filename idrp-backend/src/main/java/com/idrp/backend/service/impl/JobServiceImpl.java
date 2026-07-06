@@ -33,14 +33,13 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Page<JobResponseDto> getAllJobs(int page, int size, JobStatus status) {
+    public Page<JobResponseDto> getAllJobs(int page, int size, JobStatus status, String search) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
-        Page<Job> jobs = status != null
-                ? jobRepository.findByStatus(status, pageable)
-                : jobRepository.findAll(pageable);
+        String normalizedSearch = search != null && !search.isBlank() ? search : null;
 
-        return jobs.map(this::mapToResponseDto);
+        return jobRepository.search(status, normalizedSearch, pageable)
+                .map(this::mapToResponseDto);
     }
 
     @Override

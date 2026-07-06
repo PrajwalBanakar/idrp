@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "program-coordinator-incubation",
+    "title": "Program Coordinator - Incubation",
+    "department": "Incubation",
+    "location": "IIIT Dharwad, Karnataka",
+    "employmentType": "Full-time",
+    "description": "Support the day-to-day operations of the incubation programs, coordinate with mentors and founders, and help manage cohort activities, events, and reporting.",
+    "eligibility": "Bachelor's degree in any discipline with 1-3 years of experience in program or operations coordination. Prior startup ecosystem exposure is a plus.",
+    "deadline": "2026-08-31",
+    "status": "OPEN"
+  },
+  {
+    "slug": "startup-mentor-deeptech",
+    "title": "Startup Mentor - Deep Tech",
+    "department": "Mentorship",
+    "location": "Remote / IIIT Dharwad",
+    "employmentType": "Part-time",
+    "description": "Guide early-stage deep tech startups on product strategy, technical architecture, and fundraising readiness through structured mentoring sessions.",
+    "eligibility": "5+ years of industry or founder experience in a deep tech domain (AI, IoT, robotics, or similar).",
+    "deadline": "2026-09-15",
+    "status": "OPEN"
+  },
+  {
+    "slug": "communications-associate",
+    "title": "Communications Associate",
+    "department": "Marketing & Communications",
+    "location": "IIIT Dharwad, Karnataka",
+    "employmentType": "Full-time",
+    "description": "Own IDRP’s content calendar across newsletters, social media, and event communications, and support storytelling for the startup and mentor community.",
+    "eligibility": "Bachelor's degree in Communications, Journalism, or related field with strong written English skills.",
+    "deadline": "2026-07-20",
+    "status": "CLOSED"
+  }
+]

@@ -2,6 +2,7 @@ package com.idrp.backend.dto.boardmember;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -39,6 +40,7 @@ public class BoardMemberRequestDto {
     private String profileImageUrl;
 
     @Size(max = 255, message = "LinkedIn URL must not exceed 255 characters")
+    @Pattern(regexp = "^(https?://.+)?$", message = "LinkedIn URL must start with http:// or https://")
     private String linkedinUrl;
 
     private Integer displayOrder;

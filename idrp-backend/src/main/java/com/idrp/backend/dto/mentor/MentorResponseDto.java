@@ -20,6 +20,7 @@ public class MentorResponseDto {
     private String expertise;
     private String bio;
     private String linkedinUrl;
+    private String profileImageUrl;
     private Boolean active;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

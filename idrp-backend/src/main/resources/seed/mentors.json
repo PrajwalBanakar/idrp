@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Ram Subramanian",
+    "email": "ram.subramanian@idrp.in",
+    "designation": "Serial Entrepreneur",
+    "organization": null,
+    "expertise": "Entrepreneurship",
+    "linkedinUrl": "https://assets.iiitdwd.ac.in/docs/RamSubramanianProfile.pdf",
+    "profileImageUrl": "/mentors/business-ram.jpg",
+    "active": true
+  },
+  {
+    "name": "Mallikarjun Kande",
+    "email": "mallikarjun.kande@idrp.in",
+    "designation": "Director, Space Energy Systems",
+    "organization": "Space Energy Systems",
+    "expertise": "Business and Industry Mentorship",
+    "linkedinUrl": "https://www.linkedin.com/in/mallikarjun-kande-18709342/",
+    "profileImageUrl": "/business-mallikarjun.jfif",
+    "active": true
+  },
+  {
+    "name": "Shashidhar Shettar",
+    "email": "shashidhar.shettar@idrp.in",
+    "designation": "Entrepreneur",
+    "organization": null,
+    "expertise": "Entrepreneurship",
+    "linkedinUrl": "https://www.linkedin.com/in/shashishettar",
+    "profileImageUrl": "/mentors/business-shashi.jpeg",
+    "active": true
+  },
+  {
+    "name": "Santosh Devanallikar",
+    "email": "santosh.devanallikar@idrp.in",
+    "designation": "Chip Architect, Nokia",
+    "organization": "Nokia",
+    "expertise": "Chip Architecture",
+    "linkedinUrl": "https://www.linkedin.com/in/adsantosh/",
+    "profileImageUrl": "/mentors/business-santosh.jpeg",
+    "active": true
+  },
+  {
+    "name": "Sasikumar Sundarajan",
+    "email": "sasikumar.sundarajan@idrp.in",
+    "designation": "Senior Advisor, BDO",
+    "organization": "BDO",
+    "expertise": "Business Advisory",
+    "linkedinUrl": "https://www.linkedin.com/in/sasikumars",
+    "profileImageUrl": "/mentors/business-sasikumar.jpeg",
+    "active": true
+  },
+  {
+    "name": "Chetan Khosla",
+    "email": "chetan.khosla@idrp.in",
+    "designation": "Investor & Entrepreneur",
+    "organization": null,
+    "expertise": "Investment and Entrepreneurship",
+    "linkedinUrl": "https://www.linkedin.com/in/chetankhosla/",
+    "profileImageUrl": "/mentors/chetan_khosla.jfif",
+    "active": true
+  },
+  {
+    "name": "Ambarish Kulkarni",
+    "email": "ambarish.kulkarni@idrp.in",
+    "designation": "Associate Professor, Swinburne University of Technology",
+    "organization": "Swinburne University of Technology",
+    "expertise": "Academic and Technical Mentorship",
+    "linkedinUrl": null,
+    "profileImageUrl": "/mentors/business-ambarish.jpg",
+    "active": true
+  },
+  {
+    "name": "Anand Bariya",
+    "email": "anand.bariya@idrp.in",
+    "designation": "Board Member, Deshpande Foundation",
+    "organization": "Deshpande Foundation",
+    "expertise": "Ecosystem and Startup Mentorship",
+    "linkedinUrl": "https://www.linkedin.com/in/anand-bariya-9ba9906a/",
+    "profileImageUrl": "/business-anand.jfif",
+    "active": true
+  },
+  {
+    "name": "Prof. Dr. Subhash Marihal",
+    "email": "subhash.marihal@idrp.in",
+    "designation": "Founder, SaSPinjara Life Science",
+    "organization": "SaSPinjara Life Science",
+    "expertise": "Life Sciences and Entrepreneurship",
+    "linkedinUrl": "https://www.linkedin.com/in/prof-dr-subhas-marihal-81359315",
+    "profileImageUrl": "/mentors/business-subhas.jpeg",
+    "active": true
+  }
+]

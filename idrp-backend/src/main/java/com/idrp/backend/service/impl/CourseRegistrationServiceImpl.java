@@ -99,6 +99,10 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     }
 
     private CourseRegistration mapToEntity(CourseRegistrationRequestDto dto) {
+        // Status is never taken from the client on creation - this DTO backs the public,
+        // unauthenticated submission endpoint, so every new registration starts PENDING
+        // regardless of what the request body contains. Only updateCourseRegistration
+        // (admin-only) can change the status afterwards.
         return CourseRegistration.builder()
                 .fullName(dto.getFullName())
                 .email(dto.getEmail())
@@ -107,7 +111,7 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
                 .designation(dto.getDesignation())
                 .courseType(dto.getCourseType())
                 .message(dto.getMessage())
-                .status(dto.getStatus() != null ? dto.getStatus() : CourseRegistrationStatus.PENDING)
+                .status(CourseRegistrationStatus.PENDING)
                 .build();
     }
 
