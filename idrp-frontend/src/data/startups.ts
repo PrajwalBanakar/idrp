@@ -1938,4 +1938,83 @@ export const startups: Startup[] = [
   founders: [],
   teamMembers: [],
 },
+{
+  id: 45,
+  name: 'Exobios Private Limited',
+  sector: 'HEALTH TECH',
+  categories: ['INCUBATED'],
+  logo: '/startups/logo/exobios.png',
+  website: '',
+  onePager: '',
+  brief:
+    'Exobios Private Limited is a health technology startup developing AI-enabled digital healthcare solutions that assist clinicians with patient assessment, monitoring, and intelligent decision support.',
+  contactEmail: 'dr.anup.iras@gmail.com',
+  techFacultyMentors: [],
+  founders: [
+    {
+      name: 'Ashwini Hegadekatti',
+      image: '',
+      role: 'Co-Founder',
+      email: 'dr.kartik.h@gmail.com',
+    },
+    {
+      name: 'Nanjunda Swamy Geetha',
+      image: '',
+      role: 'Co-Founder',
+      email: 'dr.anup.iras@gmail.com',
+    },
+  ],
+  teamMembers: [],
+},
+{
+  id: 46,
+  name: 'ANUTHANTRA PRIVATE LIMITED',
+  sector: 'HEALTH TECH',
+  categories: ['INCUBATED'],
+  logo: '/startups/logo/anuthantra.png',
+  website: '',
+  onePager: '',
+  brief:
+    'ANUTHANTRA Private Limited is a healthcare technology startup focused on developing innovative medical technologies and digital health solutions to improve patient care and clinical outcomes.',
+  contactEmail: 'vraghav1240nm@gmail.com',
+  techFacultyMentors: [],
+  founders: [
+    {
+      name: 'Venkatraman Raghavendra',
+      image: '',
+      role: 'Co-Founder',
+      email: 'vraghav1240nm@gmail.com',
+    },
+    {
+      name: 'Vaithiyashangar Jayakumar',
+      image: '',
+      role: 'Co-Founder',
+      email: 'jayakumarksrit@gmail.com',
+    },
+    {
+      name: 'Sathyaprakas H',
+      image: '',
+      role: 'Co-Founder',
+      email: 'sathyapt02@gmail.com',
+    },
+    {
+      name: 'Jinesh Valpparambil Narayanan Nair',
+      image: '',
+      role: 'Co-Founder',
+      email: 'jinesh.vn@presidencyuniversity.in',
+    },
+    {
+      name: 'Priyadharshini',
+      image: '',
+      role: 'Co-Founder',
+    },
+    {
+      name: 'Aswath Babu Hanumantha Rayappa',
+      image: '',
+      role: 'Co-Founder',
+      email: 'aswath.babu@gmail.com',
+    },
+  ],
+  teamMembers: [],
+},
 ]
