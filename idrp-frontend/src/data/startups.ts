@@ -1325,14 +1325,14 @@ export const startups: Startup[] = [
   },
   {
     id: 28,
-    name: 'Acummen Intelligence',
+    name: 'Acumen Intelligence',
     sector: 'AI / SAAS',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/acumen-intelligence.png',
     website: '',
     onePager: '',
     brief:
-      'Acummen Intelligence is developing a SaaS platform that empowers MSMEs to analyse customer feedback and generate data-driven recommendations to enhance service quality.',
+      'Acumen Intelligence is developing a SaaS platform that empowers MSMEs to analyse customer feedback and generate data-driven recommendations to enhance service quality.',
     contactEmail: '25bcs158@iiitdwd.ac.in',
     techFacultyMentors: [
       {
