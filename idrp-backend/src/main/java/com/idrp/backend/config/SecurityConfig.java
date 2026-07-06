@@ -1,12 +1,12 @@
 package com.idrp.backend.config;
 
 import com.idrp.backend.service.CustomAdminDetailsService;
+import com.idrp.backend.util.JsonErrorResponseWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -18,25 +18,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.time.LocalDateTime;
-
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final RateLimitFilter rateLimitFilter;
     private final CustomAdminDetailsService customAdminDetailsService;
-
-    private void writeJsonError(jakarta.servlet.http.HttpServletResponse response, HttpStatus status, String error, String message)
-            throws java.io.IOException {
-        response.setStatus(status.value());
-        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.getWriter().write(String.format(
-                "{\"timestamp\":\"%s\",\"success\":false,\"status\":%d,\"error\":\"%s\",\"message\":\"%s\"}",
-                LocalDateTime.now(), status.value(), error, message
-        ));
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -57,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/course-registrations").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/job-applications").permitAll()
                         .requestMatchers(HttpMethod.GET, "/uploads/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/actuator/health/**").permitAll()
 
                         // Public GET content APIs
                         .requestMatchers(HttpMethod.GET, "/api/resources/**").permitAll()
@@ -78,17 +68,18 @@ public class SecurityConfig {
                 )
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint((request, response, authException) ->
-                                writeJsonError(response, HttpStatus.UNAUTHORIZED, "Unauthorized",
+                                JsonErrorResponseWriter.write(response, HttpStatus.UNAUTHORIZED, "Unauthorized",
                                         "Authentication is required to access this resource"))
                         .accessDeniedHandler((request, response, accessDeniedException) ->
-                                writeJsonError(response, HttpStatus.FORBIDDEN, "Forbidden",
+                                JsonErrorResponseWriter.write(response, HttpStatus.FORBIDDEN, "Forbidden",
                                         "You do not have permission to access this resource"))
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class);
 
         return http.build();
     }

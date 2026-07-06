@@ -51,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
         String accessToken = jwtService.generateToken(savedAdmin);
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(savedAdmin);
 
-        return buildAuthResponse(savedAdmin, accessToken, refreshToken.getToken());
+        return buildAuthResponse(savedAdmin, accessToken, refreshToken.getRawToken());
     }
 
     @Override
@@ -69,18 +69,22 @@ public class AuthServiceImpl implements AuthService {
         String accessToken = jwtService.generateToken(admin);
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(admin);
 
-        return buildAuthResponse(admin, accessToken, refreshToken.getToken());
+        return buildAuthResponse(admin, accessToken, refreshToken.getRawToken());
     }
 
     @Override
     public AuthResponseDto refreshAccessToken(String refreshTokenValue) {
 
-        RefreshToken refreshToken = refreshTokenService.validateRefreshToken(refreshTokenValue);
+        RefreshToken validatedToken = refreshTokenService.validateRefreshToken(refreshTokenValue);
 
-        Admin admin = refreshToken.getAdmin();
+        Admin admin = validatedToken.getAdmin();
         String newAccessToken = jwtService.generateToken(admin);
 
-        return buildAuthResponse(admin, newAccessToken, refreshToken.getToken()); 
+        // Rotate: mint a new refresh token on every use so a leaked/replayed old value
+        // (this one included, once we return) can never be exchanged again.
+        RefreshToken rotatedToken = refreshTokenService.createRefreshToken(admin);
+
+        return buildAuthResponse(admin, newAccessToken, rotatedToken.getRawToken());
     }
 
     @Override

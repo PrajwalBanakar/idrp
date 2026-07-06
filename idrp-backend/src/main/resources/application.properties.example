@@ -29,3 +29,7 @@ app.upload.dir=uploads
 app.upload.base-url=http://localhost:8080/uploads
 
 app.cors.allowed-origins=http://localhost:5173
+
+# Only the health endpoint is exposed - never widen this without also locking it
+# down behind admin auth, since other actuator endpoints can leak internal details.
+management.endpoints.web.exposure.include=health

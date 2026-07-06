@@ -7,6 +7,7 @@ import com.idrp.backend.exception.TokenExpiredException;
 import com.idrp.backend.exception.TokenRevokedException;
 import com.idrp.backend.repository.RefreshTokenRepository;
 import com.idrp.backend.service.RefreshTokenService;
+import com.idrp.backend.util.TokenHasher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,37 +23,39 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 
     private static final long REFRESH_TOKEN_VALIDITY_DAYS = 7;
 
-@Override
-@Transactional
-public RefreshToken createRefreshToken(Admin admin) {
+    @Override
+    @Transactional
+    public RefreshToken createRefreshToken(Admin admin) {
 
-    RefreshToken refreshToken = refreshTokenRepository.findByAdmin(admin)
-            .orElse(null);
+        String rawToken = UUID.randomUUID().toString();
+        String tokenHash = TokenHasher.sha256(rawToken);
 
-    if (refreshToken != null) {
-        // update existing token
-        refreshToken.setToken(UUID.randomUUID().toString());
-        refreshToken.setExpiryDate(LocalDateTime.now().plusDays(REFRESH_TOKEN_VALIDITY_DAYS));
-        refreshToken.setRevoked(false);
+        RefreshToken refreshToken = refreshTokenRepository.findByAdmin(admin).orElse(null);
 
-        return refreshTokenRepository.save(refreshToken);
+        if (refreshToken != null) {
+            // rotate existing row onto the new token - the old raw value is immediately
+            // unusable since its hash no longer matches anything in the table
+            refreshToken.setTokenHash(tokenHash);
+            refreshToken.setExpiryDate(LocalDateTime.now().plusDays(REFRESH_TOKEN_VALIDITY_DAYS));
+            refreshToken.setRevoked(false);
+        } else {
+            refreshToken = RefreshToken.builder()
+                    .admin(admin)
+                    .tokenHash(tokenHash)
+                    .expiryDate(LocalDateTime.now().plusDays(REFRESH_TOKEN_VALIDITY_DAYS))
+                    .revoked(false)
+                    .build();
+        }
+
+        RefreshToken saved = refreshTokenRepository.save(refreshToken);
+        saved.setRawToken(rawToken);
+        return saved;
     }
 
-    // create new token
-    RefreshToken newToken = RefreshToken.builder()
-            .admin(admin)
-            .token(UUID.randomUUID().toString())
-            .expiryDate(LocalDateTime.now().plusDays(REFRESH_TOKEN_VALIDITY_DAYS))
-            .revoked(false)
-            .build();
-
-    return refreshTokenRepository.save(newToken);
-}
-
     @Override
-    public RefreshToken validateRefreshToken(String token) {
+    public RefreshToken validateRefreshToken(String rawToken) {
 
-        RefreshToken refreshToken = refreshTokenRepository.findByToken(token)
+        RefreshToken refreshToken = refreshTokenRepository.findByTokenHash(TokenHasher.sha256(rawToken))
                 .orElseThrow(() -> new ResourceNotFoundException("Refresh token not found"));
 
         if (refreshToken.isRevoked()) {
@@ -68,9 +71,9 @@ public RefreshToken createRefreshToken(Admin admin) {
 
     @Override
     @Transactional
-    public void revokeRefreshToken(String token) {
+    public void revokeRefreshToken(String rawToken) {
 
-        RefreshToken refreshToken = refreshTokenRepository.findByToken(token)
+        RefreshToken refreshToken = refreshTokenRepository.findByTokenHash(TokenHasher.sha256(rawToken))
                 .orElseThrow(() -> new ResourceNotFoundException("Refresh token not found"));
 
         refreshToken.setRevoked(true);
