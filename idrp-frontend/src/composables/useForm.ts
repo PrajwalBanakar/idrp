@@ -189,6 +189,13 @@ export function useForm(config: FormConfig) {
   }
 
   async function handleSubmit(): Promise<FormSubmitResult> {
+    if (status.value === 'submitting') {
+      return {
+        success: false,
+        message: 'Your submission is already being processed.',
+      }
+    }
+
     const isValid = validate()
 
     if (!isValid) {

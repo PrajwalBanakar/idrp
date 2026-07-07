@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+import { API_BASE_URL, buildRateLimitMessage, type ApiResponse } from '@/services/httpClient'
 
 export type AdminLoginPayload = {
   email: string
@@ -13,12 +13,6 @@ export type AdminUser = {
   accessToken: string
   refreshToken: string
   tokenType: string
-}
-
-type ApiResponse<T> = {
-  success: boolean
-  message: string
-  data: T
 }
 
 const ACCESS_TOKEN_KEY = 'idrp_admin_access_token'
@@ -101,8 +95,8 @@ export function handleUnauthorizedSession() {
 
 /**
  * Shared fetch wrapper for admin (JWT-protected) API calls. Centralizes
- * auth headers, ApiResponse<T> unwrapping, and 401 handling so individual
- * admin services don't have to reimplement it.
+ * auth headers, ApiResponse<T> unwrapping, and 401/403/429 handling so
+ * individual admin services don't have to reimplement it.
  */
 export async function adminFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getAdminAccessToken()
@@ -119,7 +113,15 @@ export async function adminFetch<T>(path: string, options: RequestInit = {}): Pr
 
   if (response.status === 401) {
     handleUnauthorizedSession()
-    throw new Error('Session expired. Please log in again.')
+    throw new Error('Your session has expired. Please log in again.')
+  }
+
+  if (response.status === 403) {
+    throw new Error('You do not have permission to perform this action.')
+  }
+
+  if (response.status === 429) {
+    throw new Error(buildRateLimitMessage(response))
   }
 
   let result: ApiResponse<T> | null = null

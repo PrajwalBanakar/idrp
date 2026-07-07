@@ -32,6 +32,7 @@ const hasActions = computed(() => hasProfile.value || hasLinkedin.value)
         v-if="showImage && props.member.image"
         :src="props.member.image"
         :alt="props.member.imageAlt ?? props.member.name"
+        loading="lazy"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         @error="showImage = false"
       />

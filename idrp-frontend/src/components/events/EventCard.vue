@@ -13,6 +13,7 @@
             <img
               :src="event.image"
               :alt="event.title"
+              loading="lazy"
               class="w-full transition duration-500 hover:scale-[1.03]"
               :class="
                 event.imageFit === 'contain'

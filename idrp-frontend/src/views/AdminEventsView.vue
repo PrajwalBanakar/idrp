@@ -5,7 +5,7 @@ import { uploadAdminFile } from '@/services/fileUploadService'
 import {
   createAdminEvent,
   deleteAdminEvent,
-  getAdminEvents,
+  fetchAdminEvents,
   updateAdminEvent,
   type AdminEvent,
   type AdminEventPayload,
@@ -64,7 +64,7 @@ const loadEvents = async () => {
   try {
     loading.value = true
     errorMessage.value = ''
-    events.value = await getAdminEvents()
+    events.value = await fetchAdminEvents()
   } catch (error) {
     errorMessage.value = error instanceof Error ? error.message : 'Failed to load events'
   } finally {

@@ -30,6 +30,7 @@
               v-if="item.image && !hiddenImages[item.id]"
               :src="item.image"
               :alt="item.title"
+              loading="lazy"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               @error="hideImage(item.id)"
             />

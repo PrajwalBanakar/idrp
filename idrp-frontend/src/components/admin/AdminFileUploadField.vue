@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { uploadAdminFile } from '@/services/fileUploadService'
+import { computed, ref } from 'vue'
+import {
+  ALLOWED_UPLOAD_ACCEPT,
+  uploadAdminFile,
+  validateUploadFile,
+  type UploadKind,
+} from '@/services/fileUploadService'
 
 const props = withDefaults(
   defineProps<{
     modelValue: string | undefined
     folder?: string
-    accept?: string
+    kind?: UploadKind
     label?: string
     placeholder?: string
     preview?: 'image' | 'none'
   }>(),
   {
     folder: 'general',
-    accept: 'image/*',
+    kind: 'image',
     label: 'Upload file',
     placeholder: 'File path or URL',
     preview: 'image',
@@ -24,6 +29,8 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
+const accept = computed(() => ALLOWED_UPLOAD_ACCEPT[props.kind])
+
 const uploading = ref(false)
 const uploadError = ref('')
 
@@ -32,6 +39,14 @@ const handleUpload = async (event: Event) => {
   const file = input.files?.[0]
 
   if (!file) return
+
+  const validationError = validateUploadFile(file, props.kind)
+
+  if (validationError) {
+    uploadError.value = validationError
+    input.value = ''
+    return
+  }
 
   try {
     uploading.value = true
@@ -60,6 +75,10 @@ const handleUpload = async (event: Event) => {
       class="w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700"
       @change="handleUpload"
     />
+
+    <p class="mt-1 text-xs text-slate-400">
+      Allowed: {{ kind === 'pdf' ? 'PDF' : 'JPG, PNG, WEBP, GIF' }}, up to 10MB.
+    </p>
 
     <p v-if="uploading" class="mt-2 text-sm text-slate-500">Uploading...</p>
     <p v-if="uploadError" class="mt-2 text-sm text-red-600">{{ uploadError }}</p>

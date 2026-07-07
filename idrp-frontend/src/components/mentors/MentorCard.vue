@@ -9,6 +9,7 @@
         v-if="showImage && mentor.image"
         :src="mentor.image"
         :alt="mentor.imageAlt ?? mentor.name"
+        loading="lazy"
         class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
         @error="showImage = false"
       />

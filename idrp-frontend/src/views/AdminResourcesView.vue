@@ -408,7 +408,7 @@ onMounted(loadResources)
           <AdminFileUploadField
             v-model="form.fileUrl"
             folder="resources"
-            accept="application/pdf"
+            kind="pdf"
             preview="none"
             label="File (PDF)"
             placeholder="/newsletters/05-jan-mar-2026-edition.pdf"

@@ -71,6 +71,7 @@ const showImage = ref(true)
             v-if="showImage && props.image"
             :src="props.image"
             :alt="props.imageAlt"
+            loading="lazy"
             class="h-full w-full object-contain"
             @error="showImage = false"
           />

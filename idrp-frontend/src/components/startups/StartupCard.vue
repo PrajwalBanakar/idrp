@@ -89,6 +89,7 @@ watch(
               v-if="!logoBroken && startup.logo"
               :src="startup.logo"
               :alt="startup.name"
+              loading="lazy"
               class="h-full w-full object-contain"
               @error="handleLogoError"
             />
@@ -202,6 +203,7 @@ watch(
                         v-if="mentor.image"
                         :src="mentor.image"
                         :alt="mentor.name"
+                        loading="lazy"
                         class="h-full w-full object-cover"
                       />
 
@@ -263,6 +265,7 @@ watch(
                         v-if="member.image"
                         :src="member.image"
                         :alt="member.name"
+                        loading="lazy"
                         class="h-full w-full object-cover"
                       />
 

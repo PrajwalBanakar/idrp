@@ -1,4 +1,5 @@
 import { adminFetch } from './authService'
+import type { PageResponse } from './httpClient'
 
 export interface ProgramAdminItem {
   id: number
@@ -25,14 +26,6 @@ export interface ProgramAdminPayload {
   brochureUrl?: string
   applyUrl?: string
   features?: string[]
-}
-
-interface PageResponse<T> {
-  content: T[]
-  totalElements: number
-  totalPages: number
-  number: number
-  size: number
 }
 
 export const fetchAdminPrograms = async (): Promise<ProgramAdminItem[]> => {

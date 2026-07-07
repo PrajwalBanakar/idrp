@@ -13,6 +13,7 @@
               v-if="newsletter.previewImage && showPreviewImage"
               :src="newsletter.previewImage"
               :alt="newsletter.title"
+              loading="lazy"
               class="h-auto w-full object-cover"
               @error="showPreviewImage = false"
             />

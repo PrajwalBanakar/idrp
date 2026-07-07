@@ -380,10 +380,18 @@
           <div class="pt-2">
             <button
               type="submit"
-              class="w-full rounded-xl bg-emerald-700 py-4 text-sm font-bold tracking-wide text-white transition-colors duration-200 hover:bg-emerald-800"
+              :disabled="submitting"
+              class="w-full rounded-xl bg-emerald-700 py-4 text-sm font-bold tracking-wide text-white transition-colors duration-200 hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Submit Investor Profile
+              {{ submitting ? 'Submitting...' : 'Submit Investor Profile' }}
             </button>
+          </div>
+
+          <div
+            v-if="errorMessage"
+            class="flex items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-medium text-rose-700"
+          >
+            {{ errorMessage }}
           </div>
 
           <div
@@ -408,6 +416,7 @@ import {
   engagementTypeOptions,
   introductionPreferenceOptions,
 } from '@/data/forms/investorMatchmakingForm'
+import { useSimulatedSubmit } from '@/composables/useSimulatedSubmit'
 
 type InvestorForm = {
   investorName: string
@@ -431,7 +440,7 @@ type InvestorForm = {
 }
 
 const showHeroImage = ref(true)
-const submitted = ref(false)
+const { submitting, submitted, errorMessage, submit } = useSimulatedSubmit()
 
 const form = reactive<InvestorForm>({
   investorName: '',
@@ -476,12 +485,7 @@ function resetForm() {
 }
 
 function submitForm() {
-  submitted.value = true
-  resetForm()
-
-  window.setTimeout(() => {
-    submitted.value = false
-  }, 6000)
+  submit(resetForm)
 }
 </script>
 

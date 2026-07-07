@@ -40,6 +40,7 @@ function getInstituteProjectCount(institute: NAINInstitute) {
             v-if="institute.logo && showInstituteLogo"
             :src="institute.logo"
             :alt="institute.name"
+            loading="lazy"
             class="h-full w-full object-contain p-2"
             @error="showInstituteLogo = false"
           />

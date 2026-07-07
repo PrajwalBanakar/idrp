@@ -14,6 +14,7 @@
         v-if="partner.logo"
         :src="partner.logo"
         :alt="`${partner.name} logo`"
+        loading="lazy"
         class="max-h-10 w-auto object-contain"
       />
       <div

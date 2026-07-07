@@ -1,4 +1,5 @@
 import { adminFetch } from './authService'
+import type { PageResponse } from './httpClient'
 
 export type ResourceType = 'NEWSLETTER' | 'BLOG' | 'RESEARCH'
 
@@ -33,14 +34,6 @@ export interface ResourceAdminPayload {
   author?: string
   active: boolean
   displayOrder: number
-}
-
-interface PageResponse<T> {
-  content: T[]
-  totalElements: number
-  totalPages: number
-  number: number
-  size: number
 }
 
 export const fetchAdminResources = async (): Promise<ResourceAdminItem[]> => {

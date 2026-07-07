@@ -6,6 +6,7 @@
           v-if="showCampusImage"
           src="/campus/idrp_building.jpg"
           alt="IDRP Campus"
+          loading="lazy"
           class="h-full w-full object-cover"
           @error="showCampusImage = false"
         />

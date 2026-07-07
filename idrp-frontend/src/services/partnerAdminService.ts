@@ -1,4 +1,5 @@
 import { adminFetch } from './authService'
+import type { PageResponse } from './httpClient'
 
 export interface PartnerAdminItem {
   id: number
@@ -25,14 +26,6 @@ export interface PartnerAdminPayload {
   contactEmail?: string
   contactPhone?: string
   active: boolean
-}
-
-interface PageResponse<T> {
-  content: T[]
-  totalElements: number
-  totalPages: number
-  number: number
-  size: number
 }
 
 export const fetchAdminPartners = async (): Promise<PartnerAdminItem[]> => {

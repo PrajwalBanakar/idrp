@@ -368,7 +368,7 @@ onMounted(loadPrograms)
           <AdminFileUploadField
             v-model="form.brochureUrl"
             folder="programs"
-            accept="application/pdf"
+            kind="pdf"
             preview="none"
             label="Brochure (PDF)"
             placeholder="/programs/brochures/example.pdf"

@@ -130,10 +130,18 @@
           <div class="pt-2">
             <button
               type="submit"
-              class="w-full rounded-xl bg-[var(--color-primary)] py-4 text-sm font-bold tracking-wide text-white transition-colors duration-200 hover:bg-teal-800"
+              :disabled="submitting"
+              class="w-full rounded-xl bg-[var(--color-primary)] py-4 text-sm font-bold tracking-wide text-white transition-colors duration-200 hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Submit Application
+              {{ submitting ? 'Submitting...' : 'Submit Application' }}
             </button>
+          </div>
+
+          <div
+            v-if="errorMessage"
+            class="flex items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-medium text-rose-700"
+          >
+            {{ errorMessage }}
           </div>
 
           <div
@@ -163,9 +171,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { getJobBySlug } from '@/data/careers'
+import { useSimulatedSubmit } from '@/composables/useSimulatedSubmit'
 
 // TODO(admin-integration): This form currently only simulates submission locally.
 // Wire it to POST /api/job-applications once the Careers page is connected to the backend.
@@ -191,7 +200,7 @@ const formattedDeadline = computed(() => {
   })
 })
 
-const submitted = ref(false)
+const { submitting, submitted, errorMessage, submit } = useSimulatedSubmit()
 
 const form = reactive<ApplicationForm>({
   applicantName: '',
@@ -210,12 +219,7 @@ function resetForm() {
 }
 
 function submitForm() {
-  submitted.value = true
-  resetForm()
-
-  window.setTimeout(() => {
-    submitted.value = false
-  }, 6000)
+  submit(resetForm)
 }
 </script>
 

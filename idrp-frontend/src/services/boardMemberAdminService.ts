@@ -1,4 +1,5 @@
 import { adminFetch } from './authService'
+import type { PageResponse } from './httpClient'
 
 export interface BoardMemberAdminItem {
   id: number
@@ -29,10 +30,6 @@ export interface BoardMemberAdminPayload {
   linkedinUrl?: string
   displayOrder: number
   active: boolean
-}
-
-interface PageResponse<T> {
-  content: T[]
 }
 
 export const fetchAdminBoardMembers = async (): Promise<BoardMemberAdminItem[]> => {

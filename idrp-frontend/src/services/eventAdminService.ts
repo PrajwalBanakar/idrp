@@ -1,4 +1,5 @@
 import { adminFetch } from '@/services/authService'
+import type { PageResponse } from '@/services/httpClient'
 
 export type AdminEventPayload = {
   slug: string
@@ -25,11 +26,7 @@ export type AdminEvent = AdminEventPayload & {
   updatedAt?: string
 }
 
-interface PageResponse<T> {
-  content: T[]
-}
-
-export async function getAdminEvents(): Promise<AdminEvent[]> {
+export async function fetchAdminEvents(): Promise<AdminEvent[]> {
   const data = await adminFetch<PageResponse<AdminEvent> | AdminEvent[]>('/api/events?size=200')
 
   return Array.isArray(data) ? data : data.content

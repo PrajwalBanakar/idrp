@@ -6,6 +6,7 @@ import type {
   FormValues,
   FormValue,
 } from '@/types/form'
+import { buildRateLimitMessage } from '@/services/httpClient'
 
 function mapValuesToPayload(
   config: FormConfig,
@@ -126,8 +127,6 @@ export async function submitForm(
 ): Promise<FormSubmitResult> {
   const payload = buildFormPayload(config, values)
 
-  console.log('Submitting form payload:', payload)
-
   try {
     if (isWeb3FormsEndpoint(config.endpoint)) {
       return await submitToWeb3Forms(config, payload)
@@ -142,8 +141,13 @@ export async function submitForm(
         body: JSON.stringify(payload.data), // Send only the data object to custom endpoints
       })
 
+      if (response.status === 429) {
+        throw new Error(buildRateLimitMessage(response))
+      }
+
       if (!response.ok) {
-        throw new Error('Failed to submit form.')
+        const errorBody = await response.json().catch(() => null)
+        throw new Error(errorBody?.message || 'Failed to submit form.')
       }
 
       return {

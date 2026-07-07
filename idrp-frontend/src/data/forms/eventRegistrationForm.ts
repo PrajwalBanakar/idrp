@@ -1,7 +1,6 @@
 import type { FormConfig } from '@/types/form'
 import type { EventItem } from '@/types/events'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+import { API_BASE_URL } from '@/services/httpClient'
 
 export function createEventRegistrationFormConfig(event: EventItem): FormConfig {
   return {

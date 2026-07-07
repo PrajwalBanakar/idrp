@@ -1,6 +1,6 @@
 <template>
   <div class="app-layout">
-    <header class="site-header" :class="{ 'site-header--scrolled': isScrolled }">
+    <header v-if="!isAdminRoute" class="site-header" :class="{ 'site-header--scrolled': isScrolled }">
       <div class="container header-inner">
         <RouterLink to="/" class="brand" @click="closeAllMenus">
           <img
@@ -189,7 +189,7 @@
       <RouterView />
     </main>
 
-    <footer class="site-footer">
+    <footer v-if="!isAdminRoute" class="site-footer">
       <div class="container footer-grid">
         <section class="footer-brand">
           <img
@@ -291,7 +291,7 @@
 
     <transition name="fade">
       <button
-        v-if="showScrollTop"
+        v-if="showScrollTop && !isAdminRoute"
         type="button"
         class="scroll-top"
         aria-label="Scroll to top"
@@ -304,7 +304,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 
 type NavItem = {
@@ -322,6 +322,10 @@ type NavSection = {
 }
 
 const route = useRoute()
+
+// Admin pages have their own AdminLayout (sidebar/header) and shouldn't be
+// wrapped in the public marketing site's nav/footer chrome.
+const isAdminRoute = computed(() => route.path.startsWith('/admin'))
 
 const navSections: NavSection[] = [
   {
@@ -505,16 +509,24 @@ function handleScroll() {
   showScrollTop.value = y > 400
 }
 
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape' && (activeDropdown.value || isMobileMenuOpen.value)) {
+    closeAllMenus()
+  }
+}
+
 watch(() => route.fullPath, closeAllMenus)
 
 onMounted(() => {
   handleScroll()
   window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('keydown', handleKeydown)
 })
 
 onBeforeUnmount(() => {
   clearDropdownTimer()
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('keydown', handleKeydown)
 })
 </script>
 

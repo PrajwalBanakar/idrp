@@ -301,7 +301,7 @@ onMounted(fetchStartups)
         <AdminFileUploadField
           v-model="form.onePager"
           folder="startups"
-          accept="application/pdf"
+          kind="pdf"
           preview="none"
           label="One Pager (PDF)"
           placeholder="/startups/one-pagers/example.pdf"

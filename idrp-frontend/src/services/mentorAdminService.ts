@@ -1,4 +1,5 @@
 import { adminFetch } from './authService'
+import type { PageResponse } from './httpClient'
 
 export interface MentorAdminItem {
   id: number
@@ -27,14 +28,6 @@ export interface MentorAdminPayload {
   linkedinUrl?: string
   profileImageUrl?: string
   active: boolean
-}
-
-interface PageResponse<T> {
-  content: T[]
-  totalElements?: number
-  totalPages?: number
-  number?: number
-  size?: number
 }
 
 export const fetchAdminMentors = async (): Promise<MentorAdminItem[]> => {

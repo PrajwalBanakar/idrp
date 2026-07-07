@@ -1,4 +1,5 @@
 import { adminFetch } from '@/services/authService'
+import type { PageResponse } from '@/services/httpClient'
 
 export type StartupCategory = 'PRE_INCUBATED' | 'INCUBATED' | 'FUNDED'
 
@@ -28,10 +29,6 @@ export type StartupResponse = StartupRequest & {
   id: number | string
   createdAt?: string
   updatedAt?: string
-}
-
-interface PageResponse<T> {
-  content: T[]
 }
 
 export const startupAdminService = {
