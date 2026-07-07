@@ -1,6 +1,4 @@
-import { getAdminAccessToken } from './authService'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+import { adminFetch } from './authService'
 
 export interface PartnerAdminItem {
   id: number
@@ -37,31 +35,8 @@ interface PageResponse<T> {
   size: number
 }
 
-const authHeaders = () => {
-  const token = getAdminAccessToken()
-
-  return {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  }
-}
-
-const handleResponse = async <T>(response: Response): Promise<T> => {
-  const result = await response.json()
-
-  if (!response.ok || result.success === false) {
-    throw new Error(result.message || 'Something went wrong')
-  }
-
-  return result.data
-}
-
 export const fetchAdminPartners = async (): Promise<PartnerAdminItem[]> => {
-  const response = await fetch(`${API_BASE_URL}/api/partners`, {
-    headers: authHeaders(),
-  })
-
-  const data = await handleResponse<PageResponse<PartnerAdminItem>>(response)
+  const data = await adminFetch<PageResponse<PartnerAdminItem>>('/api/partners')
 
   return data.content
 }
@@ -69,33 +44,24 @@ export const fetchAdminPartners = async (): Promise<PartnerAdminItem[]> => {
 export const createAdminPartner = async (
   payload: PartnerAdminPayload,
 ): Promise<PartnerAdminItem> => {
-  const response = await fetch(`${API_BASE_URL}/api/partners`, {
+  return adminFetch<PartnerAdminItem>('/api/partners', {
     method: 'POST',
-    headers: authHeaders(),
     body: JSON.stringify(payload),
   })
-
-  return handleResponse<PartnerAdminItem>(response)
 }
 
 export const updateAdminPartner = async (
   id: number,
   payload: PartnerAdminPayload,
 ): Promise<PartnerAdminItem> => {
-  const response = await fetch(`${API_BASE_URL}/api/partners/${id}`, {
+  return adminFetch<PartnerAdminItem>(`/api/partners/${id}`, {
     method: 'PUT',
-    headers: authHeaders(),
     body: JSON.stringify(payload),
   })
-
-  return handleResponse<PartnerAdminItem>(response)
 }
 
 export const deleteAdminPartner = async (id: number): Promise<void> => {
-  const response = await fetch(`${API_BASE_URL}/api/partners/${id}`, {
+  await adminFetch<null>(`/api/partners/${id}`, {
     method: 'DELETE',
-    headers: authHeaders(),
   })
-
-  await handleResponse<null>(response)
 }

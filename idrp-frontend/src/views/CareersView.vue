@@ -13,7 +13,7 @@
           </p>
         </div>
 
-        <div class="mb-8 flex flex-wrap items-center justify-center gap-3">
+        <div v-if="jobs.length > 0" class="mb-8 flex flex-wrap items-center justify-center gap-3">
           <button
             v-for="option in filterOptions"
             :key="option.value"
@@ -35,6 +35,17 @@
           class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           <JobCard v-for="job in filteredJobs" :key="job.id" :job="job" />
+        </div>
+
+        <div
+          v-else-if="jobs.length === 0"
+          class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 px-6 py-16 text-center"
+        >
+          <p class="text-lg font-semibold text-slate-700">No current openings</p>
+          <p class="mt-2 text-sm text-slate-500">
+            We don't have any open positions right now. Please check back soon — new roles will be
+            posted here as they become available.
+          </p>
         </div>
 
         <div

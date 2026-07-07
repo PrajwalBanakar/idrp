@@ -27,6 +27,14 @@
         />
 
         <div
+          v-if="newsletters.length === 0"
+          class="relative z-10 rounded-2xl border border-dashed border-[#c9bfa9] bg-white/60 px-6 py-12 text-center text-sm text-slate-500"
+        >
+          No newsletters published yet. Please check back soon.
+        </div>
+
+        <div
+          v-else
           class="relative z-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-5"
         >
           <component

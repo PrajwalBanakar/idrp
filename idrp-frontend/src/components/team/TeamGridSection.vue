@@ -20,7 +20,14 @@ withDefaults(defineProps<Props>(), {
 <template>
   <section class="bg-slate-50 px-6 py-16 md:px-12 lg:px-16 lg:py-20">
     <div class="mx-auto max-w-7xl">
-      <div class="flex flex-wrap justify-center gap-6">
+      <div
+        v-if="members.length === 0"
+        class="rounded-3xl border border-slate-200 bg-white px-6 py-14 text-center"
+      >
+        <p class="text-base font-medium text-slate-600">No members added yet.</p>
+      </div>
+
+      <div v-else class="flex flex-wrap justify-center gap-6">
         <div
           v-for="member in members"
           :key="member.name"

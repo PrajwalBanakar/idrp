@@ -2,6 +2,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
+import AdminLayout from '@/components/admin/AdminLayout.vue'
+import AdminFileUploadField from '@/components/admin/AdminFileUploadField.vue'
 import {
   createAdminResource,
   deleteAdminResource,
@@ -170,6 +172,7 @@ onMounted(loadResources)
 </script>
 
 <template>
+  <AdminLayout>
   <div class="space-y-8">
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
@@ -402,29 +405,21 @@ onMounted(loadResources)
             />
           </div>
 
-          <div>
-            <label class="mb-1.5 block text-sm font-semibold text-slate-700">
-              File URL
-            </label>
-            <input
-              v-model="form.fileUrl"
-              type="text"
-              class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary-soft)]"
-              placeholder="/newsletters/05-jan-mar-2026-edition.pdf"
-            />
-          </div>
+          <AdminFileUploadField
+            v-model="form.fileUrl"
+            folder="resources"
+            accept="application/pdf"
+            preview="none"
+            label="File (PDF)"
+            placeholder="/newsletters/05-jan-mar-2026-edition.pdf"
+          />
 
-          <div>
-            <label class="mb-1.5 block text-sm font-semibold text-slate-700">
-              Cover Image URL
-            </label>
-            <input
-              v-model="form.coverImageUrl"
-              type="text"
-              class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary-soft)]"
-              placeholder="/resources-hero.jfif"
-            />
-          </div>
+          <AdminFileUploadField
+            v-model="form.coverImageUrl"
+            folder="resources"
+            label="Cover Image"
+            placeholder="/resources-hero.jfif"
+          />
 
           <div class="grid gap-4 sm:grid-cols-2">
             <div>
@@ -471,4 +466,5 @@ onMounted(loadResources)
       </section>
     </div>
   </div>
+  </AdminLayout>
 </template>

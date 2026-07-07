@@ -1,6 +1,4 @@
-import { getAdminAccessToken } from './authService'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+import { adminFetch } from './authService'
 
 export interface MentorAdminItem {
   id: number
@@ -12,6 +10,7 @@ export interface MentorAdminItem {
   expertise?: string
   bio?: string
   linkedinUrl?: string
+  profileImageUrl?: string
   active: boolean
   createdAt?: string
   updatedAt?: string
@@ -26,6 +25,7 @@ export interface MentorAdminPayload {
   expertise?: string
   bio?: string
   linkedinUrl?: string
+  profileImageUrl?: string
   active: boolean
 }
 
@@ -37,31 +37,8 @@ interface PageResponse<T> {
   size?: number
 }
 
-const authHeaders = () => {
-  const token = getAdminAccessToken()
-
-  return {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  }
-}
-
-const handleResponse = async <T>(response: Response): Promise<T> => {
-  const result = await response.json()
-
-  if (!response.ok || result.success === false) {
-    throw new Error(result.message || 'Something went wrong')
-  }
-
-  return result.data
-}
-
 export const fetchAdminMentors = async (): Promise<MentorAdminItem[]> => {
-  const response = await fetch(`${API_BASE_URL}/api/mentors`, {
-    headers: authHeaders(),
-  })
-
-  const data = await handleResponse<PageResponse<MentorAdminItem>>(response)
+  const data = await adminFetch<PageResponse<MentorAdminItem>>('/api/mentors')
 
   return data.content
 }
@@ -69,33 +46,24 @@ export const fetchAdminMentors = async (): Promise<MentorAdminItem[]> => {
 export const createAdminMentor = async (
   payload: MentorAdminPayload,
 ): Promise<MentorAdminItem> => {
-  const response = await fetch(`${API_BASE_URL}/api/mentors`, {
+  return adminFetch<MentorAdminItem>('/api/mentors', {
     method: 'POST',
-    headers: authHeaders(),
     body: JSON.stringify(payload),
   })
-
-  return handleResponse<MentorAdminItem>(response)
 }
 
 export const updateAdminMentor = async (
   id: number,
   payload: MentorAdminPayload,
 ): Promise<MentorAdminItem> => {
-  const response = await fetch(`${API_BASE_URL}/api/mentors/${id}`, {
+  return adminFetch<MentorAdminItem>(`/api/mentors/${id}`, {
     method: 'PUT',
-    headers: authHeaders(),
     body: JSON.stringify(payload),
   })
-
-  return handleResponse<MentorAdminItem>(response)
 }
 
 export const deleteAdminMentor = async (id: number): Promise<void> => {
-  const response = await fetch(`${API_BASE_URL}/api/mentors/${id}`, {
+  await adminFetch<null>(`/api/mentors/${id}`, {
     method: 'DELETE',
-    headers: authHeaders(),
   })
-
-  await handleResponse<null>(response)
 }

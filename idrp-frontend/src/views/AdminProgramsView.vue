@@ -2,6 +2,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
+import AdminLayout from '@/components/admin/AdminLayout.vue'
+import AdminFileUploadField from '@/components/admin/AdminFileUploadField.vue'
 import {
   createAdminProgram,
   deleteAdminProgram,
@@ -17,6 +19,7 @@ const saving = ref(false)
 const error = ref('')
 const successMessage = ref('')
 const editingId = ref<number | null>(null)
+const featuresText = ref('')
 
 const form = reactive<ProgramAdminPayload>({
   programName: '',
@@ -25,6 +28,9 @@ const form = reactive<ProgramAdminPayload>({
   mode: '',
   eligibility: '',
   description: '',
+  brochureUrl: '',
+  applyUrl: '',
+  features: [],
 })
 
 const isEditing = computed(() => editingId.value !== null)
@@ -38,6 +44,10 @@ const resetForm = () => {
   form.mode = ''
   form.eligibility = ''
   form.description = ''
+  form.brochureUrl = ''
+  form.applyUrl = ''
+  form.features = []
+  featuresText.value = ''
 }
 
 const loadPrograms = async () => {
@@ -62,6 +72,10 @@ const editProgram = (program: ProgramAdminItem) => {
   form.mode = program.mode || ''
   form.eligibility = program.eligibility || ''
   form.description = program.description || ''
+  form.brochureUrl = program.brochureUrl || ''
+  form.applyUrl = program.applyUrl || ''
+  form.features = program.features ? [...program.features] : []
+  featuresText.value = (program.features ?? []).join('\n')
 }
 
 const submitProgram = async () => {
@@ -82,6 +96,12 @@ const submitProgram = async () => {
     mode: form.mode?.trim() || '',
     eligibility: form.eligibility?.trim() || '',
     description: form.description?.trim() || '',
+    brochureUrl: form.brochureUrl?.trim() || '',
+    applyUrl: form.applyUrl?.trim() || '',
+    features: featuresText.value
+      .split('\n')
+      .map((item) => item.trim())
+      .filter(Boolean),
   }
 
   try {
@@ -130,6 +150,7 @@ onMounted(loadPrograms)
 </script>
 
 <template>
+  <AdminLayout>
   <div class="space-y-8">
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
@@ -336,6 +357,35 @@ onMounted(loadPrograms)
             />
           </div>
 
+          <AdminFileUploadField
+            v-model="form.applyUrl"
+            folder="programs"
+            preview="none"
+            label="Apply URL / Path"
+            placeholder="/apply/pre-incubation or https://..."
+          />
+
+          <AdminFileUploadField
+            v-model="form.brochureUrl"
+            folder="programs"
+            accept="application/pdf"
+            preview="none"
+            label="Brochure (PDF)"
+            placeholder="/programs/brochures/example.pdf"
+          />
+
+          <div>
+            <label class="mb-1.5 block text-sm font-semibold text-slate-700">
+              Features (one per line)
+            </label>
+            <textarea
+              v-model="featuresText"
+              rows="4"
+              class="w-full resize-none rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary-soft)]"
+              placeholder="Dedicated mentor support&#10;Seed funding assistance&#10;Access to co-working space"
+            />
+          </div>
+
           <div class="flex flex-col gap-3 sm:flex-row">
             <button
               type="submit"
@@ -357,4 +407,5 @@ onMounted(loadPrograms)
       </section>
     </div>
   </div>
+  </AdminLayout>
 </template>

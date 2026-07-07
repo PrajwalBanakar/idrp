@@ -2,6 +2,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
+import AdminLayout from '@/components/admin/AdminLayout.vue'
+import AdminFileUploadField from '@/components/admin/AdminFileUploadField.vue'
 import {
   createAdminTeamMember,
   deleteAdminTeamMember,
@@ -147,6 +149,7 @@ onMounted(loadMembers)
 </script>
 
 <template>
+  <AdminLayout>
   <div class="space-y-8">
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
@@ -375,17 +378,12 @@ onMounted(loadMembers)
             />
           </div>
 
-          <div>
-            <label class="mb-1.5 block text-sm font-semibold text-slate-700">
-              Profile Image URL
-            </label>
-            <input
-              v-model="form.profileImageUrl"
-              type="text"
-              class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary-soft)]"
-              placeholder="/team-name.jpeg"
-            />
-          </div>
+          <AdminFileUploadField
+            v-model="form.profileImageUrl"
+            folder="team-members"
+            label="Profile Image"
+            placeholder="/team-name.jpeg"
+          />
 
           <div>
             <label class="mb-1.5 block text-sm font-semibold text-slate-700">
@@ -456,4 +454,5 @@ onMounted(loadMembers)
       </section>
     </div>
   </div>
+  </AdminLayout>
 </template>

@@ -2,6 +2,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
+import AdminLayout from '@/components/admin/AdminLayout.vue'
+import AdminFileUploadField from '@/components/admin/AdminFileUploadField.vue'
 import {
   createAdminPartner,
   deleteAdminPartner,
@@ -140,6 +142,7 @@ onMounted(loadPartners)
 </script>
 
 <template>
+  <AdminLayout>
   <div class="space-y-8">
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
@@ -343,17 +346,12 @@ onMounted(loadPartners)
             />
           </div>
 
-          <div>
-            <label class="mb-1.5 block text-sm font-semibold text-slate-700">
-              Logo URL
-            </label>
-            <input
-              v-model="form.logoUrl"
-              type="text"
-              class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary-soft)]"
-              placeholder="/partners/logo.png"
-            />
-          </div>
+          <AdminFileUploadField
+            v-model="form.logoUrl"
+            folder="partners"
+            label="Logo"
+            placeholder="/partners/logo.png"
+          />
 
           <div>
             <label class="mb-1.5 block text-sm font-semibold text-slate-700">
@@ -437,4 +435,5 @@ onMounted(loadPartners)
       </section>
     </div>
   </div>
+  </AdminLayout>
 </template>

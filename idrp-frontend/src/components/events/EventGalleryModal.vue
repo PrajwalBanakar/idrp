@@ -9,6 +9,7 @@
         <div class="overflow-hidden rounded-3xl bg-slate-900 shadow-2xl">
           <button
             type="button"
+            aria-label="Close gallery"
             class="absolute right-3 top-3 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/70 text-2xl text-white transition hover:bg-slate-800 sm:right-4 sm:top-4 sm:h-11 sm:w-11"
             @click="emit('close')"
           >
@@ -30,6 +31,7 @@
               <button
                 v-if="images.length > 1"
                 type="button"
+                aria-label="Previous image"
                 class="absolute left-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20 sm:left-4 sm:h-12 sm:w-12 sm:text-2xl"
                 @click="previousImage"
               >
@@ -39,6 +41,7 @@
               <button
                 v-if="images.length > 1"
                 type="button"
+                aria-label="Next image"
                 class="absolute right-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20 sm:right-4 sm:h-12 sm:w-12 sm:text-2xl"
                 @click="nextImage"
               >
@@ -58,6 +61,7 @@
                   v-for="(image, index) in images"
                   :key="`${image}-${index}`"
                   type="button"
+                  :aria-label="`View image ${index + 1}`"
                   class="h-12 w-16 shrink-0 overflow-hidden rounded-xl border-2 transition sm:h-14 sm:w-20"
                   :class="
                     index === currentIndex

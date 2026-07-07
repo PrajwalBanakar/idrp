@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
+import AdminLayout from '@/components/admin/AdminLayout.vue'
+import AdminFileUploadField from '@/components/admin/AdminFileUploadField.vue'
 import {
   startupAdminService,
   type StartupCategory,
@@ -14,6 +16,13 @@ const saving = ref(false)
 const errorMessage = ref('')
 const successMessage = ref('')
 const editingId = ref<number | string | null>(null)
+const galleryText = ref('')
+
+const ALL_CATEGORIES: { value: StartupCategory; label: string }[] = [
+  { value: 'PRE_INCUBATED', label: 'Pre-incubated' },
+  { value: 'INCUBATED', label: 'Incubated' },
+  { value: 'FUNDED', label: 'Funded' },
+]
 
 const emptyPerson = (): StartupPerson => ({
   name: '',
@@ -25,7 +34,7 @@ const emptyPerson = (): StartupPerson => ({
 const form = reactive<StartupRequest>({
   name: '',
   sector: '',
-  category: 'PRE_INCUBATED',
+  categories: ['PRE_INCUBATED'],
   logo: '',
   website: '',
   onePager: '',
@@ -34,13 +43,14 @@ const form = reactive<StartupRequest>({
   techFacultyMentors: [emptyPerson()],
   founders: [emptyPerson()],
   teamMembers: [],
+  gallery: [],
 })
 
 const resetForm = () => {
   editingId.value = null
   form.name = ''
   form.sector = ''
-  form.category = 'PRE_INCUBATED'
+  form.categories = ['PRE_INCUBATED']
   form.logo = ''
   form.website = ''
   form.onePager = ''
@@ -49,6 +59,8 @@ const resetForm = () => {
   form.techFacultyMentors = [emptyPerson()]
   form.founders = [emptyPerson()]
   form.teamMembers = []
+  form.gallery = []
+  galleryText.value = ''
 }
 
 const cleanPeople = (people: StartupPerson[]) => people.filter((person) => person.name.trim())
@@ -58,6 +70,10 @@ const buildPayload = (): StartupRequest => ({
   techFacultyMentors: cleanPeople(form.techFacultyMentors),
   founders: cleanPeople(form.founders),
   teamMembers: cleanPeople(form.teamMembers),
+  gallery: galleryText.value
+    .split('\n')
+    .map((item) => item.trim())
+    .filter(Boolean),
 })
 
 const fetchStartups = async () => {
@@ -102,7 +118,7 @@ const editStartup = (startup: StartupResponse) => {
   editingId.value = startup.id
   form.name = startup.name
   form.sector = startup.sector
-  form.category = startup.category
+  form.categories = startup.categories?.length ? [...startup.categories] : ['PRE_INCUBATED']
   form.logo = startup.logo
   form.website = startup.website
   form.onePager = startup.onePager
@@ -117,6 +133,18 @@ const editStartup = (startup: StartupResponse) => {
   form.teamMembers = startup.teamMembers?.length
     ? startup.teamMembers.map((person) => ({ ...emptyPerson(), ...person }))
     : []
+  form.gallery = startup.gallery ?? []
+  galleryText.value = (startup.gallery ?? []).join('\n')
+}
+
+const toggleCategory = (category: StartupCategory) => {
+  const index = form.categories.indexOf(category)
+
+  if (index === -1) {
+    form.categories.push(category)
+  } else if (form.categories.length > 1) {
+    form.categories.splice(index, 1)
+  }
 }
 
 const deleteStartup = async (id: number | string) => {
@@ -153,10 +181,12 @@ const categoryLabel = (category: StartupCategory) => {
   if (category === 'INCUBATED') return 'Incubated'
   return 'Funded'
 }
+
 onMounted(fetchStartups)
 </script>
 
 <template>
+  <AdminLayout>
   <section class="space-y-8">
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)]">
@@ -224,17 +254,22 @@ onMounted(fetchStartups)
           />
         </div>
 
-        <div>
+        <div class="md:col-span-2">
           <label class="text-sm font-semibold text-slate-700">Category</label>
-          <select
-            v-model="form.category"
-            required
-            class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
-          >
-            <option value="PRE_INCUBATED">Pre-incubated</option>
-            <option value="INCUBATED">Incubated</option>
-            <option value="FUNDED">Funded</option>
-          </select>
+          <div class="mt-2 flex flex-wrap gap-4">
+            <label
+              v-for="option in ALL_CATEGORIES"
+              :key="option.value"
+              class="flex items-center gap-2 text-sm text-slate-700"
+            >
+              <input
+                type="checkbox"
+                :checked="form.categories.includes(option.value)"
+                @change="toggleCategory(option.value)"
+              />
+              {{ option.label }}
+            </label>
+          </div>
         </div>
 
         <div>
@@ -242,16 +277,6 @@ onMounted(fetchStartups)
           <input
             v-model="form.contactEmail"
             type="email"
-            class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
-          />
-        </div>
-
-        <div>
-          <label class="text-sm font-semibold text-slate-700">Logo Path</label>
-          <input
-            v-model="form.logo"
-            type="text"
-            placeholder="/startups/logo/example.png"
             class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
           />
         </div>
@@ -266,15 +291,21 @@ onMounted(fetchStartups)
           />
         </div>
 
-        <div class="md:col-span-2">
-          <label class="text-sm font-semibold text-slate-700">One Pager URL / Path</label>
-          <input
-            v-model="form.onePager"
-            type="text"
-            placeholder="/startups/one-pagers/example.pdf"
-            class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
-          />
-        </div>
+        <AdminFileUploadField
+          v-model="form.logo"
+          folder="startups"
+          label="Logo"
+          placeholder="/startups/logo/example.png"
+        />
+
+        <AdminFileUploadField
+          v-model="form.onePager"
+          folder="startups"
+          accept="application/pdf"
+          preview="none"
+          label="One Pager (PDF)"
+          placeholder="/startups/one-pagers/example.pdf"
+        />
 
         <div class="md:col-span-2">
           <label class="text-sm font-semibold text-slate-700">Brief Description</label>
@@ -282,6 +313,16 @@ onMounted(fetchStartups)
             v-model="form.brief"
             required
             rows="4"
+            class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
+          />
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="text-sm font-semibold text-slate-700">Gallery Image URLs (one per line)</label>
+          <textarea
+            v-model="galleryText"
+            rows="3"
+            placeholder="/startups/gallery/example-1.jpg"
             class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
           />
         </div>
@@ -524,7 +565,7 @@ onMounted(fetchStartups)
               </td>
 
               <td class="px-4 py-4">
-                {{ categoryLabel(startup.category) }}
+                {{ startup.categories?.map(categoryLabel).join(', ') || '-' }}
               </td>
 
               <td class="px-4 py-4">{{ startup.sector }}</td>
@@ -566,4 +607,5 @@ onMounted(fetchStartups)
       </div>
     </div>
   </section>
+  </AdminLayout>
 </template>
