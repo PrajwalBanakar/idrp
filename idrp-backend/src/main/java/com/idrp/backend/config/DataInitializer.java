@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Bootstraps the very first SUPER_ADMIN account from environment-provided
  * credentials, only when the admins table is empty. This is the sole
  * supported way to create a SUPER_ADMIN outside of an existing SUPER_ADMIN
- * calling the protected POST /api/admins endpoint - the public
- * /api/auth/register endpoint always creates plain ADMIN accounts.
+ * calling the protected POST /api/admins endpoint or the equally protected
+ * POST /api/auth/register (which always creates plain ADMIN accounts).
  */
 @Configuration
 @RequiredArgsConstructor

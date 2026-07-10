@@ -53,6 +53,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public RefreshToken validateRefreshToken(String rawToken) {
 
         RefreshToken refreshToken = refreshTokenRepository.findByTokenHash(TokenHasher.sha256(rawToken))
@@ -64,6 +65,12 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 
         if (refreshToken.getExpiryDate().isBefore(LocalDateTime.now())) {
             throw new TokenExpiredException("Refresh token has expired. Please login again.");
+        }
+
+        // Otherwise a deactivated admin could keep minting fresh access tokens for the full
+        // 7-day refresh-token lifetime (and beyond, since each use rotates a new one).
+        if (!Boolean.TRUE.equals(refreshToken.getAdmin().getActive())) {
+            throw new TokenRevokedException("This account has been deactivated. Please contact a super admin.");
         }
 
         return refreshToken;

@@ -8,6 +8,7 @@ export type StartupPerson = {
   role?: string
   linkedin?: string
   email?: string
+  imageUrl?: string
 }
 
 export type StartupRequest = {

@@ -64,7 +64,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             Admin admin = adminRepository.findByEmail(userEmail).orElse(null);
 
-            if (admin != null && jwtService.isTokenValid(jwt, admin)) {
+            // Deactivated accounts (Admin.active=false) must lose access immediately, not just
+            // at their next login - CustomAdminDetailsService.isEnabled() only gets enforced by
+            // AuthenticationManager during login, so it's checked again here explicitly.
+            if (admin != null && Boolean.TRUE.equals(admin.getActive()) && jwtService.isTokenValid(jwt, admin)) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails,

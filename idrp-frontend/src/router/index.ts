@@ -15,8 +15,6 @@ import { isAdminLoggedIn } from '@/services/authService'
 export const ROUTE_NAMES = {
   HOME: 'home',
   ABOUT: 'about',
-  BOARD: 'board',
-  ADVISORY: 'advisory',
   INVESTORS: 'investors',
   TEAM: 'team',
   PARTNERS: 'partners',
@@ -129,8 +127,6 @@ function createParamRedirect(
 
 const organizationRoutes: RouteRecordRaw[] = [
   createPageRoute('/about', ROUTE_NAMES.ABOUT, 'AboutView', 'About IDRP'),
-  createPageRoute('/about/board', ROUTE_NAMES.BOARD, 'OurBoardView', 'Our Board'),
-  createPageRoute('/about/advisory', ROUTE_NAMES.ADVISORY, 'AdvisoryBoardView', 'Advisory Board'),
   createPageRoute('/about/team', ROUTE_NAMES.TEAM, 'OurTeamView', 'Our Team'),
   createPageRoute('/about/partners', ROUTE_NAMES.PARTNERS, 'OurPartnersView', 'Our Partners'),
   createPageRoute('/about/mentors', ROUTE_NAMES.MENTORS, 'MentorsView', 'Mentors'),
@@ -330,8 +326,6 @@ const adminRoutes: RouteRecordRaw[] = [
 
 const legacyRedirects: RouteRecordRaw[] = [
   createRedirectByName('/about-idrp', ROUTE_NAMES.ABOUT),
-  createRedirectByName('/our-board', ROUTE_NAMES.BOARD),
-  createRedirectByName('/advisory-board', ROUTE_NAMES.ADVISORY),
   createRedirectByName('/our-team', ROUTE_NAMES.TEAM),
   createRedirectByName('/our-partners', ROUTE_NAMES.PARTNERS),
   createRedirectByName('/mentors', ROUTE_NAMES.MENTORS),

@@ -34,8 +34,14 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
 
-                        // Auth APIs
-                        .requestMatchers("/api/auth/**").permitAll()
+                        // Auth APIs - only login/refresh/logout are reachable pre-auth.
+                        // /api/auth/register intentionally falls through to anyRequest().authenticated()
+                        // below, plus its own @PreAuthorize("hasRole('SUPER_ADMIN')"), because it can
+                        // create a usable ADMIN account: leaving it public would let anyone self-issue
+                        // credentials that pass every hasAnyRole('ADMIN','SUPER_ADMIN') check in the app.
+                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/refresh").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/logout").permitAll()
                         .requestMatchers("/error").permitAll()
 
                         // Public POST form submission APIs

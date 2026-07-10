@@ -9,6 +9,7 @@ import com.idrp.backend.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +19,9 @@ public class AuthController {
 
     private final AuthService authService;
 
+    // Always creates a plain ADMIN account (see AuthServiceImpl.createAdmin) - restricted to
+    // SUPER_ADMIN so this can't be used as a public admin-account self-signup endpoint.
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<AuthResponseDto>> createAdmin(
             @Valid @RequestBody CreateAdminRequestDto requestDto

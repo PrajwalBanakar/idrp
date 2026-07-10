@@ -89,6 +89,20 @@
         <scope>test</scope>
     </dependency>
 
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- @WebMvcTest moved out of spring-boot-test-autoconfigure and into this
+         module as of Spring Boot 4's test-slice modularization. -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-webmvc-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
 	<dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>

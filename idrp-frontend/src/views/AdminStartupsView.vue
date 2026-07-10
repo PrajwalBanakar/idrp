@@ -29,6 +29,7 @@ const emptyPerson = (): StartupPerson => ({
   role: '',
   linkedin: '',
   email: '',
+  imageUrl: '',
 })
 
 const form = reactive<StartupRequest>({
@@ -345,7 +346,7 @@ onMounted(fetchStartups)
             <div
               v-for="(person, index) in form.founders"
               :key="`founder-${index}`"
-              class="grid gap-4 rounded-2xl bg-white p-4 ring-1 ring-slate-200 md:grid-cols-4"
+              class="grid gap-4 rounded-2xl bg-white p-4 ring-1 ring-slate-200 md:grid-cols-5"
             >
               <input
                 v-model="person.name"
@@ -365,6 +366,13 @@ onMounted(fetchStartups)
                 v-model="person.linkedin"
                 type="url"
                 placeholder="LinkedIn URL"
+                class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
+              />
+
+              <input
+                v-model="person.imageUrl"
+                type="url"
+                placeholder="Image URL"
                 class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
               />
 
@@ -404,7 +412,7 @@ onMounted(fetchStartups)
             <div
               v-for="(person, index) in form.techFacultyMentors"
               :key="`mentor-${index}`"
-              class="grid gap-4 rounded-2xl bg-white p-4 ring-1 ring-slate-200 md:grid-cols-4"
+              class="grid gap-4 rounded-2xl bg-white p-4 ring-1 ring-slate-200 md:grid-cols-5"
             >
               <input
                 v-model="person.name"
@@ -424,6 +432,13 @@ onMounted(fetchStartups)
                 v-model="person.linkedin"
                 type="url"
                 placeholder="LinkedIn URL"
+                class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
+              />
+
+              <input
+                v-model="person.imageUrl"
+                type="url"
+                placeholder="Image URL"
                 class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
               />
 
@@ -470,7 +485,7 @@ onMounted(fetchStartups)
             <div
               v-for="(person, index) in form.teamMembers"
               :key="`team-${index}`"
-              class="grid gap-4 rounded-2xl bg-white p-4 ring-1 ring-slate-200 md:grid-cols-4"
+              class="grid gap-4 rounded-2xl bg-white p-4 ring-1 ring-slate-200 md:grid-cols-5"
             >
               <input
                 v-model="person.name"
@@ -490,6 +505,13 @@ onMounted(fetchStartups)
                 v-model="person.linkedin"
                 type="url"
                 placeholder="LinkedIn URL"
+                class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
+              />
+
+              <input
+                v-model="person.imageUrl"
+                type="url"
+                placeholder="Image URL"
                 class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[var(--color-primary)]"
               />
 
