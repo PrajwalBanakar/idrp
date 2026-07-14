@@ -48,103 +48,6 @@ export const categoryLabels: Record<StartupCategory, string> = {
 
 export const startups: Startup[] = [
   {
-    id: 1,
-    name: 'Agri Indus',
-    sector: 'AGRI TECH',
-    categories: ['PRE_INCUBATED'],
-    logo: '',
-    website: '',
-    onePager: '',
-    brief:
-      'Agri-Indus is a digital platform designed to bridge the gap between farmers and industries by enabling direct, transparent, and fair trade. It eliminates middlemen, ensures real-time pricing, and connects farmers with bulk buyers and companies. With streamlined logistics and improved market access, Agri-Indus empowers farmers to earn better and reduces inefficiencies in the agri-supply chain.',
-    contactEmail: '24bcs125@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Dr. Prakash Pawar',
-        image: '/faculty-prakash.jfif',
-        linkedin: 'https://www.linkedin.com/in/dr-prakash-pawar-78224356',
-        email: 'prakashpawar@iiitdwd.ac.in',
-      },
-    ],
-    founders: [
-      {
-        name: 'Sachin Kumar',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/sachin-kumar-a96735380',
-        email: '24bcs125@iiitdwd.ac.in',
-      },
-    ],
-    teamMembers: [
-      {
-        name: 'Sachin Kumar',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/sachin-kumar-a96735380',
-        email: '24bcs125@iiitdwd.ac.in',
-      },
-      {
-        name: 'Udit Dadhich',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/udit-dadhich-324b353a2',
-        email: '24bcs158@iiitdwd.ac.in',
-      },
-      {
-        name: 'Sudhanshu Baberwal',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/sudhanshu-baberwal',
-        email: '24bcs147@iiitdwd.ac.in',
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: 'C^3',
-    sector: 'SOCIAL TECH',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/c_3.jpg',
-    website: '',
-    onePager: '',
-    brief:
-      'C^3 is an all-in-one platform revolutionizing academic and entrepreneurial collaboration by seamlessly integrating networking, project collaboration, and event management. It empowers students to find peers and research opportunities, enables professors to connect and recruit talent, and helps colleges streamline event promotion and registrations.',
-    contactEmail: '22bcs041@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Dr. Sandesh Phalke',
-        image: '/faculty-sandesh.jfif',
-        linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
-        email: 's.phalke@iiitdwd.ac.in',
-      },
-      {
-        name: 'Dr. Siddharth R',
-        image: '/faculty-siddharth.jfif',
-        email: 'siddharth_r@iiitdwd.ac.in',
-      },
-    ],
-    founders: [
-      {
-        name: 'G Rohith Yadav',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/grohithyadav',
-        email: '22bcs041@iiitdwd.ac.in',
-      },
-    ],
-    teamMembers: [
-      {
-        name: 'G Rohith Yadav',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/grohithyadav',
-        email: '22bcs041@iiitdwd.ac.in',
-      },
-      {
-        name: 'V Shanmukha Sai',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/v-shanmukha-sai-0a3080270',
-        email: '22BCS135@iiitdwd.ac.in',
-      },
-    ],
-  },
-  {
     id: 3,
     name: 'Cre8Hub',
     sector: 'SOCIAL TECH',
@@ -303,14 +206,14 @@ export const startups: Startup[] = [
   },
   {
     id: 6,
-    name: 'Attrangi',
+    name: 'Aatrangi',
     sector: 'HEALTH TECH',
     categories: ['INCUBATED', 'FUNDED'],
     logo: '/startups/logo/heyattrangi.jpeg',
     website: '',
     onePager: '',
     brief:
-      'Attrangi is a community-driven mental health and support platform designed for neurodivergent individuals and those facing mental health challenges. Through curated resources, peer support groups, and accessible professional guidance, Attrangi creates a safe, stigma-free space for students and working professionals.',
+      'Aatrangi is a community-driven mental health and support platform designed for neurodivergent individuals and those facing mental health challenges. Through curated resources, peer support groups, and accessible professional guidance, Aatrangi creates a safe, stigma-free space for students and working professionals.',
     contactEmail: '22bcs068@iiitdwd.ac.in',
     techFacultyMentors: [],
     founders: [
@@ -394,77 +297,6 @@ export const startups: Startup[] = [
         name: 'H Shri Harsha',
         image: '',
         email: '22bcs044@iiitdwd.ac.in',
-      },
-    ],
-  },
-  {
-    id: 8,
-    name: 'Natanaswara.AI',
-    sector: 'COMMERCE TECH',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/Natanasvara.jpg',
-    website: '',
-    onePager: '',
-    brief:
-      'Natanaswara.AI is a first-of-its-kind dance analysis and correction platform that revolutionizes classical dance training through an AI-powered mobile platform providing real-time feedback on postures, expressions, and movements. It combines pose and gesture analytics, motion tracking, and emotion recognition to act like a virtual guru.',
-    contactEmail: 'chinmay@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Dr. Chinmayananda A.',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
-        email: 'chinmay@iiitdwd.ac.in',
-      },
-    ],
-    founders: [
-      {
-        name: 'Dr. Chinmayananda A.',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/chinmayananda-a-941b06307',
-        email: 'chinmay@iiitdwd.ac.in',
-      },
-    ],
-    teamMembers: [
-      {
-        name: 'Raksha Karthik',
-        image: '',
-        email: 'raksha.jayaram@gmail.com',
-      },
-      {
-        name: 'Devaraju B V',
-        image: '',
-        email: 'dev.nkm@gmail.com',
-      },
-      {
-        name: 'Tanmay Gupta',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/tanmay-gupta-29b7b8256',
-        email: '23bds061@iiitdwd.ac.in',
-      },
-      {
-        name: 'Dhrupad Das',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/dhrupad-das-7b71b5290',
-        email: '23bds018@iiitdwd.ac.in',
-      },
-      {
-        name: 'Yashpreet Singh Reejak',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/yashpreet-singh-345456280',
-        email: '23bds072@iiitdwd.ac.in',
-      },
-      {
-        name: 'Thirumala Teena Chowdary',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/teena-chowdary-12a389286',
-        email: '22bds059@iiitdwd.ac.in',
-      },
-      {
-        name: 'Aditya Guntur',
-        image: '',
-        linkedin: 'https://www.linkedin.com/in/aditya-guntur-38448b28a',
-        email: '23bds003@iiitdwd.ac.in',
       },
     ],
   },
@@ -833,7 +665,7 @@ export const startups: Startup[] = [
     techFacultyMentors: [
       {
         name: 'Dr. Girish Revadigar',
-        image: '/faculty-girish.jfif',
+        image: '/faculty-girish-revadigar.jpg',
         linkedin: 'https://www.linkedin.com/in/girish-revadigar-phd-55a33b28',
       },
     ],
@@ -1105,44 +937,6 @@ export const startups: Startup[] = [
     teamMembers: [],
   },
   {
-    id: 23,
-    name: 'Vocal Drone',
-    sector: 'DEEP TECH',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/Vocal Drone.jpeg',
-    website: '',
-    onePager: '',
-    brief: '',
-    contactEmail: 'prashantb@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Dr. Deepak K. T.',
-        image: '/board-deepak.jfif',
-        email: 'deepak@iiitdwd.ac.in',
-      },
-    ],
-    founders: [
-      {
-        name: 'Prashant G. B.',
-        image: '',
-        role: 'Founder',
-        email: 'prashantb@iiitdwd.ac.in',
-      },
-    ],
-    teamMembers: [
-      {
-        name: 'Prashant Bannulmath',
-        image: '',
-        email: 'prashantb@iiitdwd.ac.in',
-      },
-      {
-        name: 'Swapnil Sontakke',
-        image: '',
-        email: 'swapnil.sontakke@iiitdwd.ac.in',
-      },
-    ],
-  },
-  {
     id: 24,
     name: 'Jnana Setu',
     sector: 'ED TECH',
@@ -1206,43 +1000,6 @@ export const startups: Startup[] = [
       },
     ],
   },
-    {
-    id: 25,
-    name: 'FreshDot',
-    sector: 'FOOD TECH',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/freshdot.png',
-    website: '',
-    onePager: '',
-    brief:
-      'FreshDot is a packaging-integrated freshness indicator for dairy brands that visually signals spoilage, reducing consumer complaints and building trust with zero change to existing packaging lines.',
-    contactEmail: '25bcs095@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Dr. Prakash Pawar',
-        image: '/faculty-prakash.jfif',
-        linkedin: 'https://www.linkedin.com/in/dr-prakash-pawar-78224356',
-        email: 'prakashpawar@iiitdwd.ac.in',
-      },
-    ],
-    founders: [
-      {
-        name: 'Moksh A. Gundecha',
-        image: 'startups/people/freshdot/moksh.pdf',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/moksh-jain-54b036311',
-        email: '25bcs095@iiitdwd.ac.in',
-      },
-      {
-        name: 'Sandesh Sanjeev Phalke',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/sandesh-phalke-ph-d-63658b137',
-        email: 's.phalke@iiitdwd.ac.in',
-      },
-    ],
-    teamMembers: [],
-  },
   {
     id: 26,
     name: 'CheTechs',
@@ -1276,49 +1033,6 @@ export const startups: Startup[] = [
         role: 'Founder',
         linkedin: 'https://www.linkedin.com/in/pulkit-pokhriyal-b62868401',
         email: '25bec053@iiitdwd.ac.in',
-      },
-    ],
-    teamMembers: [],
-  },
-  {
-    id: 27,
-    name: 'Tryggva',
-    sector: 'AUTO TECH',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/tryggva.png',
-    website: '',
-    onePager: '',
-    brief:
-      'Tryggva is an India-first, behaviour-aware ADAS platform that connects vehicles with traffic infrastructure to predict and prevent accidents in chaotic traffic environments.',
-    contactEmail: '25bcs214@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Jagadeesh Kanade',
-        image: '/faculty-jagadish.jfif',
-        email: 'jbkanade@gmail.com',
-      },
-    ],
-    founders: [
-      {
-        name: 'Tusharika Jagwani',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/tusharika-jagwani-3a74603a9',
-        email: '25bcs214@iiitdwd.ac.in',
-      },
-      {
-        name: 'Yash Mathur',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/yash-mathur-6ba200373',
-        email: '25bcs201@iiitdwd.ac.in',
-      },
-      {
-        name: 'Pantham Anish Satya Srikar',
-        image: '',
-        role: 'Founder',
-        linkedin: 'https://www.linkedin.com/in/anish-pantham-aa5644375',
-        email: '25bcs114@iiitdwd.ac.in',
       },
     ],
     teamMembers: [],
@@ -1673,37 +1387,6 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 36,
-    name: 'Paralax',
-    sector: 'AI / Aerial Security',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/paralax.png',
-    brief:
-      'PARALAX develops software-centric AI architectures for real-time aerial monitoring and threat detection.',
-    contactEmail: '25bcs195@iiitdwd.ac.in',
-    techFacultyMentors: [
-      {
-        name: 'Dr. Sunil Saumya',
-        email: 'sunil.saumya@iiitdwd.ac.in',
-        linkedin: 'https://linkedin.com/in/sunil-saumya-158856b1',
-      },
-    ],
-    founders: [
-      {
-        name: 'Venkatesh K',
-        email: '25bcs195@iiitdwd.ac.in',
-        linkedin: 'https://www.linkedin.com/in/ven007',
-      },
-      {
-        name: 'Subhash K V',
-        email: '25bcs176@iiitdwd.ac.in',
-        linkedin: 'https://www.linkedin.com/in/subhash-k-v-6a6034304',
-      },
-    ],
-    teamMembers: [],
-  },
-
-  {
     id: 37,
     name: 'ManoSetu AI',
     sector: 'AI / Mental Health',
@@ -1882,20 +1565,6 @@ export const startups: Startup[] = [
   },
 
   {
-    id: 42,
-    name: 'QS-TRNG',
-    sector: 'Quantum Security',
-    categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/qs-trng.png',
-    brief:
-      'QS-TRNG focuses on quantum-secure true random number generation technologies.',
-    contactEmail: '',
-    techFacultyMentors: [],
-    founders: [],
-    teamMembers: [],
-  },
-
-  {
     id: 43,
     name: 'MotionIQ',
     sector: 'Sports Tech',
@@ -1927,9 +1596,9 @@ export const startups: Startup[] = [
   },
   {
   id: 44,
-  name: 'Trividhi Labs',
+  name: 'Trividhi Labs Pvt Ltd',
   sector: 'Deep Tech / R&D',
-  categories: ['PRE_INCUBATED'],
+  categories: ['INCUBATED'],
   logo: '/startups/logo/trividhi.png',
   brief:
     'Trividhi Labs focuses on research-driven innovation in emerging technologies, developing intelligent solutions across AI, robotics, embedded systems, and advanced engineering domains.',
@@ -1948,20 +1617,20 @@ export const startups: Startup[] = [
   onePager: '',
   brief:
     'Exobios Private Limited is a health technology startup developing AI-enabled digital healthcare solutions that assist clinicians with patient assessment, monitoring, and intelligent decision support.',
-  contactEmail: 'dr.anup.iras@gmail.com',
+  contactEmail: 'geetha.spacebios@gmail.com',
   techFacultyMentors: [],
   founders: [
     {
       name: 'Ashwini Hegadekatti',
       image: '',
       role: 'Co-Founder',
-      email: 'dr.kartik.h@gmail.com',
+      email: 'ashuhegde91@gmail.com',
     },
     {
       name: 'Nanjunda Swamy Geetha',
       image: '',
       role: 'Co-Founder',
-      email: 'dr.anup.iras@gmail.com',
+      email: 'geetha.spacebios@gmail.com',
     },
   ],
   teamMembers: [],
@@ -1974,8 +1643,7 @@ export const startups: Startup[] = [
   logo: '/startups/logo/anuthantra.png',
   website: '',
   onePager: '',
-  brief:
-    'ANUTHANTRA Private Limited is a healthcare technology startup focused on developing innovative medical technologies and digital health solutions to improve patient care and clinical outcomes.',
+  brief: '',
   contactEmail: 'vraghav1240nm@gmail.com',
   techFacultyMentors: [],
   founders: [
