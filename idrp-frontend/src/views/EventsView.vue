@@ -6,22 +6,20 @@
       :eyebrow="eventsSections.upcoming.eyebrow"
       :title="eventsSections.upcoming.title"
       :items="upcomingEvents"
-      :paginated-items="upcomingPaginatedItems"
-      :current-page="upcomingPage"
-      :total-pages="upcomingTotalPages"
+      :visible-items="upcomingVisibleItems"
+      :has-more="upcomingHasMore"
       variant="upcoming"
-      @update:currentPage="upcomingPage = $event"
+      @load-more="loadMoreUpcoming"
     />
 
     <EventsSection
       :eyebrow="eventsSections.past.eyebrow"
       :title="eventsSections.past.title"
       :items="pastEvents"
-      :paginated-items="pastPaginatedItems"
-      :current-page="pastPage"
-      :total-pages="pastTotalPages"
+      :visible-items="pastVisibleItems"
+      :has-more="pastHasMore"
       variant="past"
-      @update:currentPage="pastPage = $event"
+      @load-more="loadMorePast"
     />
 
     <EventsCTASection
@@ -50,42 +48,41 @@ import {
 
 import type { EventItem } from '@/types/events'
 
-const PER_PAGE = 3
+const PAGE_SIZE = 6
 
-function createPagination(items: Ref<EventItem[]>, page: Ref<number>) {
-  const totalPages = computed(() => Math.max(1, Math.ceil(items.value.length / PER_PAGE)))
+function createLazyList(items: Ref<EventItem[]>) {
+  const visibleCount = ref(PAGE_SIZE)
 
-  const paginatedItems = computed(() => {
-    const safePage = Math.min(page.value, totalPages.value)
-    const start = (safePage - 1) * PER_PAGE
-    return items.value.slice(start, start + PER_PAGE)
-  })
+  const visibleItems = computed(() => items.value.slice(0, visibleCount.value))
+  const hasMore = computed(() => visibleCount.value < items.value.length)
+
+  function loadMore() {
+    visibleCount.value = Math.min(visibleCount.value + PAGE_SIZE, items.value.length)
+  }
 
   watch(items, () => {
-    if (page.value > totalPages.value) {
-      page.value = 1
-    }
+    visibleCount.value = PAGE_SIZE
   })
 
   return {
-    totalPages,
-    paginatedItems,
+    visibleItems,
+    hasMore,
+    loadMore,
   }
 }
 
 const upcomingEvents = computed(() => getUpcomingEvents())
 const pastEvents = computed(() => getPastEvents())
 
-const upcomingPage = ref(1)
-const pastPage = ref(1)
+const {
+  visibleItems: upcomingVisibleItems,
+  hasMore: upcomingHasMore,
+  loadMore: loadMoreUpcoming,
+} = createLazyList(upcomingEvents)
 
-const { totalPages: upcomingTotalPages, paginatedItems: upcomingPaginatedItems } = createPagination(
-  upcomingEvents,
-  upcomingPage,
-)
-
-const { totalPages: pastTotalPages, paginatedItems: pastPaginatedItems } = createPagination(
-  pastEvents,
-  pastPage,
-)
+const {
+  visibleItems: pastVisibleItems,
+  hasMore: pastHasMore,
+  loadMore: loadMorePast,
+} = createLazyList(pastEvents)
 </script>

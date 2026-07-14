@@ -31,9 +31,9 @@
         </span>
       </div>
 
-      <div v-if="items.length" class="flex flex-col gap-8">
+      <div v-if="visibleItems.length" class="flex flex-col gap-8">
         <EventCard
-          v-for="event in paginatedItems"
+          v-for="event in visibleItems"
           :key="event.id"
           :event="event"
           :variant="variant"
@@ -48,52 +48,32 @@
         <p class="font-semibold text-slate-500">{{ emptyText }}</p>
       </div>
 
-      <div v-if="totalPages > 1" class="mt-10 flex flex-wrap justify-center gap-2">
-        <button
-          type="button"
-          :disabled="currentPage === 1"
-          class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition disabled:cursor-not-allowed disabled:opacity-30"
-          :class="
-            variant === 'upcoming'
-              ? 'hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
-              : 'hover:border-slate-400 hover:text-slate-800'
-          "
-          @click="emit('update:currentPage', currentPage - 1)"
-        >
-          Previous
-        </button>
-
-        <button
-          v-for="pageNumber in totalPages"
-          :key="pageNumber"
-          type="button"
-          class="h-10 w-10 rounded-xl border text-sm font-bold transition"
-          :class="pageButtonClass(pageNumber)"
-          @click="emit('update:currentPage', pageNumber)"
-        >
-          {{ pageNumber }}
-        </button>
+      <div v-if="hasMore" class="mt-10 flex flex-col items-center gap-3">
+        <p class="text-sm text-slate-500">
+          Showing {{ visibleItems.length }} of {{ items.length }}
+        </p>
 
         <button
           type="button"
-          :disabled="currentPage === totalPages"
-          class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition disabled:cursor-not-allowed disabled:opacity-30"
+          class="rounded-xl border px-6 py-3 text-sm font-semibold transition"
           :class="
             variant === 'upcoming'
-              ? 'hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
-              : 'hover:border-slate-400 hover:text-slate-800'
+              ? 'border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary-soft)]'
+              : 'border-slate-300 text-slate-700 hover:border-slate-400 hover:bg-slate-100'
           "
-          @click="emit('update:currentPage', currentPage + 1)"
+          @click="emit('load-more')"
         >
-          Next
+          Load More
         </button>
+
+        <div ref="sentinelRef" class="h-1 w-full" aria-hidden="true" />
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
 import EventCard from '@/components/events/EventCard.vue'
 import type { EventItem } from '@/types/events'
 
@@ -103,14 +83,13 @@ const props = defineProps<{
   eyebrow: string
   title: string
   items: EventItem[]
-  paginatedItems: EventItem[]
-  currentPage: number
-  totalPages: number
+  visibleItems: EventItem[]
+  hasMore: boolean
   variant: EventsSectionVariant
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:currentPage', value: number): void
+  (e: 'load-more'): void
 }>()
 
 const sectionClass = computed(() =>
@@ -133,15 +112,24 @@ const emptyText = computed(() =>
     : 'No past events available yet.',
 )
 
-function pageButtonClass(pageNumber: number) {
-  if (props.variant === 'upcoming') {
-    return props.currentPage === pageNumber
-      ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white'
-      : 'border-slate-200 text-slate-600 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
-  }
+const sentinelRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
 
-  return props.currentPage === pageNumber
-    ? 'border-slate-700 bg-slate-700 text-white'
-    : 'border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-800'
-}
+onMounted(() => {
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry?.isIntersecting) emit('load-more')
+    },
+    { rootMargin: '200px' },
+  )
+
+  watchEffect(() => {
+    observer?.disconnect()
+    if (sentinelRef.value) observer?.observe(sentinelRef.value)
+  })
+})
+
+onBeforeUnmount(() => {
+  observer?.disconnect()
+})
 </script>

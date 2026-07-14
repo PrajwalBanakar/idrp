@@ -21,4 +21,5 @@ export type EventItem = {
   brochureUrl?: string
 
   gallery?: string[]
+  galleryUrl?: string
 }
