@@ -8,6 +8,7 @@ import 'swiper/css/pagination'
 type GalleryImage = {
   src: string
   alt?: string
+  title?: string
 }
 
 type Props = {
@@ -58,9 +59,9 @@ const autoplayOptions = prefersReducedMotion
           :speed="700"
           :breakpoints="{
             0: { slidesPerView: 1.05 },
-            640: { slidesPerView: 1.4 },
-            768: { slidesPerView: 2 },
-            1280: { slidesPerView: 3 },
+            640: { slidesPerView: 1.2 },
+            768: { slidesPerView: 1.8 },
+            1280: { slidesPerView: 2.4 },
           }"
           class="image-gallery-swiper"
         >
@@ -68,12 +69,26 @@ const autoplayOptions = prefersReducedMotion
             <div
               class="group overflow-hidden rounded-[28px] bg-white shadow-xl ring-1 ring-slate-200 transition-shadow duration-300 hover:shadow-2xl"
             >
-              <div class="overflow-hidden">
+              <div class="relative overflow-hidden">
                 <img
                   :src="img.src"
-                  :alt="img.alt || 'Gallery image'"
-                  class="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] lg:h-72"
+                  :alt="img.alt || img.title || 'Gallery image'"
+                  class="h-72 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] sm:h-80 lg:h-[420px]"
+                  loading="lazy"
                 />
+
+                <div
+                  v-if="img.title"
+                  class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent p-4"
+                >
+                  <div
+                    class="inline-flex max-w-[92%] rounded-2xl bg-white/92 px-4 py-2 shadow-md backdrop-blur"
+                  >
+                    <h3 class="text-sm font-semibold text-slate-900 sm:text-base">
+                      {{ img.title }}
+                    </h3>
+                  </div>
+                </div>
               </div>
             </div>
           </SwiperSlide>

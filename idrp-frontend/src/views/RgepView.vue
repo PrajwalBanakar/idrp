@@ -3,6 +3,7 @@ import ProgramHeroSection from '@/components/program/ProgramHeroSection.vue'
 import ProgramIntroSection from '@/components/program/ProgramIntroSection.vue'
 import ProgramValueSection from '@/components/program/ProgramValueSection.vue'
 import ProgramCTASection from '@/components/program/ProgramCTASection.vue'
+import ProgramEventsSection from '@/components/program/ProgramEventsSection.vue'
 import { rgepProjectMonitoringUnit } from '@/data/rgep'
 
 import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/data/rgep'
@@ -169,6 +170,12 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
         </div>
       </div>
     </section>
+
+    <ProgramEventsSection
+      initiative-key="RGEP"
+      title="Events Under RGEP"
+      description="Innovator showcases and program milestones hosted under RGEP."
+    />
 
     <ProgramCTASection v-bind="rgepPage.cta" />
   </div>

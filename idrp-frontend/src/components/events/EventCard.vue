@@ -44,6 +44,13 @@
             >
               {{ event.category }}
             </span>
+
+            <span
+              v-if="event.initiative"
+              class="rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)]"
+            >
+              {{ event.initiative }}
+            </span>
           </div>
 
           <h3 class="line-clamp-2 text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">

@@ -128,6 +128,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-1',
     title: 'Design Exploration Workshop 1',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'The Yuva Udhyami Teams presented their journey maps, the teams also discussed the actions in getting to documenting their business requirements.',
     startDate: '2025-08-11',
     endDate: '2025-08-11',
@@ -142,6 +143,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-2',
     title: 'Design Exploration Workshop 2',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'The Yuva Udhyami Teams presented their completed business requirements maps, the teams also discussed the technical solution approach and the various possibilities.',
     startDate: '2025-09-09',
     endDate: '2025-09-09',
@@ -156,6 +158,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-3',
     title: 'Design Exploration Workshop 3',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'each of the startups have detailed their system architecture diagram for the startup along with the corresponding technical workflow that supports their solution.',
     startDate: '2025-10-09',
     endDate: '2025-10-09',
@@ -170,6 +173,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-4',
     title: 'Design Exploration Workshop 4',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'Workshop 4 focused on Product Concept Selection, where each startup presented a divergent set of potential concepts to the mentors and faculty. Through guided discussion and evaluation based on usefulness, novelty, and feasibility, the teams assessed which concepts aligned best with user needs and technical possibilities.\nOutcome: All startups successfully finalized their product concept, marking a key milestone before moving into detailed design and PoC development.',
     startDate: '2025-11-13',
     endDate: '2025-11-13',
@@ -184,6 +188,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-5',
     title: 'Design Exploration Workshop 5',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'Workshop 5 focused on one-on-one mentorship and progress review, where each startup presented updates on their finalized product concept, technical architecture, and progress since the previous workshop. Mentors reviewed the clarity of the problem–solution fit, implementation approach, and early PoCs, providing targeted feedback to strengthen product direction and execution readiness.',
     startDate: '2026-01-10',
     endDate: '2026-01-10',
@@ -198,6 +203,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-6',
     title: 'Design Exploration Workshop 6',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'Design Exploration Workshop 6 enabled startups to transition from conceptual development towards stronger technical implementation and validation readiness. The session facilitated structured mentor feedback on architecture, usability, scalability, and feasibility, leading to measurable progress across product design and system maturity.',
     startDate: '2026-02-06',
     endDate: '2026-02-06',
@@ -212,6 +218,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-7',
     title: 'Design Exploration Workshop 7',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'The workshop enabled startups to showcase progress, validate ideas with mentors, and align on next steps for product development and deployment.',
     startDate: '2026-03-07',
     endDate: '2026-03-07',
@@ -226,6 +233,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-workshop-8',
     title: 'Design Exploration Workshop 8',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'The workshop highlighted steady product development, integration progress, and a clear shift towards testing, deployment, and early market engagement across startups.',
     startDate: '2026-04-07',
     endDate: '2026-04-07',
@@ -282,6 +290,7 @@ export const events: EventItem[] = [
     slug: 'design-exploration-9',
     title: 'Design Exploration 9',
     category: 'Workshop',
+    initiative: 'CBDE',
     description: 'Design Exploration 9 hosted as part of the IIIT Dharwad Research Park ecosystem activities.',
     startDate: '2026-05-08',
     endDate: '2026-05-08',
@@ -874,4 +883,27 @@ export const getPastEvents = () => {
         parseLocalDate(event.endDate, true).getTime() < now.getTime() && event.visible !== false,
     )
     .sort((a, b) => parseLocalDate(b.startDate).getTime() - parseLocalDate(a.startDate).getTime())
+}
+
+export const isEventUpcoming = (event: EventItem) =>
+  parseLocalDate(event.endDate, true).getTime() >= new Date().getTime()
+
+// Events conducted under a specific initiative — matched either via the
+// explicit `initiative` tag or, for events whose category already names the
+// initiative (e.g. category 'NAIN 2.0'), via `category`. Upcoming events are
+// listed first (soonest first), then past events (most recent first).
+export const getEventsByInitiative = (initiativeKey: string) => {
+  const matching = getVisibleEvents().filter(
+    (event) => event.initiative === initiativeKey || event.category === initiativeKey,
+  )
+
+  const upcoming = matching
+    .filter(isEventUpcoming)
+    .sort((a, b) => parseLocalDate(a.startDate).getTime() - parseLocalDate(b.startDate).getTime())
+
+  const past = matching
+    .filter((event) => !isEventUpcoming(event))
+    .sort((a, b) => parseLocalDate(b.startDate).getTime() - parseLocalDate(a.startDate).getTime())
+
+  return [...upcoming, ...past]
 }

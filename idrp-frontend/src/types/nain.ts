@@ -1,3 +1,8 @@
+export type NAINPublications = {
+  journals?: string[]
+  conferences?: string[]
+}
+
 export type NAINProject = {
   id: string
   title: string
@@ -5,6 +10,10 @@ export type NAINProject = {
   teamLeaderName: string
   teamMembers: string[]
   projectLink?: string
+  description?: string
+  patents?: string[]
+  awards?: string[]
+  publications?: NAINPublications
 }
 
 export type NAINInstituteYearSupport = {

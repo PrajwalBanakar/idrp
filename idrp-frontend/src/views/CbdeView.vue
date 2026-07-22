@@ -6,6 +6,7 @@ import ProgramCTASection from '@/components/program/ProgramCTASection.vue'
 
 import FocusAreasSection from '@/components/common/FocusSection.vue'
 import BeneficiariesSection from '@/components/common/BeneficiariesSection.vue'
+import ProgramEventsSection from '@/components/program/ProgramEventsSection.vue'
 
 import { cbdePage } from '@/data/cbde'
 
@@ -20,6 +21,12 @@ import { focusAreas, beneficiaryGroups } from '@/data/cbdeExtra'
 
     <FocusAreasSection :areas="focusAreas" />
     <BeneficiariesSection :groups="beneficiaryGroups" />
+
+    <ProgramEventsSection
+      initiative-key="CBDE"
+      title="Events Under CBDE"
+      description="Design exploration workshops and capacity-building sessions hosted under CBDE."
+    />
 
     <ProgramCTASection v-bind="cbdePage.cta" />
   </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { NAINInstitute } from '@/types/nain'
+import type { NAINInstitute, NAINProject } from '@/types/nain'
+import NainProjectModal from '@/components/nain/NainProjectModal.vue'
 
 type Props = {
   institute: NAINInstitute
@@ -15,6 +16,7 @@ defineEmits<{
 }>()
 
 const showInstituteLogo = ref(true)
+const selectedProject = ref<NAINProject | null>(null)
 
 const selectedYearBlock = computed(() =>
   props.institute.years.find((yearBlock) => yearBlock.year === props.year),
@@ -23,6 +25,29 @@ const selectedYearBlock = computed(() =>
 function getInstituteProjectCount(institute: NAINInstitute) {
   return institute.years.reduce((sum, year) => sum + year.projects.length, 0)
 }
+
+// Quick-glance numbers for this institute in this specific year — shown once
+// the card is expanded, alongside the existing support-team and project info.
+const instituteYearMetrics = computed(() => {
+  const yearBlock = selectedYearBlock.value
+  if (!yearBlock) return []
+
+  const facultyGuides = new Set(
+    yearBlock.projects.map((project) => project.facultyGuideName.trim().toLowerCase()),
+  )
+
+  const participants = new Set<string>()
+  yearBlock.projects.forEach((project) => {
+    participants.add(project.teamLeaderName.trim().toLowerCase())
+    project.teamMembers.forEach((member) => participants.add(member.trim().toLowerCase()))
+  })
+
+  return [
+    { label: 'Projects', value: yearBlock.projects.length },
+    { label: 'Faculty Guides', value: facultyGuides.size },
+    { label: 'Student Participants', value: participants.size },
+  ]
+})
 </script>
 
 <template>
@@ -90,6 +115,21 @@ function getInstituteProjectCount(institute: NAINInstitute) {
       v-if="expanded && selectedYearBlock"
       class="border-t border-slate-200 bg-slate-50/70 px-6 py-6"
     >
+      <div class="mb-5 grid gap-4 sm:grid-cols-3">
+        <article
+          v-for="metric in instituteYearMetrics"
+          :key="metric.label"
+          class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+        >
+          <p class="text-2xl font-bold tracking-tight text-slate-900">
+            {{ metric.value }}
+          </p>
+          <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            {{ metric.label }}
+          </p>
+        </article>
+      </div>
+
       <div class="rounded-2xl border border-teal-100 bg-[var(--color-primary-soft)] px-5 py-5">
         <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900">
           Support Team Details
@@ -134,48 +174,37 @@ function getInstituteProjectCount(institute: NAINInstitute) {
         </div>
       </div>
 
-      <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-2">
-        <article
-          v-for="project in selectedYearBlock.projects"
-          :key="project.id"
-          class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
-        >
-          <div class="flex items-start justify-between gap-3">
-            <h4 class="text-xl font-bold leading-7 text-slate-900">
-              {{ project.title }}
-            </h4>
+      <div class="mt-5">
+        <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900">Projects</h4>
 
-            <a
-              v-if="project.projectLink"
-              :href="project.projectLink"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="shrink-0 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--color-primary)] transition hover:bg-teal-100"
+        <div class="mt-3 grid gap-3 md:grid-cols-2">
+          <button
+            v-for="project in selectedYearBlock.projects"
+            :key="project.id"
+            type="button"
+            class="group flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--color-primary)]/30 hover:shadow-md"
+            @click="selectedProject = project"
+          >
+            <span
+              class="text-base font-semibold text-slate-900 transition-colors group-hover:text-[var(--color-primary)]"
             >
-              View
-            </a>
-          </div>
+              {{ project.title }}
+            </span>
 
-          <div class="mt-5 space-y-4 text-sm">
-            <div>
-              <p class="font-semibold text-slate-900">Faculty Guide Name</p>
-              <p class="mt-1 text-slate-600">{{ project.facultyGuideName }}</p>
-            </div>
-
-            <div>
-              <p class="font-semibold text-slate-900">Team Leader Name</p>
-              <p class="mt-1 text-slate-600">{{ project.teamLeaderName }}</p>
-            </div>
-
-            <div>
-              <p class="font-semibold text-slate-900">Team Members Name</p>
-              <p class="mt-1 text-slate-600">
-                {{ project.teamMembers.join(', ') }}
-              </p>
-            </div>
-          </div>
-        </article>
+            <svg
+              class="h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[var(--color-primary)]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
+
+    <NainProjectModal :project="selectedProject" @close="selectedProject = null" />
   </article>
 </template>

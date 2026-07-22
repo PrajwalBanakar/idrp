@@ -73,9 +73,12 @@ export type Award = {
 
 export type Stat = {
   label: string
-  target: number
+  // Either a counted number (target/prefix/suffix) or a static textValue
+  // for milestones that aren't a count (e.g. "Launched").
+  target?: number
   prefix?: string
-  suffix: string
+  suffix?: string
+  textValue?: string
   icon: string
 }
 

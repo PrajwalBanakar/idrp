@@ -28,6 +28,12 @@
       @toggleInstitute="toggleInstitute"
     />
 
+    <ProgramEventsSection
+      initiative-key="NAIN 2.0"
+      title="Events Under NAIN 2.0"
+      description="Kickoffs, outreach programs, and graduation demo days hosted under NAIN 2.0."
+    />
+
     <!-- <NainCTASection
       title="Want to showcase more supported institutes and student innovations?"
       description="This section can be continuously expanded with year-wise institute records, support team details, and project teams."
@@ -46,6 +52,7 @@ import NainInstitutesSection from '@/components/nain/NainInstitutesSection.vue'
 import NainOverviewSection from '@/components/nain/NainOverviewSection.vue'
 import ImageGallerySection from '@/components/common/ImageGallerySection.vue'
 import PerformanceMetricsSection from '@/components/common/PerformanceMetricsSection.vue'
+import ProgramEventsSection from '@/components/program/ProgramEventsSection.vue'
 
 import { nainPage, nainImages, nainMetrics } from '@/data/nain'
 import type { NAINInstitute } from '@/types/nain'

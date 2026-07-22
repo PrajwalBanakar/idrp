@@ -8,6 +8,7 @@ import FocusAreasSection from '@/components/common/FocusSection.vue'
 import BeneficiariesSection from '@/components/common/BeneficiariesSection.vue'
 import ImageGallerySection from '@/components/common/ImageGallerySection.vue'
 import PerformanceMetricsSection from '@/components/common/PerformanceMetricsSection.vue'
+import ProgramEventsSection from '@/components/program/ProgramEventsSection.vue'
 
 import { cifPage } from '@/data/cif'
 import { focusAreas, beneficiaryGroups, cifGalleryImages, cifMetrics } from '@/data/cifExtra'
@@ -35,6 +36,12 @@ import { focusAreas, beneficiaryGroups, cifGalleryImages, cifMetrics } from '@/d
 
     <FocusAreasSection :areas="focusAreas" />
     <BeneficiariesSection :groups="beneficiaryGroups" />
+
+    <ProgramEventsSection
+      initiative-key="CIF"
+      title="Events Under CIF"
+      description="Outreach sessions, lab visits, and prototyping events hosted through the Common Instrumentation Facility."
+    />
 
     <ProgramCTASection v-bind="cifPage.cta" />
   </div>

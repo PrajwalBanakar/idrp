@@ -109,12 +109,12 @@ export const cifMetrics: Stat[] = [
 ]
 
 export const cifGalleryImages = [
-  { src: '/cif/img1.jpeg', alt: 'CIF Tool 1' },
-  { src: '/cif/img2.jpeg', alt: 'CIF Tool 2' },
-  { src: '/cif/img3.jpeg', alt: 'CIF Tool 3' },
-  { src: '/cif/img4.jpeg', alt: 'CIF Tool 4' },
-  { src: '/cif/img5.jpeg', alt: 'CIF Tool 5' },
-  { src: '/cif/img6.jpeg', alt: 'CIF Tool 6' },
-  { src: '/cif/img7.jpeg', alt: 'CIF Tool 7' },
-  { src: '/cif/img8.jpeg', alt: 'CIF Tool 8' },
+  { src: '/cif/img1.jpeg', alt: 'CIF Tool 1', title: 'Lathe Machine' },
+  { src: '/cif/img2.jpeg', alt: 'CIF Tool 2', title: 'Laser Cutting Machine' },
+  { src: '/cif/img3.jpeg', alt: 'CIF Tool 3', title: 'Workstation' },
+  { src: '/cif/img4.jpeg', alt: 'CIF Tool 4', title: '3D Printing Machine' },
+  { src: '/cif/img5.jpeg', alt: 'CIF Tool 5', title: 'Electronic Test and Measurement Instruments' },
+  { src: '/cif/img6.jpeg', alt: 'CIF Tool 6', title: 'General Tools' },
+  { src: '/cif/img7.jpeg', alt: 'CIF Tool 7', title: 'General Tools' },
+  { src: '/cif/img8.jpeg', alt: 'CIF Tool 8', title: 'Soldering Station' },
 ]

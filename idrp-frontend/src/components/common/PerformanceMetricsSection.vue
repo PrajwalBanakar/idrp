@@ -41,7 +41,8 @@
             />
 
             <dd class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              {{ stat.prefix ?? '' }}{{ stat.displayed }}{{ stat.suffix }}
+              <template v-if="stat.textValue">{{ stat.textValue }}</template>
+              <template v-else>{{ stat.prefix ?? '' }}{{ stat.displayed }}{{ stat.suffix ?? '' }}</template>
             </dd>
 
             <dt class="mt-2 text-sm leading-6 text-slate-100">
@@ -87,13 +88,16 @@ function animateStats() {
   const INTERVAL = DURATION / STEPS
 
   animatedStats.value.forEach((stat) => {
-    const increment = stat.target / STEPS
+    if (stat.textValue || stat.target === undefined) return
+
+    const target = stat.target
+    const increment = target / STEPS
     let current = 0
 
     const timer = window.setInterval(() => {
       current += increment
-      if (current >= stat.target) {
-        stat.displayed = stat.target
+      if (current >= target) {
+        stat.displayed = target
         window.clearInterval(timer)
       } else {
         stat.displayed = Math.round(current)

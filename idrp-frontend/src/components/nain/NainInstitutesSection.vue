@@ -48,6 +48,21 @@
           v-if="expandedYear === year"
           class="border-t border-slate-200 bg-slate-50/70 px-6 py-6"
         >
+          <div class="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <article
+              v-for="metric in getYearMetrics(year)"
+              :key="metric.label"
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+            >
+              <p class="text-2xl font-bold tracking-tight text-slate-900">
+                {{ metric.value }}
+              </p>
+              <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {{ metric.label }}
+              </p>
+            </article>
+          </div>
+
           <div class="space-y-5">
             <NainInstituteCard
               v-for="institute in getInstitutesByYear(year)"
@@ -116,5 +131,31 @@ function getInstitutesByYear(year: string) {
 
 function getInstituteCountByYear(year: string) {
   return getInstitutesByYear(year).length
+}
+
+// Quick-glance numbers for a whole year across every institute active in it —
+// shown once the year card is expanded.
+function getYearMetrics(year: string) {
+  const institutesForYear = getInstitutesByYear(year)
+  const projects = institutesForYear.flatMap((institute) =>
+    institute.years.flatMap((yearGroup) => yearGroup.projects),
+  )
+
+  const facultyGuides = new Set(
+    projects.map((project) => project.facultyGuideName.trim().toLowerCase()),
+  )
+
+  const participants = new Set<string>()
+  projects.forEach((project) => {
+    participants.add(project.teamLeaderName.trim().toLowerCase())
+    project.teamMembers.forEach((member) => participants.add(member.trim().toLowerCase()))
+  })
+
+  return [
+    { label: 'Institutes', value: institutesForYear.length },
+    { label: 'Projects', value: projects.length },
+    { label: 'Faculty Guides', value: facultyGuides.size },
+    { label: 'Student Participants', value: participants.size },
+  ]
 }
 </script>
