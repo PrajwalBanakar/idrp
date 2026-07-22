@@ -153,7 +153,12 @@ const programRoutes: RouteRecordRaw[] = [
     'Acceleration',
   ),
   createPageRoute('/programs/funding', ROUTE_NAMES.FUNDING, 'AccessFundingView', 'Access Funding'),
-  createPageRoute('/programs/nain', ROUTE_NAMES.NAIN, 'NainView', 'New Age Innovation Network'),
+  createPageRoute(
+    '/programs/nain',
+    ROUTE_NAMES.NAIN,
+    'NainView',
+    'New Age Innovation Network (NAIN 2.0)',
+  ),
   createPageRoute('/programs/cif', ROUTE_NAMES.CIF, 'CifView', 'Common Instrumentation Facility'),
   createPageRoute(
     '/programs/coe-quantum-ai',

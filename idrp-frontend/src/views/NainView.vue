@@ -4,7 +4,18 @@
 
     <NainOverviewSection :overview="nainPage.overview" :stats="overviewStats" :pmu="nainPage.pmu" />
 
-    <NainGallerySection :images="nainImages" />
+    <PerformanceMetricsSection
+      eyebrow="Impact"
+      title="NAIN 2.0 Performance Metrics"
+      description="Cohort 1 (2025-26) outcomes across projects, mentorship, and innovation delivered under NAIN 2.0."
+      :stats="nainMetrics"
+    />
+
+    <ImageGallerySection
+      title="NAIN 2.0 Gallery"
+      description="Snapshots from mentoring sessions, demo days, and student project showcases across NAIN 2.0 institutes."
+      :images="nainImages"
+    />
 
     <NainInstitutesSection
       :section="nainPage.institutesSection"
@@ -33,9 +44,10 @@ import { computed, ref } from 'vue'
 import NainHeroSection from '@/components/nain/NainHeroSection.vue'
 import NainInstitutesSection from '@/components/nain/NainInstitutesSection.vue'
 import NainOverviewSection from '@/components/nain/NainOverviewSection.vue'
-import NainGallerySection from '@/components/nain/NainGallerySection.vue'
+import ImageGallerySection from '@/components/common/ImageGallerySection.vue'
+import PerformanceMetricsSection from '@/components/common/PerformanceMetricsSection.vue'
 
-import { nainPage, nainImages } from '@/data/nain'
+import { nainPage, nainImages, nainMetrics } from '@/data/nain'
 import type { NAINInstitute } from '@/types/nain'
 
 const searchQuery = ref('')

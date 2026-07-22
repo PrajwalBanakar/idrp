@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -11,6 +11,18 @@ defineProps<{
   section: AboutSectionIntro
   images: AboutCampusGalleryImage[]
 }>()
+
+// Respect the user's motion preference instead of forcing autoplay on everyone.
+const prefersReducedMotion =
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const autoplayOptions = prefersReducedMotion
+  ? false
+  : {
+      delay: 3200,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    }
 </script>
 
 <template>
@@ -36,14 +48,17 @@ defineProps<{
         </p>
       </div>
 
-      <div v-if="images.length">
+      <div v-if="images.length" class="about-campus-gallery">
         <Swiper
-          :modules="[Navigation, Pagination]"
+          :modules="[Navigation, Pagination, Autoplay]"
           :space-between="24"
           :navigation="true"
           :pagination="{ clickable: true }"
+          :loop="images.length > 1"
+          :autoplay="autoplayOptions"
+          :speed="700"
           :breakpoints="{
-            0: { slidesPerView: 1 },
+            0: { slidesPerView: 1.05 },
             640: { slidesPerView: 1.2 },
             768: { slidesPerView: 2 },
             1280: { slidesPerView: 2.6 },
@@ -52,13 +67,13 @@ defineProps<{
         >
           <SwiperSlide v-for="image in images" :key="image.id">
             <div
-              class="group overflow-hidden rounded-[28px] bg-white shadow-xl ring-1 ring-slate-200"
+              class="group overflow-hidden rounded-[28px] bg-white shadow-xl ring-1 ring-slate-200 transition-shadow duration-300 hover:shadow-2xl"
             >
-              <div class="relative">
+              <div class="relative overflow-hidden">
                 <img
                   :src="image.src"
                   :alt="image.alt || image.title || 'Campus image'"
-                  class="h-[260px] w-full object-cover sm:h-[300px] lg:h-[360px]"
+                  class="h-[260px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] sm:h-[300px] lg:h-[360px]"
                   loading="lazy"
                 />
 
@@ -84,6 +99,32 @@ defineProps<{
 </template>
 
 <style scoped>
+.about-campus-gallery {
+  position: relative;
+}
+
+/* Soft edge fade so looping slides feel continuous rather than cut off. */
+.about-campus-gallery::before,
+.about-campus-gallery::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 3.5rem;
+  width: clamp(1rem, 4vw, 3.5rem);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.about-campus-gallery::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+}
+
+.about-campus-gallery::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0));
+}
+
 :deep(.about-campus-gallery-swiper) {
   padding-inline: 0.25rem;
   padding-bottom: 3.5rem;
@@ -95,6 +136,7 @@ defineProps<{
 
 :deep(.about-campus-gallery-swiper .swiper-button-prev),
 :deep(.about-campus-gallery-swiper .swiper-button-next) {
+  top: calc(50% - 1.75rem);
   height: 2.75rem;
   width: 2.75rem;
   border-radius: 9999px;
@@ -102,11 +144,33 @@ defineProps<{
   border: 1px solid rgb(226 232 240);
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
   color: var(--color-primary);
+  z-index: 3;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+:deep(.about-campus-gallery-swiper .swiper-button-prev:hover),
+:deep(.about-campus-gallery-swiper .swiper-button-next:hover) {
+  background: var(--color-primary);
+  color: #ffffff;
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+}
+
+:deep(.about-campus-gallery-swiper .swiper-button-prev) {
+  left: 0.5rem;
+}
+
+:deep(.about-campus-gallery-swiper .swiper-button-next) {
+  right: 0.5rem;
 }
 
 :deep(.about-campus-gallery-swiper .swiper-button-prev::after),
 :deep(.about-campus-gallery-swiper .swiper-button-next::after) {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
 }
 
@@ -115,6 +179,9 @@ defineProps<{
   height: 0.55rem;
   background: #cbd5e1;
   opacity: 1;
+  transition:
+    width 0.2s ease,
+    background-color 0.2s ease;
 }
 
 :deep(.about-campus-gallery-swiper .swiper-pagination-bullet-active) {
@@ -123,9 +190,28 @@ defineProps<{
   background: var(--color-primary);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 640px) {
   :deep(.about-campus-gallery-swiper .swiper-button-prev),
   :deep(.about-campus-gallery-swiper .swiper-button-next) {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  :deep(.about-campus-gallery-swiper .swiper-button-prev::after),
+  :deep(.about-campus-gallery-swiper .swiper-button-next::after) {
+    font-size: 0.7rem;
+  }
+
+  :deep(.about-campus-gallery-swiper .swiper-button-prev) {
+    left: 0.25rem;
+  }
+
+  :deep(.about-campus-gallery-swiper .swiper-button-next) {
+    right: 0.25rem;
+  }
+
+  .about-campus-gallery::before,
+  .about-campus-gallery::after {
     display: none;
   }
 }

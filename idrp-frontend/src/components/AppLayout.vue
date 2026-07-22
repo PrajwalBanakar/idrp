@@ -54,32 +54,46 @@
                     v-if="item.to"
                     :to="item.to"
                     class="dropdown-link"
-                    :class="{ 'dropdown-link--active': isExactNavMatch(item.to) }"
+                    :class="{
+                      'dropdown-link--active': isExactNavMatch(item.to),
+                      'dropdown-link--indented': item.indent,
+                    }"
                     role="menuitem"
                     @click="closeAllMenus"
                   >
                     {{ item.label }}
                   </RouterLink>
 
-                  <div v-else class="dropdown-group has-children">
+                  <div v-else-if="item.children" class="dropdown-group has-children">
                     <div class="dropdown-link dropdown-link--parent" aria-hidden="true">
                       <span>{{ item.label }}</span>
                       <span class="submenu-arrow">›</span>
                     </div>
 
                     <div class="submenu" role="menu">
-                      <RouterLink
-                        v-for="child in item.children"
-                        :key="child.to"
-                        :to="child.to!"
-                        class="dropdown-link"
-                        :class="{ 'dropdown-link--active': isExactNavMatch(child.to!) }"
-                        role="menuitem"
-                        @click="closeAllMenus"
-                      >
-                        {{ child.label }}
-                      </RouterLink>
+                      <template v-for="child in item.children" :key="child.label">
+                        <RouterLink
+                          v-if="child.to"
+                          :to="child.to"
+                          class="dropdown-link"
+                          :class="{
+                            'dropdown-link--active': isExactNavMatch(child.to),
+                            'dropdown-link--indented': child.indent,
+                          }"
+                          role="menuitem"
+                          @click="closeAllMenus"
+                        >
+                          {{ child.label }}
+                        </RouterLink>
+                        <div v-else class="dropdown-heading" role="presentation">
+                          {{ child.label }}
+                        </div>
+                      </template>
                     </div>
+                  </div>
+
+                  <div v-else class="dropdown-heading" role="presentation">
+                    {{ item.label }}
                   </div>
                 </template>
               </div>
@@ -137,27 +151,45 @@
                     v-if="item.to"
                     :to="item.to"
                     class="mobile-sublink"
-                    :class="{ 'mobile-sublink--active': isExactNavMatch(item.to) }"
+                    :class="{
+                      'mobile-sublink--active': isExactNavMatch(item.to),
+                      'mobile-sublink--indented': item.indent,
+                    }"
                     @click="closeAllMenus"
                   >
                     {{ item.label }}
                   </RouterLink>
 
-                  <div v-else class="mobile-subgroup">
+                  <div v-else-if="item.children" class="mobile-subgroup">
                     <div class="mobile-sublink mobile-sublink--parent" aria-hidden="true">
                       {{ item.label }}
                     </div>
 
-                    <RouterLink
-                      v-for="child in item.children"
-                      :key="child.to"
-                      :to="child.to!"
-                      class="mobile-sublink mobile-sublink--child"
-                      :class="{ 'mobile-sublink--active': isExactNavMatch(child.to!) }"
-                      @click="closeAllMenus"
-                    >
-                      {{ child.label }}
-                    </RouterLink>
+                    <template v-for="child in item.children" :key="child.label">
+                      <RouterLink
+                        v-if="child.to"
+                        :to="child.to"
+                        class="mobile-sublink mobile-sublink--child"
+                        :class="{
+                          'mobile-sublink--active': isExactNavMatch(child.to),
+                          'mobile-sublink--indented': child.indent,
+                        }"
+                        @click="closeAllMenus"
+                      >
+                        {{ child.label }}
+                      </RouterLink>
+                      <div
+                        v-else
+                        class="mobile-sublink mobile-sublink--child mobile-sublink--heading"
+                        aria-hidden="true"
+                      >
+                        {{ child.label }}
+                      </div>
+                    </template>
+                  </div>
+
+                  <div v-else class="mobile-sublink mobile-sublink--heading" aria-hidden="true">
+                    {{ item.label }}
                   </div>
                 </template>
               </div>
@@ -222,15 +254,19 @@
 
               <template v-else>
                 <span class="footer-link footer-link--heading">{{ item.label }}</span>
-                <RouterLink
-                  v-for="child in item.children"
-                  :key="child.to"
-                  :to="child.to!"
-                  class="footer-link footer-link--child"
-                  :class="{ 'footer-link--active': isExactNavMatch(child.to!) }"
-                >
-                  {{ child.label }}
-                </RouterLink>
+                <template v-for="child in item.children" :key="child.label">
+                  <RouterLink
+                    v-if="child.to"
+                    :to="child.to"
+                    class="footer-link footer-link--child"
+                    :class="{ 'footer-link--active': isExactNavMatch(child.to) }"
+                  >
+                    {{ child.label }}
+                  </RouterLink>
+                  <span v-else class="footer-link footer-link--child footer-link--heading">
+                    {{ child.label }}
+                  </span>
+                </template>
               </template>
             </template>
           </nav>
@@ -251,15 +287,19 @@
 
               <template v-else>
                 <span class="footer-link footer-link--heading">{{ item.label }}</span>
-                <RouterLink
-                  v-for="child in item.children"
-                  :key="child.to"
-                  :to="child.to!"
-                  class="footer-link footer-link--child"
-                  :class="{ 'footer-link--active': isExactNavMatch(child.to!) }"
-                >
-                  {{ child.label }}
-                </RouterLink>
+                <template v-for="child in item.children" :key="child.label">
+                  <RouterLink
+                    v-if="child.to"
+                    :to="child.to"
+                    class="footer-link footer-link--child"
+                    :class="{ 'footer-link--active': isExactNavMatch(child.to) }"
+                  >
+                    {{ child.label }}
+                  </RouterLink>
+                  <span v-else class="footer-link footer-link--child footer-link--heading">
+                    {{ child.label }}
+                  </span>
+                </template>
               </template>
             </template>
           </nav>
@@ -311,6 +351,10 @@ type NavItem = {
   label: string
   to?: string
   children?: NavItem[]
+  /** Non-clickable label used to group the items that follow it, without opening a submenu. */
+  heading?: boolean
+  /** Visually nests this item under the heading above it. */
+  indent?: boolean
 }
 
 type SectionKey = 'about' | 'programs' | 'community'
@@ -352,9 +396,10 @@ const navSections: NavSection[] = [
       {
         label: 'Government Initiatives',
         children: [
-          { label: 'NAIN', to: '/programs/nain' },
+          { label: 'NAIN 2.0', to: '/programs/nain' },
           { label: 'CIF', to: '/programs/cif' },
-          { label: 'CoE', to: '/programs/coe-quantum-ai' },
+          { label: 'CoE', heading: true },
+          { label: 'QAIC', to: '/programs/coe-quantum-ai', indent: true },
           { label: 'CBDE', to: '/programs/cbde' },
           { label: 'RGEP', to: '/programs/rgep' },
         ],
@@ -742,6 +787,17 @@ onBeforeUnmount(() => {
   color: var(--color-primary);
 }
 
+.dropdown-heading {
+  padding: 0.82rem 0.95rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  cursor: default;
+}
+
+.dropdown-link--indented {
+  padding-left: 1.6rem;
+}
+
 .dropdown-group {
   position: relative;
 }
@@ -863,6 +919,15 @@ onBeforeUnmount(() => {
 .mobile-sublink--child {
   padding-left: 0.85rem;
   color: var(--color-text-secondary);
+}
+
+.mobile-sublink--heading {
+  color: var(--color-text-secondary);
+  cursor: default;
+}
+
+.mobile-sublink--indented {
+  padding-left: 0.85rem;
 }
 
 .mobile-link--cta {

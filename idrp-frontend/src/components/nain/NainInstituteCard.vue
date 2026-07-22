@@ -125,7 +125,7 @@ function getInstituteProjectCount(institute: NAINInstitute) {
 
           <div>
             <p class="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">
-              NAIN Coordinator
+              NAIN 2.0 Coordinator
             </p>
             <p class="mt-1 text-sm font-medium text-slate-800">
               {{ selectedYearBlock.support.nainCoordinator }}

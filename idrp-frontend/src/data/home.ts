@@ -147,7 +147,7 @@ export const governmentPrograms: GovernmentProgram[] = [
     icon: 'atom',
   },
   {
-    title: 'New Age Innovation Network (NAIN)',
+    title: 'New Age Innovation Network (NAIN 2.0)',
     description:
       'A Government of Karnataka supported initiative focussed on innovation, entrepreneurship development, and startup ecosystem for student and early-stage founders.',
     route: '/programs/nain',

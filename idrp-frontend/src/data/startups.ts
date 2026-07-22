@@ -857,7 +857,7 @@ export const startups: Startup[] = [
   {
     id: 21,
     name: 'MediRaksha',
-    sector: 'HEALTHCARE',
+    sector: 'HEALTH TECH',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/MediRaksha.png',
     website: '',
@@ -1005,7 +1005,7 @@ export const startups: Startup[] = [
     name: 'CheTechs',
     sector: 'AUTO TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/chetechs.png',
+    logo: '/startups/logo/CheTechs.jpeg',
     website: '',
     onePager: '',
     brief:
@@ -1079,7 +1079,7 @@ export const startups: Startup[] = [
     name: 'Sleepy1',
     sector: 'TRAVEL TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/sleepy1.png',
+    logo: '/startups/logo/Sleepy1.jpeg',
     website: '',
     onePager: '',
     brief:
@@ -1267,7 +1267,7 @@ export const startups: Startup[] = [
     name: 'Fuelwise',
     sector: 'LOGISTICS TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/fuelwise.png',
+    logo: '/startups/logo/Fuelwise.jpeg',
     website: '',
     onePager: '',
     brief:
@@ -1317,7 +1317,7 @@ export const startups: Startup[] = [
     name: 'Rescrapx',
     sector: 'AUTO TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/rescrapx.png',
+    logo: '/startups/logo/Rescrapx.png',
     website: '',
     onePager: '',
     brief:
@@ -1349,12 +1349,12 @@ export const startups: Startup[] = [
     ],
     teamMembers: [],
   },
-    {
+  {
     id: 35,
     name: 'AUKAAT',
-    sector: 'FinTech',
+    sector: 'FINTECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/aukaat.png',
+    logo: '/startups/logo/Aukaat.jpeg',
     brief:
       'AUKAAT is a Gen-Z focused fintech app that goes beyond tracking expenses by actively changing spending behavior.',
     contactEmail: '25bcs044@iiitdwd.ac.in',
@@ -1369,8 +1369,7 @@ export const startups: Startup[] = [
       {
         name: 'Divyansh Mehndiratta',
         email: '25bcs044@iiitdwd.ac.in',
-        linkedin:
-          'https://www.linkedin.com/in/divyansh-mehndiratta-802b68391',
+        linkedin: 'https://www.linkedin.com/in/divyansh-mehndiratta-802b68391',
       },
       {
         name: 'Sadegaonkar Pranjal Girish',
@@ -1389,11 +1388,10 @@ export const startups: Startup[] = [
   {
     id: 37,
     name: 'ManoSetu AI',
-    sector: 'AI / Mental Health',
+    sector: 'AI / MENTAL HEALTH',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/manosetu-ai.png',
-    brief:
-      'Bridging modern AI with ancient wisdom for mental health well-being.',
+    brief: 'Bridging modern AI with ancient wisdom for mental health well-being.',
     contactEmail: 'sunil.saumya@iiitdwd.ac.in',
     techFacultyMentors: [
       {
@@ -1409,7 +1407,7 @@ export const startups: Startup[] = [
   {
     id: 38,
     name: 'Aitric',
-    sector: 'IoT / Smart Energy',
+    sector: 'IOT / SMART ENERGY',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/aitric.png',
     brief:
@@ -1460,7 +1458,7 @@ export const startups: Startup[] = [
   {
     id: 39,
     name: 'HostelSync',
-    sector: 'Hostel Management',
+    sector: 'HOSTEL MANAGEMENT',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/hostelsync.png',
     brief:
@@ -1490,11 +1488,10 @@ export const startups: Startup[] = [
   {
     id: 40,
     name: 'Benzene',
-    sector: 'Decentralized Computing',
+    sector: 'DECENTRALIZED COMPUTING',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/benzene.png',
-    brief:
-      'Benzene enables decentralized GPU compute sharing for AI workloads and rendering.',
+    brief: 'Benzene enables decentralized GPU compute sharing for AI workloads and rendering.',
     contactEmail: '25bcs199@iiitdwd.ac.in',
     techFacultyMentors: [
       {
@@ -1511,8 +1508,7 @@ export const startups: Startup[] = [
       {
         name: 'Rohit Milind Undale',
         email: '25bcs143@iiitdwd.ac.in',
-        linkedin:
-          'https://www.linkedin.com/in/rohit-m-undale-803572330',
+        linkedin: 'https://www.linkedin.com/in/rohit-m-undale-803572330',
       },
       {
         name: 'Rishi Singh',
@@ -1530,11 +1526,10 @@ export const startups: Startup[] = [
   {
     id: 41,
     name: 'Mentiq',
-    sector: 'AI / Career Advisory',
+    sector: 'AI / CAREER ADVISORY',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/mentiq.png',
-    brief:
-      'Mentiq is an AI-powered advisory platform for career and financial decision-making.',
+    brief: 'Mentiq is an AI-powered advisory platform for career and financial decision-making.',
     contactEmail: '23bds056@iiitdwd.ac.in',
     techFacultyMentors: [
       {
@@ -1547,8 +1542,7 @@ export const startups: Startup[] = [
       {
         name: 'S. Manoj Kumar',
         email: '23bds056@iiitdwd.ac.in',
-        linkedin:
-          'https://www.linkedin.com/in/manoj-kumar-siripalli-678170341',
+        linkedin: 'https://www.linkedin.com/in/manoj-kumar-siripalli-678170341',
       },
       {
         name: 'B. Kula Deepthi',
@@ -1567,7 +1561,7 @@ export const startups: Startup[] = [
   {
     id: 43,
     name: 'MotionIQ',
-    sector: 'Sports Tech',
+    sector: 'SPORTS TECH',
     categories: ['PRE_INCUBATED'],
     logo: '/startups/logo/motioniq.png',
     brief:
@@ -1595,94 +1589,94 @@ export const startups: Startup[] = [
     teamMembers: [],
   },
   {
-  id: 44,
-  name: 'Trividhi Labs Pvt Ltd',
-  sector: 'Deep Tech / R&D',
-  categories: ['INCUBATED'],
-  logo: '/startups/logo/trividhi.png',
-  brief:
-    'Trividhi Labs focuses on research-driven innovation in emerging technologies, developing intelligent solutions across AI, robotics, embedded systems, and advanced engineering domains.',
-  contactEmail: '',
-  techFacultyMentors: [],
-  founders: [],
-  teamMembers: [],
-},
-{
-  id: 45,
-  name: 'Exobios Private Limited',
-  sector: 'HEALTH TECH',
-  categories: ['INCUBATED'],
-  logo: '/startups/logo/exobios.png',
-  website: '',
-  onePager: '',
-  brief:
-    'Exobios Private Limited is a health technology startup developing AI-enabled digital healthcare solutions that assist clinicians with patient assessment, monitoring, and intelligent decision support.',
-  contactEmail: 'geetha.spacebios@gmail.com',
-  techFacultyMentors: [],
-  founders: [
-    {
-      name: 'Ashwini Hegadekatti',
-      image: '',
-      role: 'Co-Founder',
-      email: 'ashuhegde91@gmail.com',
-    },
-    {
-      name: 'Nanjunda Swamy Geetha',
-      image: '',
-      role: 'Co-Founder',
-      email: 'geetha.spacebios@gmail.com',
-    },
-  ],
-  teamMembers: [],
-},
-{
-  id: 46,
-  name: 'ANUTHANTRA PRIVATE LIMITED',
-  sector: 'HEALTH TECH',
-  categories: ['INCUBATED'],
-  logo: '/startups/logo/anuthantra.png',
-  website: '',
-  onePager: '',
-  brief: '',
-  contactEmail: 'vraghav1240nm@gmail.com',
-  techFacultyMentors: [],
-  founders: [
-    {
-      name: 'Venkatraman Raghavendra',
-      image: '',
-      role: 'Co-Founder',
-      email: 'vraghav1240nm@gmail.com',
-    },
-    {
-      name: 'Vaithiyashangar Jayakumar',
-      image: '',
-      role: 'Co-Founder',
-      email: 'jayakumarksrit@gmail.com',
-    },
-    {
-      name: 'Sathyaprakas H',
-      image: '',
-      role: 'Co-Founder',
-      email: 'sathyapt02@gmail.com',
-    },
-    {
-      name: 'Jinesh Valpparambil Narayanan Nair',
-      image: '',
-      role: 'Co-Founder',
-      email: 'jinesh.vn@presidencyuniversity.in',
-    },
-    {
-      name: 'Priyadharshini',
-      image: '',
-      role: 'Co-Founder',
-    },
-    {
-      name: 'Aswath Babu Hanumantha Rayappa',
-      image: '',
-      role: 'Co-Founder',
-      email: 'aswath.babu@gmail.com',
-    },
-  ],
-  teamMembers: [],
-},
+    id: 44,
+    name: 'Trividhi Labs Pvt Ltd',
+    sector: 'DEEP TECH',
+    categories: ['INCUBATED'],
+    logo: '/startups/logo/trividhi.png',
+    brief:
+      'Trividhi Labs focuses on research-driven innovation in emerging technologies, developing intelligent solutions across AI, robotics, embedded systems, and advanced engineering domains.',
+    contactEmail: '',
+    techFacultyMentors: [],
+    founders: [],
+    teamMembers: [],
+  },
+  {
+    id: 45,
+    name: 'Exobios Private Limited',
+    sector: 'HEALTH TECH',
+    categories: ['INCUBATED'],
+    logo: '/startups/logo/exobios.png',
+    website: '',
+    onePager: '',
+    brief:
+      'Exobios Private Limited is a health technology startup developing AI-enabled digital healthcare solutions that assist clinicians with patient assessment, monitoring, and intelligent decision support.',
+    contactEmail: 'geetha.spacebios@gmail.com',
+    techFacultyMentors: [],
+    founders: [
+      {
+        name: 'Ashwini Hegadekatti',
+        image: '',
+        role: 'Co-Founder',
+        email: 'ashuhegde91@gmail.com',
+      },
+      {
+        name: 'Nanjunda Swamy Geetha',
+        image: '',
+        role: 'Co-Founder',
+        email: 'geetha.spacebios@gmail.com',
+      },
+    ],
+    teamMembers: [],
+  },
+  {
+    id: 46,
+    name: 'ANUTHANTRA PRIVATE LIMITED',
+    sector: 'HEALTH TECH',
+    categories: ['INCUBATED'],
+    logo: '/startups/logo/anuthantra.png',
+    website: '',
+    onePager: '',
+    brief: '',
+    contactEmail: 'vraghav1240nm@gmail.com',
+    techFacultyMentors: [],
+    founders: [
+      {
+        name: 'Venkatraman Raghavendra',
+        image: '',
+        role: 'Co-Founder',
+        email: 'vraghav1240nm@gmail.com',
+      },
+      {
+        name: 'Vaithiyashangar Jayakumar',
+        image: '',
+        role: 'Co-Founder',
+        email: 'jayakumarksrit@gmail.com',
+      },
+      {
+        name: 'Sathyaprakas H',
+        image: '',
+        role: 'Co-Founder',
+        email: 'sathyapt02@gmail.com',
+      },
+      {
+        name: 'Jinesh Valpparambil Narayanan Nair',
+        image: '',
+        role: 'Co-Founder',
+        email: 'jinesh.vn@presidencyuniversity.in',
+      },
+      {
+        name: 'Priyadharshini',
+        image: '',
+        role: 'Co-Founder',
+      },
+      {
+        name: 'Aswath Babu Hanumantha Rayappa',
+        image: '',
+        role: 'Co-Founder',
+        email: 'aswath.babu@gmail.com',
+      },
+    ],
+    teamMembers: [],
+  },
 ]
