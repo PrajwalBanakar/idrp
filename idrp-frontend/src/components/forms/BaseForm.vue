@@ -206,23 +206,19 @@
     </div>
 
     <div class="flex flex-wrap items-center gap-3">
-      <button
-        type="submit"
-        :disabled="status === 'submitting'"
-        class="inline-flex items-center justify-center rounded-full bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-primary)] disabled:cursor-not-allowed disabled:opacity-60"
-      >
+      <BaseButton type="submit" variant="primary" :loading="status === 'submitting'">
         {{ status === 'submitting' ? 'Submitting...' : config.submitLabel || 'Submit' }}
-      </button>
+      </BaseButton>
 
-      <button
+      <BaseButton
         v-if="status !== 'success'"
         type="button"
+        variant="outline"
         :disabled="status === 'submitting'"
-        class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
         @click="reset"
       >
         Reset
-      </button>
+      </BaseButton>
     </div>
   </form>
 </template>
@@ -230,6 +226,7 @@
 <script setup lang="ts">
 import type { FormConfig, FormFieldType, FormOption, FormValue } from '@/types/form'
 import { useForm } from '@/composables/useForm'
+import BaseButton from '@/components/common/BaseButton.vue'
 
 const props = defineProps<{
   config: FormConfig

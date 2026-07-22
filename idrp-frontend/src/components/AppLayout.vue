@@ -1,5 +1,7 @@
 <template>
   <div class="app-layout">
+    <a v-if="!isAdminRoute" href="#main-content" class="skip-link">Skip to content</a>
+
     <header v-if="!isAdminRoute" class="site-header" :class="{ 'site-header--scrolled': isScrolled }">
       <div class="container header-inner">
         <RouterLink to="/" class="brand" @click="closeAllMenus">
@@ -101,6 +103,14 @@
           </div>
 
           <RouterLink
+            to="/"
+            class="nav-link"
+            :class="{ 'nav-link--active': isExactNavMatch('/') }"
+          >
+            Home
+          </RouterLink>
+
+          <RouterLink
             to="/community/startups"
             class="nav-link"
             :class="{ 'nav-link--active': isExactNavMatch('/community/startups') }"
@@ -118,6 +128,7 @@
         </nav>
 
         <button
+          ref="mobileToggleRef"
           type="button"
           class="mobile-toggle"
           :aria-expanded="isMobileMenuOpen"
@@ -131,7 +142,12 @@
       </div>
 
       <transition name="mobile-menu">
-        <nav v-if="isMobileMenuOpen" class="mobile-nav" aria-label="Mobile navigation">
+        <nav
+          v-if="isMobileMenuOpen"
+          ref="mobileNavRef"
+          class="mobile-nav"
+          aria-label="Mobile navigation"
+        >
           <div class="container mobile-nav-inner">
             <div v-for="section in navSections" :key="section.key" class="mobile-section">
               <button
@@ -196,6 +212,15 @@
             </div>
 
             <RouterLink
+              to="/"
+              class="mobile-link"
+              :class="{ 'mobile-link--active': isExactNavMatch('/') }"
+              @click="closeAllMenus"
+            >
+              Home
+            </RouterLink>
+
+            <RouterLink
               to="/community/startups"
               class="mobile-link"
               :class="{ 'mobile-link--active': isExactNavMatch('/community/startups') }"
@@ -217,7 +242,7 @@
       </transition>
     </header>
 
-    <main class="page-main">
+    <main id="main-content" class="page-main">
       <RouterView />
     </main>
 
@@ -229,8 +254,8 @@
             alt="IDRP"
             class="footer-logo"
             loading="lazy"
-            width="52"
-            height="52"
+            width="60"
+            height="60"
           />
           <h3>IDRP</h3>
           <p>
@@ -440,6 +465,8 @@ const activeDropdown = ref<SectionKey | null>(null)
 const isMobileMenuOpen = ref(false)
 const showScrollTop = ref(false)
 const isScrolled = ref(false)
+const mobileToggleRef = ref<HTMLButtonElement | null>(null)
+const mobileNavRef = ref<HTMLElement | null>(null)
 
 const mobileSections = reactive<Record<SectionKey, boolean>>({
   about: false,
@@ -544,6 +571,15 @@ function closeAllMenus() {
   clearDropdownTimer()
 }
 
+// Used for Escape / outside-click, where focus can otherwise end up nowhere —
+// returns focus to the toggle button so keyboard users aren't stranded.
+function closeMobileMenuAndRefocus() {
+  if (!isMobileMenuOpen.value) return
+  isMobileMenuOpen.value = false
+  resetMobileSections()
+  mobileToggleRef.value?.focus()
+}
+
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
@@ -555,9 +591,26 @@ function handleScroll() {
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape' && (activeDropdown.value || isMobileMenuOpen.value)) {
-    closeAllMenus()
+  if (event.key !== 'Escape') return
+
+  if (isMobileMenuOpen.value) {
+    closeMobileMenuAndRefocus()
+    return
   }
+
+  if (activeDropdown.value) {
+    activeDropdown.value = null
+    clearDropdownTimer()
+  }
+}
+
+function handleDocumentClick(event: MouseEvent) {
+  if (!isMobileMenuOpen.value) return
+
+  const target = event.target as Node
+  if (mobileNavRef.value?.contains(target) || mobileToggleRef.value?.contains(target)) return
+
+  closeMobileMenuAndRefocus()
 }
 
 watch(() => route.fullPath, closeAllMenus)
@@ -566,12 +619,14 @@ onMounted(() => {
   handleScroll()
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('keydown', handleKeydown)
+  document.addEventListener('click', handleDocumentClick)
 })
 
 onBeforeUnmount(() => {
   clearDropdownTimer()
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('keydown', handleKeydown)
+  document.removeEventListener('click', handleDocumentClick)
 })
 </script>
 
@@ -659,8 +714,8 @@ onBeforeUnmount(() => {
 
 .brand-logo,
 .footer-logo {
-  width: 52px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 12px;
   flex-shrink: 0;
@@ -1135,8 +1190,8 @@ onBeforeUnmount(() => {
 
   .brand-logo,
   .footer-logo {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
   }
 
   .brand-title {

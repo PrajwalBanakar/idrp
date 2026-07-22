@@ -38,7 +38,7 @@ defineProps<Props>()
             class="relative md:grid md:grid-cols-2 md:gap-10"
           >
             <div
-              class="absolute left-4 top-8 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-white bg-[var(--color-primary-soft)]0 shadow md:left-1/2"
+              class="absolute left-4 top-8 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-white bg-[var(--color-primary)] shadow md:left-1/2"
             />
 
             <div

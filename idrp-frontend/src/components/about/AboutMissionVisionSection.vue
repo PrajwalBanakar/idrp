@@ -53,7 +53,7 @@ defineProps<{
           :key="pillar.title"
           class="rounded-3xl border border-teal-100 bg-white p-6 shadow-sm"
         >
-          <div class="mb-4 h-1.5 w-14 rounded-full bg-[var(--color-primary-soft)]0" />
+          <div class="mb-4 h-1.5 w-14 rounded-full bg-[var(--color-primary-soft)]" />
           <h4 class="text-lg font-bold tracking-tight text-slate-900">
             {{ pillar.title }}
           </h4>

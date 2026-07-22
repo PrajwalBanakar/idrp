@@ -1,5 +1,5 @@
 <template>
-  <section id="programs" class="bg-white px-6 py-20 md:px-12 lg:px-16 lg:py-24">
+  <section id="programs" class="scroll-mt-24 bg-white px-6 py-20 md:px-12 lg:px-16 lg:py-24">
     <div class="mx-auto max-w-7xl">
       <div class="mx-auto mb-12 max-w-3xl text-center lg:mb-14">
         <span class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
@@ -32,8 +32,7 @@
             <article
               v-for="program in programs"
               :key="program.title"
-              class="group cursor-pointer rounded-2xl border border-[var(--color-border)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-primary)]/20 hover:shadow-lg sm:p-7"
-              @click="goToProgram(program.detailsTo)"
+              class="group rounded-2xl border border-[var(--color-border)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-primary)]/20 hover:shadow-lg sm:p-7"
             >
               <div class="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -43,32 +42,30 @@
                     {{ program.duration }}
                   </span>
 
-                  <h3
-                    class="mt-3 text-xl font-semibold leading-snug text-[var(--color-text-primary)] sm:text-2xl"
-                  >
-                    {{ program.title }}
+                  <h3 class="mt-3 text-xl font-semibold leading-snug sm:text-2xl">
+                    <RouterLink
+                      :to="program.detailsTo"
+                      class="text-[var(--color-text-primary)] transition-colors duration-300 hover:text-[var(--color-primary)]"
+                    >
+                      {{ program.title }}
+                    </RouterLink>
                   </h3>
                 </div>
 
                 <div class="flex flex-wrap gap-3 sm:pr-2">
-                  <a
+                  <BaseButton
                     v-if="program.brochureTo"
                     :href="program.brochureTo"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="relative z-10 inline-flex min-w-[140px] items-center justify-center rounded-xl border border-[var(--color-primary)]/20 bg-white px-6 py-3 text-sm font-semibold text-[var(--color-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-primary)]/30 hover:bg-[var(--color-primary-soft)]"
-                    @click.stop
+                    variant="outline"
+                    class="min-w-[140px]"
                   >
                     {{ program.brochureLabel || 'View Brochure' }}
-                  </a>
+                  </BaseButton>
 
-                  <RouterLink
-                    :to="program.applyTo"
-                    class="btn-brand relative z-10 inline-flex min-w-[120px] items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                    @click.stop
-                  >
+                  <BaseButton :to="program.applyTo" variant="primary" class="min-w-[120px]">
                     Apply
-                  </RouterLink>
+                  </BaseButton>
                 </div>
               </div>
 
@@ -210,7 +207,7 @@
               class="group flex w-full max-w-[640px] flex-col rounded-2xl border border-[var(--color-border)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-primary)]/20 hover:shadow-lg sm:p-7 md:w-[calc(50%-12px)]"
             >
               <div
-                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary-soft)] text-[var(--color-primary)] transition-all group-hover:bg-[var(--color-primary)] group-hover:text-white"
+                class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary-soft)] text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white"
                 aria-hidden="true"
               >
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,7 +221,7 @@
               </div>
 
               <h4
-                class="text-lg font-semibold leading-snug text-[var(--color-text-primary)] transition-colors group-hover:text-[var(--color-primary)] sm:text-xl"
+                class="text-lg font-semibold leading-snug text-[var(--color-text-primary)] transition-colors duration-300 group-hover:text-[var(--color-primary)] sm:text-xl"
               >
                 {{ item.title }}
               </h4>
@@ -261,19 +258,14 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink, useRouter } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import type { GovernmentProgram, Program } from '@/data/home'
+import BaseButton from '@/components/common/BaseButton.vue'
 
 defineProps<{
   programs: Program[]
   governmentPrograms: GovernmentProgram[]
 }>()
-
-const router = useRouter()
-
-function goToProgram(path: string) {
-  router.push(path)
-}
 
 // Icon path map — replaces the v-if/v-else-if chain in the template
 const iconPaths: Record<string, string> = {

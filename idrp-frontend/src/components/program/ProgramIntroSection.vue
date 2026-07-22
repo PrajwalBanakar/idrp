@@ -26,18 +26,20 @@ const showImage = ref(true)
 </script>
 
 <template>
-  <section class="bg-white px-6 py-24 md:px-16">
+  <section class="bg-white px-6 py-16 md:px-16 md:py-20 lg:py-24">
     <div class="mx-auto flex max-w-6xl flex-col items-center gap-16 lg:flex-row">
       <div class="lg:w-1/2">
-        <span class="text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
+        <span
+          class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]"
+        >
           {{ props.eyebrow }}
         </span>
 
-        <h2 class="mt-3 mb-6 text-4xl font-bold leading-tight text-gray-900">
+        <h2 class="mt-3 mb-6 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
           {{ props.title }}
         </h2>
 
-        <div class="space-y-4 leading-relaxed text-gray-600">
+        <div class="space-y-4 leading-relaxed text-slate-600">
           <p v-for="paragraph in props.paragraphs" :key="paragraph">
             {{ paragraph }}
           </p>

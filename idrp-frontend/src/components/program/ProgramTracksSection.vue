@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ProgramCard from '@/components/program/ProgramCard.vue'
+import SectionHeading from '@/components/common/SectionHeading.vue'
 import type { ProgramCardData } from '@/types/program'
 
 type Props = {
@@ -16,21 +17,9 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <section class="bg-gray-50 px-6 py-24 md:px-16">
+  <section class="bg-slate-50 px-6 py-16 md:px-16 md:py-20 lg:py-24">
     <div class="mx-auto max-w-6xl">
-      <div class="mx-auto mb-14 max-w-3xl text-center">
-        <span class="text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
-          {{ eyebrow }}
-        </span>
-
-        <h2 class="mt-3 text-4xl font-bold text-gray-900">
-          {{ title }}
-        </h2>
-
-        <p class="mt-4 leading-relaxed text-gray-600">
-          {{ description }}
-        </p>
-      </div>
+      <SectionHeading :eyebrow="eyebrow" :title="title" :description="description" class="mb-14" />
 
       <div class="space-y-8">
         <ProgramCard v-for="program in programs" :key="program.id" :program="program" />

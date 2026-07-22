@@ -20,7 +20,7 @@ const showImage = ref(true)
 </script>
 
 <template>
-  <section class="bg-slate-50 px-6 py-20 md:px-12 lg:px-16 lg:py-24">
+  <section class="bg-slate-50 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
     <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
       <div>
         <span class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
@@ -37,7 +37,7 @@ const showImage = ref(true)
             :key="item.title"
             class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
           >
-            <div class="mb-4 h-1.5 w-14 rounded-full bg-[var(--color-primary-soft)]0" />
+            <div class="mb-4 h-1.5 w-14 rounded-full bg-[var(--color-primary-soft)]" />
 
             <h3 class="text-lg font-semibold text-slate-900">
               {{ item.title }}

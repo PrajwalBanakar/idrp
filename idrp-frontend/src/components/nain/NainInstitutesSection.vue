@@ -1,5 +1,5 @@
 <template>
-  <section id="institutes" class="mx-auto max-w-7xl px-6 py-16 md:px-12">
+  <section id="institutes" class="mx-auto max-w-7xl scroll-mt-24 px-6 py-16 md:px-12">
     <div class="mb-10 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
       <div>
         <h2 class="text-3xl font-bold text-slate-900 md:text-4xl">

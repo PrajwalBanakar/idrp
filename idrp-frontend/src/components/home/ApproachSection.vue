@@ -31,7 +31,7 @@
           </div>
 
           <h3
-            class="text-xl font-semibold text-[var(--color-text-primary)] transition-colors duration-300 group-hover:text-[var(--color-primary)]"
+            class="text-xl font-semibold text-[var(--color-text-primary)] transition-colors duration-300 group-hover:text-[var(--color-primary)] sm:text-2xl"
           >
             {{ approach.title }}
           </h3>

@@ -18,10 +18,45 @@
   --color-bg-page: #ffffff;
   --color-bg-soft: #f8fbfd;
   --color-bg-muted: #f1f5f9;
+
+  /* Status */
+  --color-info: #0e7490;
+  --color-info-soft: #ecfeff;
+  --color-success: #0f9d6e;
+  --color-success-soft: #e7f7f1;
+  --color-warning: #b45309;
+  --color-warning-soft: #fef3e2;
+  --color-error: #dc2626;
+  --color-error-soft: #fdecec;
+
+  /* Focus */
+  --focus-ring: var(--color-primary-light);
+
+  /* Shape */
+  --radius-card: 1.5rem;
+  --radius-control: 0.75rem;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 4px 8px rgba(15, 23, 42, 0.05), 0 16px 32px rgba(15, 23, 42, 0.1);
+
+  /* Spacing rhythm (content sections) */
+  --section-py: 4rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-py: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-py: 6rem;
+  }
 }
 
 html {
-  scroll-behavior: smooth;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -126,4 +161,49 @@ img {
 .btn-brand:focus {
   color: #ffffff;
   text-decoration: none;
+}
+
+/* Global focus-visible safety net so keyboard users always get a visible
+   indicator, even on interactive elements that don't define their own. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Skip-to-content link: visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-control);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

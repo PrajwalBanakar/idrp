@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import BaseButton from '@/components/common/BaseButton.vue'
 </script>
 
 <template>
@@ -61,19 +61,13 @@ import { RouterLink } from 'vue-router'
 
           <!-- Actions -->
           <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <RouterLink
-              to="/apply/incubation"
-              class="btn-brand inline-flex min-w-[220px] items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 sm:text-base"
-            >
+            <BaseButton to="/apply/incubation" variant="primary" size="lg" class="min-w-[220px]">
               Apply to a Program
-            </RouterLink>
+            </BaseButton>
 
-            <RouterLink
-              to="/contact"
-              class="inline-flex min-w-[220px] items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary)] hover:text-white sm:text-base"
-            >
+            <BaseButton to="/contact" variant="light-on-dark" size="lg" class="min-w-[220px]">
               Talk to Our Team
-            </RouterLink>
+            </BaseButton>
           </div>
         </div>
       </div>

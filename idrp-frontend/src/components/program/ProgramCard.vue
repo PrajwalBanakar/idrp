@@ -97,7 +97,7 @@ function isSectionOpen(title: string) {
                 :key="item"
                 class="flex items-start gap-3 text-sm leading-relaxed text-gray-600"
               >
-                <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-primary-soft)]0" />
+                <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-primary)]" />
                 <span>{{ item }}</span>
               </li>
             </ul>

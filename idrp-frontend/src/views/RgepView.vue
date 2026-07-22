@@ -20,7 +20,7 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
       :image-alt="rgepPage.intro.imageAlt"
       :details="rgepPage.intro.details"
     />
-    <section class="bg-slate-50 px-6 py-14 md:px-12 lg:px-16 lg:py-20">
+    <section class="bg-slate-50 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
       <div class="mx-auto max-w-7xl">
         <div class="max-w-3xl">
           <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
@@ -60,23 +60,23 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
       :image-alt="rgepPage.value.imageAlt"
     />
 
-    <section class="bg-white px-6 py-14 md:px-12 lg:px-16 lg:py-20">
-  <div class="mx-auto max-w-7xl">
-    <div class="max-w-3xl">
-      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
-        Project Monitoring Unit
-      </p>
-      <h2 class="mt-3 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-        {{ rgepProjectMonitoringUnit.title }}
-      </h2>
-      <p class="mt-4 text-base leading-8 text-slate-600">
-        {{ rgepProjectMonitoringUnit.description }}
-      </p>
-    </div>
-  </div>
-</section>
+    <section class="bg-white px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
+            Project Monitoring Unit
+          </p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+            {{ rgepProjectMonitoringUnit.title }}
+          </h2>
+          <p class="mt-4 text-base leading-8 text-slate-600">
+            {{ rgepProjectMonitoringUnit.description }}
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <section class="bg-white px-6 py-14 md:px-12 lg:px-16 lg:py-20">
+    <section class="bg-white px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
       <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
@@ -105,7 +105,7 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
       </div>
     </section>
 
-    <section class="bg-slate-50 px-6 py-14 md:px-12 lg:px-16 lg:py-20">
+    <section class="bg-slate-50 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
       <div class="mx-auto max-w-7xl">
         <div class="max-w-3xl">
           <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
@@ -128,8 +128,6 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
               Innovator
             </p>
 
-            
-
             <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
               {{ innovator.name }}
             </h3>
@@ -144,16 +142,16 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
                 <p class="font-semibold text-slate-900">Email</p>
                 <a
                   :href="`mailto:${innovator.email}`"
-                  class="text-[var(--color-primary)] transition hover:text-teal-800 hover:underline"
+                  class="text-[var(--color-primary)] transition hover:text-[var(--color-primary-dark)] hover:underline"
                 >
                   {{ innovator.email }}
                 </a>
               </div>
 
               <div v-if="innovator.description">
-  <p class="font-semibold text-slate-900">Overview</p>
-  <p>{{ innovator.description }}</p>
-</div>
+                <p class="font-semibold text-slate-900">Overview</p>
+                <p>{{ innovator.description }}</p>
+              </div>
 
               <div v-if="innovator.linkedin">
                 <p class="font-semibold text-slate-900">LinkedIn</p>
@@ -161,7 +159,7 @@ import { rgepHighlights, rgepInnovators, rgepPage, rgepSupportPoints } from '@/d
                   :href="innovator.linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[var(--color-primary)] transition hover:text-teal-800 hover:underline"
+                  class="text-[var(--color-primary)] transition hover:text-[var(--color-primary-dark)] hover:underline"
                 >
                   View Profile
                 </a>

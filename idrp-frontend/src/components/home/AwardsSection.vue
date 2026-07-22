@@ -56,7 +56,7 @@
               :src="award.image"
               :alt="award.entity ? `${award.entity} - ${award.title}` : award.title"
               loading="lazy"
-              class="h-full w-full object-contain bg-white p-3 transition-transform duration-500 group-hover:scale-[1.02]"
+              class="h-full w-full object-contain bg-white p-3 transition-transform duration-300 group-hover:scale-[1.02]"
             />
 
             <div

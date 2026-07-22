@@ -34,12 +34,9 @@
             </p>
           </div>
 
-          <RouterLink
-            :to="buttonTo"
-            class="inline-flex min-w-[200px] shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary-dark)]"
-          >
+          <BaseButton :to="buttonTo" variant="primary" size="md" class="min-w-[200px] shrink-0">
             {{ buttonLabel }}
-          </RouterLink>
+          </BaseButton>
         </div>
       </div>
     </div>
@@ -47,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import BaseButton from '@/components/common/BaseButton.vue'
 
 defineProps<{
   title: string

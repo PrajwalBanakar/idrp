@@ -12,7 +12,7 @@ type Props = {
 
 withDefaults(defineProps<Props>(), {
   eyebrow: 'Program',
-  minHeightClass: 'min-h-[360px]',
+  minHeightClass: 'min-h-[320px] md:min-h-[400px]',
   brochureTo: '',
   brochureLabel: 'View Brochure',
 })
@@ -24,7 +24,7 @@ withDefaults(defineProps<Props>(), {
     :title="title"
     :subtitle="subtitle"
     :min-height-class="minHeightClass"
-    container-class="px-6 py-14 sm:px-8 md:px-10 md:py-16 lg:px-16 lg:py-20 min-h-[55vh]"
+    container-class="px-6 py-14 sm:px-8 md:px-10 md:py-16 lg:px-16 lg:py-20"
   >
     <template v-if="brochureTo" #actions>
       <a

@@ -8,7 +8,7 @@
         <a :href="event.image" target="_blank" rel="noopener noreferrer" class="block w-full">
           <div
             class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md"
-            :class="event.imageFit === 'cover' ? 'h-[220px]' : ''"
+            :class="event.imageFit === 'contain' ? '' : 'h-[220px]'"
           >
             <img
               :src="event.image"
@@ -46,7 +46,7 @@
             </span>
           </div>
 
-          <h3 class="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">
+          <h3 class="line-clamp-2 text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">
             {{ event.title }}
           </h3>
 

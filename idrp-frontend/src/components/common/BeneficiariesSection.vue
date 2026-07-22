@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SectionHeading from '@/components/common/SectionHeading.vue'
+
 type Group = {
   title: string
   description: string
@@ -10,20 +12,18 @@ defineProps<{
 </script>
 
 <template>
-  <section class="bg-gray-50 px-6 py-24 md:px-16">
+  <section class="bg-slate-50 px-6 py-16 md:px-16 md:py-20 lg:py-24">
     <div class="mx-auto max-w-6xl">
-      <div class="mb-16 text-center">
-        <h2 class="text-4xl font-bold text-gray-900">Who Can Benefit</h2>
-      </div>
+      <SectionHeading title="Who Can Benefit" class="mb-16" />
 
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="g in groups"
           :key="g.title"
-          class="rounded-3xl border p-6 text-center shadow-sm"
+          class="rounded-3xl border border-slate-200 p-6 text-center shadow-sm"
         >
-          <h3 class="text-xl font-bold">{{ g.title }}</h3>
-          <p class="mt-3 text-sm text-gray-600">{{ g.description }}</p>
+          <h3 class="text-xl font-bold text-slate-900">{{ g.title }}</h3>
+          <p class="mt-3 text-sm text-slate-600">{{ g.description }}</p>
         </div>
       </div>
     </div>

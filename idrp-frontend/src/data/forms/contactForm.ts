@@ -31,6 +31,7 @@ export const contactFormConfig: FormConfig = {
           placeholder: 'Enter your full name',
           required: true,
           width: 'half',
+          autocomplete: 'name',
         },
         {
           name: 'phone',
@@ -40,6 +41,7 @@ export const contactFormConfig: FormConfig = {
           required: true,
           width: 'half',
           validation: [{ type: 'phone' }],
+          autocomplete: 'tel',
         },
         {
           name: 'email',
@@ -49,6 +51,7 @@ export const contactFormConfig: FormConfig = {
           required: true,
           width: 'full',
           validation: [{ type: 'email' }],
+          autocomplete: 'email',
         },
         {
           name: 'organization',
@@ -56,6 +59,7 @@ export const contactFormConfig: FormConfig = {
           type: 'text',
           placeholder: 'Enter your organization name',
           width: 'full',
+          autocomplete: 'organization',
         },
         {
           name: 'message',

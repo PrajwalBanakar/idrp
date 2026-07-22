@@ -31,7 +31,7 @@ defineProps<{
           class="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-primary)]/20 hover:shadow-md"
         >
           <div
-            class="mb-5 h-1.5 w-14 rounded-full bg-[var(--color-primary-soft)]0 transition-all duration-300 group-hover:w-20"
+            class="mb-5 h-1.5 w-14 rounded-full bg-[var(--color-primary-soft)] transition-all duration-300 group-hover:w-20"
           />
           <h3 class="text-lg font-bold tracking-tight text-slate-900">
             {{ reason.title }}

@@ -108,7 +108,8 @@ function goToSlide(index: number) {
 function scrollToPrograms() {
   const section = document.getElementById('programs')
   if (!section) return
-  const y = section.getBoundingClientRect().top + window.pageYOffset - 88
+  const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 88
+  const y = section.getBoundingClientRect().top + window.pageYOffset - headerHeight
   window.scrollTo({ top: y, behavior: 'smooth' })
 }
 

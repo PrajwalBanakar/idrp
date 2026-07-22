@@ -133,7 +133,7 @@ const reversedDuplicatedStories = computed(() => [...duplicatedStories.value].re
 <style scoped>
 .stories-track-left {
   width: max-content;
-  animation: scroll-left 40s linear infinite;
+  animation: scroll-left 22s linear infinite;
   will-change: transform;
 }
 
@@ -143,7 +143,7 @@ const reversedDuplicatedStories = computed(() => [...duplicatedStories.value].re
 
 .stories-track-right {
   width: max-content;
-  animation: scroll-right 40s linear infinite;
+  animation: scroll-right 22s linear infinite;
   will-change: transform;
 }
 
@@ -154,7 +154,7 @@ const reversedDuplicatedStories = computed(() => [...duplicatedStories.value].re
 @media (max-width: 768px) {
   .stories-track-left,
   .stories-track-right {
-    animation-duration: 28s;
+    animation-duration: 14s;
   }
 }
 

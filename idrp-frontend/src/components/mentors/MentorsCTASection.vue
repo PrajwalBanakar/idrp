@@ -32,19 +32,13 @@
           </div>
 
           <div class="flex shrink-0 flex-col gap-4 sm:flex-row">
-            <RouterLink
-              to="/about"
-              class="inline-flex min-w-[180px] items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary-dark)]"
-            >
+            <BaseButton to="/about" variant="primary" size="md" class="min-w-[180px]">
               About IDRP
-            </RouterLink>
+            </BaseButton>
 
-            <RouterLink
-              to="/contact"
-              class="inline-flex min-w-[180px] items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-[rgba(255,255,255,0.14)]"
-            >
+            <BaseButton to="/contact" variant="light-on-dark" size="md" class="min-w-[180px]">
               Contact Us
-            </RouterLink>
+            </BaseButton>
           </div>
         </div>
       </div>
@@ -53,5 +47,5 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import BaseButton from '@/components/common/BaseButton.vue'
 </script>

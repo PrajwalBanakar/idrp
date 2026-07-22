@@ -50,7 +50,7 @@
             :href="brochureUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex min-w-[200px] items-center justify-center rounded-full border border-teal-300/30 bg-teal-400/10 px-8 py-3.5 text-sm font-semibold text-teal-100 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary-soft)]0 hover:text-slate-950 sm:text-base"
+            class="inline-flex min-w-[200px] items-center justify-center rounded-full border border-teal-300/30 bg-teal-400/10 px-8 py-3.5 text-sm font-semibold text-teal-100 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary-soft)] hover:text-slate-950 sm:text-base"
           >
             View Brochure
           </a>

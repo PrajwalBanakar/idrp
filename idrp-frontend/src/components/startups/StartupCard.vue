@@ -55,9 +55,9 @@ const mentorSectionTitle = computed(() =>
 
 function getBadgeClass(category: StartupCategory) {
   const badgeMap: Record<StartupCategory, string> = {
-    PRE_INCUBATED: 'bg-cyan-50 text-cyan-700',
+    PRE_INCUBATED: 'bg-[var(--color-info-soft)] text-[var(--color-info)]',
     INCUBATED: 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
-    FUNDED: 'bg-emerald-50 text-emerald-700',
+    FUNDED: 'bg-[var(--color-success-soft)] text-[var(--color-success)]',
   }
 
   return badgeMap[category]
@@ -122,7 +122,7 @@ watch(
               {{ startup.sector || 'Sector to be updated' }}
             </p>
 
-            <div v-if="startup.website || startup.onePager" class="mt-4 flex flex-wrap gap-2.5">
+            <div class="mt-4 flex min-h-[2.25rem] flex-wrap gap-2.5">
               <a
                 v-if="startup.website"
                 :href="startup.website"

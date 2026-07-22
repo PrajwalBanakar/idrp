@@ -2,12 +2,17 @@
   <Teleport to="body">
     <div
       v-if="open"
+      ref="modalRef"
       class="fixed inset-0 z-[999] flex items-center justify-center bg-slate-950/80 p-3 backdrop-blur-sm sm:p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Event photo gallery"
       @click.self="emit('close')"
     >
       <div class="relative w-full max-w-5xl">
         <div class="overflow-hidden rounded-3xl bg-slate-900 shadow-2xl">
           <button
+            ref="closeButtonRef"
             type="button"
             aria-label="Close gallery"
             class="absolute right-3 top-3 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/70 text-2xl text-white transition hover:bg-slate-800 sm:right-4 sm:top-4 sm:h-11 sm:w-11"
@@ -86,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
 const props = defineProps<{
   open: boolean
@@ -100,15 +105,23 @@ const emit = defineEmits<{
 }>()
 
 const currentIndex = ref(props.startIndex ?? 0)
+const modalRef = ref<HTMLElement | null>(null)
+const closeButtonRef = ref<HTMLButtonElement | null>(null)
+let previouslyFocusedElement: HTMLElement | null = null
 
 watch(
   () => props.open,
-  (isOpen) => {
+  async (isOpen) => {
     if (isOpen) {
       currentIndex.value = props.startIndex ?? 0
       document.body.style.overflow = 'hidden'
+      previouslyFocusedElement = document.activeElement as HTMLElement | null
+      await nextTick()
+      closeButtonRef.value?.focus()
     } else {
       document.body.style.overflow = ''
+      previouslyFocusedElement?.focus()
+      previouslyFocusedElement = null
     }
   },
 )
@@ -128,21 +141,50 @@ function nextImage() {
   currentIndex.value = currentIndex.value === props.images.length - 1 ? 0 : currentIndex.value + 1
 }
 
+function getFocusableElements(): HTMLElement[] {
+  if (!modalRef.value) return []
+  return Array.from(
+    modalRef.value.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    ),
+  )
+}
+
 function handleKeydown(event: KeyboardEvent) {
   if (!props.open) return
 
   if (event.key === 'Escape') {
     emit('close')
+    return
   }
 
   if (event.key === 'ArrowLeft') {
     event.preventDefault()
     previousImage()
+    return
   }
 
   if (event.key === 'ArrowRight') {
     event.preventDefault()
     nextImage()
+    return
+  }
+
+  if (event.key === 'Tab') {
+    const focusable = getFocusableElements()
+    if (focusable.length === 0) return
+
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    if (!first || !last) return
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first.focus()
+    }
   }
 }
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BaseButton from '@/components/common/BaseButton.vue'
+
 type Props = {
   eyebrow?: string
   title: string
@@ -58,20 +60,19 @@ withDefaults(defineProps<Props>(), {
 
           <!-- Buttons -->
           <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <RouterLink
-              :to="primaryActionTo"
-              class="inline-flex min-w-[220px] items-center justify-center rounded-full bg-[var(--color-primary)] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary-dark)] sm:text-base"
-            >
+            <BaseButton :to="primaryActionTo" variant="primary" size="lg" class="min-w-[220px]">
               {{ primaryActionLabel }}
-            </RouterLink>
+            </BaseButton>
 
-            <RouterLink
+            <BaseButton
               v-if="secondaryActionLabel && secondaryActionTo"
               :to="secondaryActionTo"
-              class="inline-flex min-w-[220px] items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-[rgba(255,255,255,0.14)] sm:text-base"
+              variant="light-on-dark"
+              size="lg"
+              class="min-w-[220px]"
             >
               {{ secondaryActionLabel }}
-            </RouterLink>
+            </BaseButton>
           </div>
         </div>
       </div>
