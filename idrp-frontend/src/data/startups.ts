@@ -1696,4 +1696,49 @@ export const startups: Startup[] = [
     ],
     teamMembers: [],
   },
+  {
+    id: 47,
+    name: 'TrueEd',
+    sector: 'EDTECH',
+    categories: ['PRE_INCUBATED'],
+    logo: '/startups/logo/TrueEd.jpeg',
+    website: '',
+    onePager: '',
+    brief:
+      'TrueEd is an edtech platform that connects students with verified teachers for personalized online, offline, and group-class learning.',
+    contactEmail: '25bda097@iiitdwd.ac.in',
+    techFacultyMentors: [
+      {
+        name: 'Dr. Chinmayananda A',
+        image: '',
+        linkedin: 'https://linkedin.com/in/chinmayananda-a-941b06307',
+        email: '',
+      },
+    ],
+    founders: [
+      {
+        name: 'Rohit Kumar',
+        image: '',
+        role: 'Team Lead',
+        email: '25bda097@iiitdwd.ac.in',
+        linkedin:
+          'https://www.linkedin.com/in/rohit-kumar-b91937365?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+      },
+      {
+        name: 'Sugyan Singh',
+        image: '',
+        role: 'Co-Founder',
+        email: '24bcs148@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/sugyan-singh/',
+      },
+      {
+        name: 'Hari Prasad L',
+        image: '',
+        role: 'Co-Founder',
+        email: '23bds022@iiitdwd.ac.in',
+        linkedin: 'https://www.linkedin.com/in/hariprasadkishan/',
+      },
+    ],
+    teamMembers: [],
+  },
 ]
