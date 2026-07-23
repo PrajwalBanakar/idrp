@@ -832,6 +832,22 @@ export const events: EventItem[] = [
     image: '/events/brochures/event-placeholder.jpg',
     imageFit: 'cover',
   },
+  {
+    id: 65,
+    slug: 'tech-series-4-model-context-protocol-mcp',
+    title: 'Tech Series 4 – Model Context Protocol (MCP): The USB-C for AI Applications',
+    category: 'Tech Series',
+    description: 'A technical learning session on Model Context Protocol (MCP): The USB-C for AI Applications.',
+    startDate: '2026-07-30',
+    endDate: '2026-07-30',
+    displayDate: 'July 30, 2026',
+    time: '11:00 AM – 12:00 PM',
+    location: 'Google Meet',
+    mode: 'Online',
+    image: '/events/brochures/event-placeholder.jpg',
+    imageFit: 'cover',
+    registerUrl: 'https://meet.google.com/jxw-nfpw-rhn',
+  },
 
 ]
 // ─────────────────────────────────────────────

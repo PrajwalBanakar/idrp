@@ -732,7 +732,7 @@ export const startups: Startup[] = [
     name: 'Neuraforesight Private Limited',
     sector: 'HEALTH TECH',
     categories: ['INCUBATED', 'FUNDED'],
-    logo: '/startups/logo/neuraforesight.jpeg',
+    logo: '/startups/logo/Neuraforesight.jpeg',
     website: '',
     onePager: '',
     brief:
@@ -1042,7 +1042,7 @@ export const startups: Startup[] = [
     name: 'Acumen Intelligence',
     sector: 'AI / SAAS',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/acumen-intelligence.png',
+    logo: '/startups/logo/Acumen.png',
     website: '',
     onePager: '',
     brief:
@@ -1123,7 +1123,7 @@ export const startups: Startup[] = [
     name: 'Yntra Sparks',
     sector: 'ED TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/yntra-sparks.png',
+    logo: '/startups/logo/Yntra Sparks.jpeg',
     website: '',
     onePager: '',
     brief:
@@ -1224,7 +1224,7 @@ export const startups: Startup[] = [
     name: 'PetalPath',
     sector: 'ED TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/petalpath.png',
+    logo: '/startups/logo/PetalPath.jpeg',
     website: '',
     onePager: '',
     brief:
@@ -1409,7 +1409,7 @@ export const startups: Startup[] = [
     name: 'Aitric',
     sector: 'IOT / SMART ENERGY',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/aitric.png',
+    logo: '/startups/logo/Aitric.jpeg',
     brief:
       'AITRIC is an AI-powered smart socket with real-time energy monitoring and protection features.',
     contactEmail: '25bcs069@iiitdwd.ac.in',
@@ -1490,7 +1490,7 @@ export const startups: Startup[] = [
     name: 'Benzene',
     sector: 'DECENTRALIZED COMPUTING',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/benzene.png',
+    logo: '/startups/logo/Benzene.jpeg',
     brief: 'Benzene enables decentralized GPU compute sharing for AI workloads and rendering.',
     contactEmail: '25bcs199@iiitdwd.ac.in',
     techFacultyMentors: [
@@ -1528,7 +1528,7 @@ export const startups: Startup[] = [
     name: 'Mentiq',
     sector: 'AI / CAREER ADVISORY',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/mentiq.png',
+    logo: '/startups/logo/menti_q.jpg',
     brief: 'Mentiq is an AI-powered advisory platform for career and financial decision-making.',
     contactEmail: '23bds056@iiitdwd.ac.in',
     techFacultyMentors: [
@@ -1563,7 +1563,7 @@ export const startups: Startup[] = [
     name: 'MotionIQ',
     sector: 'SPORTS TECH',
     categories: ['PRE_INCUBATED'],
-    logo: '/startups/logo/motioniq.png',
+    logo: '/startups/logo/MotionIQ.jpg',
     brief:
       'MotionIQ uses wearable sensors and AI-driven motion analysis for athlete performance tracking.',
     contactEmail: '25bcs139@iiitdwd.ac.in',
@@ -1597,7 +1597,13 @@ export const startups: Startup[] = [
     brief:
       'Trividhi Labs focuses on research-driven innovation in emerging technologies, developing intelligent solutions across AI, robotics, embedded systems, and advanced engineering domains.',
     contactEmail: '',
-    techFacultyMentors: [],
+    techFacultyMentors: [
+      {
+        name: 'Dr. Girish Revadigar',
+        image: '/faculty-girish-revadigar.jpg',
+        linkedin: 'https://www.linkedin.com/in/girish-revadigar-phd-55a33b28',
+      },
+    ],
     founders: [],
     teamMembers: [],
   },
@@ -1606,13 +1612,20 @@ export const startups: Startup[] = [
     name: 'Exobios Private Limited',
     sector: 'HEALTH TECH',
     categories: ['INCUBATED'],
-    logo: '/startups/logo/exobios.png',
+    logo: '/startups/logo/Exobios.jpeg',
     website: '',
     onePager: '',
     brief:
       'Exobios Private Limited is a health technology startup developing AI-enabled digital healthcare solutions that assist clinicians with patient assessment, monitoring, and intelligent decision support.',
-    contactEmail: 'geetha.spacebios@gmail.com',
-    techFacultyMentors: [],
+    contactEmail: 'mca.exobios@gmail.com',
+    techFacultyMentors: [
+      {
+        name: 'Dr. Manjunath Vanahalli',
+        image: '/faculty-manjunath.jfif',
+        linkedin: 'https://www.linkedin.com/in/manjunath-vanahalli-4b24ab69',
+        email: 'manjunathkv@iiitdwd.ac.in',
+      },
+    ],
     founders: [
       {
         name: 'Ashwini Hegadekatti',
@@ -1634,12 +1647,16 @@ export const startups: Startup[] = [
     name: 'ANUTHANTRA PRIVATE LIMITED',
     sector: 'HEALTH TECH',
     categories: ['INCUBATED'],
-    logo: '/startups/logo/anuthantra.png',
+    logo: '/startups/logo/Anuthantra.jpeg',
     website: '',
     onePager: '',
     brief: '',
     contactEmail: 'vraghav1240nm@gmail.com',
-    techFacultyMentors: [],
+    techFacultyMentors: [
+      {
+        name: 'Dr. Aswath Babu H',
+      },
+    ],
     founders: [
       {
         name: 'Venkatraman Raghavendra',
