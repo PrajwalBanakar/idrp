@@ -43,9 +43,10 @@
       </div>
 
       <div class="mt-6 flex items-center justify-between gap-4 border-t border-slate-100 pt-5">
-        <span class="text-xs font-medium text-slate-500">
+        <span v-if="formattedDeadline" class="text-xs font-medium text-slate-500">
           Apply by {{ formattedDeadline }}
         </span>
+        <span v-else />
 
         <RouterLink
           :to="`/careers/${job.slug}`"
@@ -67,11 +68,12 @@ const props = defineProps<{
   job: Job
 }>()
 
-const formattedDeadline = computed(() =>
-  new Date(props.job.deadline).toLocaleDateString('en-IN', {
+const formattedDeadline = computed(() => {
+  if (!props.job.deadline) return ''
+  return new Date(props.job.deadline).toLocaleDateString('en-IN', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
-  }),
-)
+  })
+})
 </script>

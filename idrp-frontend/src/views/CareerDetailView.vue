@@ -34,7 +34,7 @@
 
         <h1 class="text-4xl font-bold tracking-tight text-slate-900">{{ job.title }}</h1>
         <p class="mt-3 text-base text-slate-500">
-          {{ job.location }} · Apply by {{ formattedDeadline }}
+          {{ job.location }}<template v-if="formattedDeadline"> · Apply by {{ formattedDeadline }}</template>
         </p>
 
         <div class="mt-10 space-y-8">
@@ -51,7 +51,28 @@
       </div>
     </section>
 
-    <section v-if="job.status === 'OPEN'" class="bg-gray-50 px-6 py-16 md:px-16">
+    <section v-if="job.status === 'OPEN' && job.applyUrl" class="bg-gray-50 px-6 py-16 md:px-16">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
+          Application
+        </span>
+        <h2 class="mt-2 text-3xl font-bold text-gray-900">Apply for this Role</h2>
+        <p class="mx-auto mt-3 max-w-xl text-slate-600">
+          Applications for this role are collected via Google Forms. Click below to open the
+          application form in a new tab.
+        </p>
+        <a
+          :href="job.applyUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center justify-center rounded-xl bg-[var(--color-primary)] px-8 py-4 text-sm font-bold tracking-wide text-white transition-colors duration-200 hover:bg-teal-800"
+        >
+          Apply via Google Form ↗
+        </a>
+      </div>
+    </section>
+
+    <section v-else-if="job.status === 'OPEN'" class="bg-gray-50 px-6 py-16 md:px-16">
       <div class="mx-auto max-w-3xl">
         <div class="mb-10 text-center">
           <span class="text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
@@ -192,7 +213,7 @@ const slug = computed(() => String(route.params.slug ?? ''))
 const job = computed(() => getJobBySlug(slug.value))
 
 const formattedDeadline = computed(() => {
-  if (!job.value) return ''
+  if (!job.value?.deadline) return ''
   return new Date(job.value.deadline).toLocaleDateString('en-IN', {
     day: 'numeric',
     month: 'short',
